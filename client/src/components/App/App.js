@@ -1,7 +1,14 @@
-import './App.css'
+import LoginForm from '../LoginForm/LoginForm';
+import SignUpForm from '../SignUpForm/SignUpForm';
+import './App.css';
 
 function App() {
-  return <></>
+  return (
+    <>
+      <LoginForm />
+      {/* <SignUpForm /> */}
+    </>
+  );
 }
 
-export default App
+export default App;
