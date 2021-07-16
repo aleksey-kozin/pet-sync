@@ -1,14 +1,15 @@
 const mongoose = require('mongoose')
 
 const petSchema = new mongoose.Schema({
-  image: { type: String, require: true },
+  // image: { type: String, require: true },
   name: { type: String, require: true },
-  sex: { type: String, require: true },
-  breed: { type: String, require: true },
-  birthdate: { type: Date, require: true },
-  weight: { type: Number, require: true },
-  pets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Test' }],
-})
+  spacies: { type: String},
+  sex: { type: String},
+  breed: { type: String},
+  birthdate: { type: Date},
+  weight: { type: Number,},
+  // pets: [{ type: mongoose.Schema.Types.ObjectId, ref: "Test" }],
+});
 
 const Pet = mongoose.model('Pet', petSchema)
 
