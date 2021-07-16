@@ -2,7 +2,9 @@ import React, { useRef } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
+import { useHistory } from 'react-router-dom';
 
+//стили material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -18,12 +20,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PetCard(props) {
+function PetCard() {
   const classes = useStyles();
   const text = useRef();
+  const history = useHistory()
 
+  //событие по кнопке
   const addAnimal = (event) => {
     event.preventDefault();
+    //объект для загрузки в бд
     const newPet = {
       name: text.current.name.value,
       spacies: text.current.spacies.value,
@@ -33,15 +38,19 @@ function PetCard(props) {
       weight: text.current.weight.value,
     };
 
+    //fetch к бд
     fetch("http://localhost:4000/addPet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPet),
     })
       .then((res) => res.json())
-      .then((result) => alert(result. message));
+      //alert "питомец загружен"
+      .then((result) => alert(result.message))
+      //редирект на MyPets
+      .then(() => history.push("/mypets"));
   };
-
+  
   return (
     <div>
       <form ref={text} className={classes.root} noValidate autoComplete="off">
@@ -102,6 +111,7 @@ function PetCard(props) {
           Добавить питомца
         </Button>
       </form>
+      
     </div>
   );
 }
