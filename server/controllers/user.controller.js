@@ -69,12 +69,15 @@ class UserController {
       next(e)
     }
   }
+
   async getUsers(req, res, next) {
     try {
-      res.json(['1', '2', '3'])
-    } catch (error) {
+      const users = await userService.getAllUsers()
+      return res.json(users)
+    } catch (e) {
       next(e)
     }
   }
 }
+
 module.exports = new UserController()
