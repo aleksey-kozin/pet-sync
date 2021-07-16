@@ -4,7 +4,7 @@ class UserController {
   async registration(req, res, next) {
     try {
       const { email, password } = req.body
-      console.log(email);
+      console.log(email)
       const userData = await userService.registration(email, password)
 
       res.cookie('refreshToken', userData.refreshToken, {
@@ -26,7 +26,12 @@ class UserController {
   }
   async activate(req, res, next) {
     try {
-    } catch (error) {}
+      const activationLink = req.params.link
+      await userService.activate(activationLink)
+      return res.redirect(process.env.CLIENT_URL)
+    } catch (e) {
+      next(e)
+    }
   }
   async refresh(req, res, next) {
     try {
