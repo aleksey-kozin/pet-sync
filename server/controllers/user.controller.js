@@ -13,7 +13,7 @@ class UserController {
       }) //  httpOnly: true - cookie cannot be changed from the browser
       return res.json(userData)
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   }
   async login(req, res, next) {
@@ -22,7 +22,9 @@ class UserController {
   }
   async logout(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(e)
+    }
   }
   async activate(req, res, next) {
     try {
@@ -35,12 +37,16 @@ class UserController {
   }
   async refresh(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(e)
+    }
   }
   async getUsers(req, res, next) {
     try {
       res.json(['1', '2', '3'])
-    } catch (error) {}
+    } catch (error) {
+      next(e)
+    }
   }
 }
 module.exports = new UserController()
