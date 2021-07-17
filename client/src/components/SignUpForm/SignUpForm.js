@@ -1,82 +1,45 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import AuthService from '../../services/AuthServices'
+import { initUsersAC } from '../../utils/redux/actionCreators/actionCreators'
+import RegFormStyles from './RegForm.css'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
+export default function SignUpForm() {
+  const dispatch = useDispatch()
 
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
-  },
-}));
+  const handlerSubmit = async (event) => {
+    event.preventDefault()
 
-export default function SignUpForm({ handleClose }) {
-  const classes = useStyles();
-  // create state variables for each input
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const email = event.target.email.value
+    const password = event.target.password.value
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(firstName, lastName, email, password);
-    handleClose();
-  };
-
+    const response = await AuthService.registration(email, password)
+    // console.log(response)
+    localStorage.setItem('token', response.data.accessToken)
+    dispatch(initUsersAC(response.data.user))
+  }
   return (
-    <form className={classes.root} onSubmit={handleSubmit}>
-      <TextField
-        label="First Name"
-        variant="filled"
-        required
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <TextField
-        label="Last Name"
-        variant="filled"
-        required
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      <TextField
-        label="Email"
-        variant="filled"
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <TextField
-        label="Password"
-        variant="filled"
-        type="password"
-        required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <div>
-        <Button variant="contained" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button type="submit" variant="contained" color="primary">
-          Signup
-        </Button>
-      </div>
-    </form>
-  );
-}
+    <div className="container">
+      <form onSubmit={handlerSubmit}>
+        <div className="container">
+          <label >
+            <b>Email</b>
+          </label>
+          <input type="email" placeholder="Enter email" name="email" required />
 
-// export default Form;
+          <label >
+            <b>Password</b>
+          </label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            required
+          />
+
+          <button type="submit">SignUp</button>
+        </div>
+      </form>
+    </div>
+  )
+}
