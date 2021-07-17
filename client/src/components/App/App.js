@@ -4,7 +4,6 @@ import Nav from '../Nav/Nav'
 import Profile from '../Profile/Profile'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import LoginForm from '../LoginForm/LoginForm'
-import './App.css'
 import MyPets from '../MyPets/MyPets'
 import PetPersonPage from '../PetPersonPage/PetPersonPage'
 
@@ -14,13 +13,12 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route path={'/'} exact component={Main} />
-          <Route path={'/login'} component={LoginForm} />
-          {/* <Route path={'/login'} component={LoginForm} /> */}
-          <Route path={'/reg'} component={SignUpForm} />
-          <Route path={'/profile'} component={Profile} />
-          <Route exact path={'/mypets'} component={MyPets} />
-          <Route path={'/mypets/:name'} component={PetPersonPage} />
+          <Route path={"/"} exact component={Main} />
+          <Route path={"/login"} component={SignUpForm} />
+          <Route path={"/signup"} component={SignUpForm} />
+          <Route path={"/profile"} component={Profile} />
+          <Route exact path={"/mypets"} component={MyPets} />
+          <Route path={"/mypets/:name"} component={PetPersonPage} />
         </Switch>
       </Router>
     </>

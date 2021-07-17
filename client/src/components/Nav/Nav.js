@@ -1,40 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AppBar, Box, Button, Container, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: 0
-  },
-  title: {
-    flexGrow: 1
-  },
-}))
+import { FiMenu } from 'react-icons/fi'
+import { VscClose } from 'react-icons/vsc'
+import './Nav.css'
 
 function Nav() {
-  const classes = useStyles()
+  const [icon, setIcon] = useState(false)
 
   return (
     <>
-      <AppBar position="fixed">
-        <Container fixed>
-          <Toolbar>
-            <Typography variant="h6" component={ Link } to="/">PET SYNC</Typography>
-            <Typography variant="h6" component={ Link } to="/profile">Profile</Typography>
-            <Box ml={8} mr={3}>
-            <Button color="inherit" variant="outlined" component={ Link } to="/signup">Добавить питомца</Button>
-            </Box>
-            <Button color="secondary" variant="contained" component={ Link } to="/login">Войти</Button>
-            <Button color="secondary" variant="contained" component={ Link } to="/reg">Reg</Button>
-          </Toolbar>
-        </Container>
-      </AppBar>
+      <nav className="navbar-item">
+        <h1 className="navbar-logo">PETSYNC</h1>
+        <div onClick={() => setIcon(!icon)} className="menu-icon">
+          {icon ? <VscClose /> : <FiMenu />}
+        </div>
+        <ul className={icon ? 'nav-menu active' : 'nav-menu'}>
+          <li>
+            <Link onClick={() => setIcon(false)} to="/" className="nav-links">
+              Главная
+            </Link>
+          </li>
+          <li>
+            <Link onClick={() => setIcon(false)} to="/profile" className="nav-links">
+              Профиль
+            </Link>
+          </li>
+          <li>
+            <Link onClick={() => setIcon(false)} to="/signup" className="nav-links">
+              Добавить питомца
+            </Link>
+          </li>
+          <li>
+            <Link onClick={() => setIcon(false)} to="/login" className="nav-links">
+              Войти
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </>
-  );
+  )
 }
 
 export default Nav
