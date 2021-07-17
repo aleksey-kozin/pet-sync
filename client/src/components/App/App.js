@@ -14,16 +14,17 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route path={"/"} exact component={Main} />
-          <Route path={"/login"} component={LoginForm} />
-          <Route path={"/signup"} component={SignUpForm} />
-          <Route path={"/profile"} component={Profile} />
-          <Route exact path={"/mypets"} component={MyPets} />
-          <Route path={"/mypets/:name"} component={PetPersonPage} />
+          <Route path={'/'} exact component={Main} />
+          <Route path={'/login'} component={LoginForm} />
+          {/* <Route path={'/login'} component={LoginForm} /> */}
+          <Route path={'/reg'} component={SignUpForm} />
+          <Route path={'/profile'} component={Profile} />
+          <Route exact path={'/mypets'} component={MyPets} />
+          <Route path={'/mypets/:name'} component={PetPersonPage} />
         </Switch>
       </Router>
     </>
-  );
+  )
 }
 
 export default App

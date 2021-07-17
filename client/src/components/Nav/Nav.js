@@ -29,6 +29,7 @@ function Nav() {
             <Button color="inherit" variant="outlined" component={ Link } to="/signup">Добавить питомца</Button>
             </Box>
             <Button color="secondary" variant="contained" component={ Link } to="/login">Войти</Button>
+            <Button color="secondary" variant="contained" component={ Link } to="/reg">Reg</Button>
           </Toolbar>
         </Container>
       </AppBar>
