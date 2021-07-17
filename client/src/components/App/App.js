@@ -6,6 +6,8 @@ import SignUpForm from '../SignUpForm/SignUpForm'
 import LoginForm from '../LoginForm/LoginForm'
 import MyPets from '../MyPets/MyPets'
 import PetPersonPage from '../PetPersonPage/PetPersonPage'
+import FormLogin from '../Forms/FormLogin'
+import FormSignUp from '../Forms/FormSignUp'
 
 function App() {
   return (
@@ -14,8 +16,8 @@ function App() {
         <Nav />
         <Switch>
           <Route path={"/"} exact component={Main} />
-          <Route path={"/login"} component={SignUpForm} />
-          <Route path={"/signup"} component={SignUpForm} />
+          <Route path={"/login"} component={FormLogin} />
+          <Route path={"/signup"} component={FormSignUp} />
           <Route path={"/profile"} component={Profile} />
           <Route exact path={"/mypets"} component={MyPets} />
           <Route path={"/mypets/:name"} component={PetPersonPage} />
