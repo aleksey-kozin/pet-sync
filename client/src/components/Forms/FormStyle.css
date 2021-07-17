@@ -118,7 +118,14 @@
     border-radius: 25px;
   }
 
+}
+
+@media screen and (max-width: 360px) {
   .form-login {
-    /* flex-direction: column; */
+    flex-direction: column;
+  }
+
+  .btn-login {
+    margin-top: 15px;
   }
 }
