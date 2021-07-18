@@ -1,46 +1,85 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import AuthService from '../../services/AuthServices'
-import { initUsersAC } from '../../utils/redux/actionCreators/actionCreators'
-import LoginFormStyles from './LoginForm.css'
+import {
+  checkUsersAC,
+  initUsersAC,
+} from '../../utils/redux/actionCreators/actionCreators'
+import { Link } from 'react-router-dom'
 
 function LoginForm(props) {
+  const userState = useSelector((state) => state.usersReducer)
+  console.log(userState)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    (async () => {
+      if (localStorage.getItem('token')) {
+        const response = await AuthService.checkAuth()
+        // console.log(response)
+        dispatch(checkUsersAC(response.data.user))
+      }
+    })()
+  }, [])
+
   const handlerSubmit = async (event) => {
-    event.preventDefault()
+    try {
+      event.preventDefault()
 
-    const email = event.target.email.value
-    const password = event.target.password.value
+      const email = event.target.email.value
+      const password = event.target.password.value
 
-    const response = await AuthService.registration(email, password)
-    // console.log(response)
-    localStorage.setItem('token', response.data.accessToken)
-    dispatch(initUsersAC(response.data.user))
+      const response = await AuthService.login(email, password)
+      console.log(response)
+      localStorage.setItem('token', response.data.accessToken)
+      dispatch(initUsersAC(response.data.user))
+    } catch (error) {
+      console.log(error.response?.data?.message)
+    }
   }
   return (
-    <div className="container">
-      <form onSubmit={handlerSubmit}>
-        <div className="container">
-          <label >
-            <b>Email</b>
-          </label>
-          <input type="email" placeholder="Enter email" name="email" required />
+    <>
+      <h1>
+        {userState.isAuth
+          ? `Пользователь авторизован ${userState.user.email}`
+          : 'АВТОРИЗУЙТЕСЬ'}
+      </h1>
+      <h1>
+        {userState.user.isActivated
+          ? 'Аккаунт подтвержден по почте'
+          : 'ПОДТВЕРДИТЕ АККАУНТ!!!!'}
+      </h1>
+      <div className="container">
+        <form onSubmit={handlerSubmit}>
+          <div className="container">
+            <label>
+              <b>Email</b>
+            </label>
+            <input
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              required
+            />
 
-          <label >
-            <b>Password</b>
-          </label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            required
-          />
+            <label>
+              <b>Password</b>
+            </label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              required
+            />
 
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
+            <button type="submit">Login</button>
+            <Link to="/registration">
+              <button type="submit">Reg</button>
+            </Link>
+          </div>
+        </form>
+      </div>
+    </>
   )
 }
 
