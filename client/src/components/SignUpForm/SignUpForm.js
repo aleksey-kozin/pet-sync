@@ -8,26 +8,28 @@ export default function SignUpForm() {
   const dispatch = useDispatch()
 
   const handlerSubmit = async (event) => {
-    event.preventDefault()
-
-    const email = event.target.email.value
-    const password = event.target.password.value
-
-    const response = await AuthService.registration(email, password)
-    // console.log(response)
-    localStorage.setItem('token', response.data.accessToken)
-    dispatch(initUsersAC(response.data.user))
+    try {
+      event.preventDefault()
+      const email = event.target.email.value
+      const password = event.target.password.value
+      const response = await AuthService.registration(email, password)
+      // console.log(response)
+      localStorage.setItem('token', response.data.accessToken)
+      dispatch(initUsersAC(response.data.user))
+    } catch (error) {
+      console.log(error.response?.data?.message)
+    }
   }
   return (
     <div className="container">
       <form onSubmit={handlerSubmit}>
         <div className="container">
-          <label >
+          <label>
             <b>Email</b>
           </label>
           <input type="email" placeholder="Enter email" name="email" required />
 
-          <label >
+          <label>
             <b>Password</b>
           </label>
           <input
