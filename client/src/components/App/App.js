@@ -18,6 +18,7 @@ function App() {
           <Nav />
           <Switch>
             <Route path={'/'} exact component={Main} />
+            <Route path={'/testchart'} component={TestChart} />
             <Route path={'/login'} component={FormLogin} />
             <Route path={'/signup'} component={FormSignUp} />
             <Route path={'/profile'} component={Profile} />
