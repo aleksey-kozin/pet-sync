@@ -8,6 +8,7 @@ const errorMiddleware = require('./middlewares/error.middleware.js')
 
 const routerAuth = require('./routers/index.js')
 const indexRouter = require('./routers/indexRouter')
+const analysesRouter = require('./routers/analysesRouter.js')
 
 const app = express()
 
@@ -16,13 +17,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(
   cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
+    // credentials: true,
+    // origin: process.env.CLIENT_URL,
   })
 )
 
 app.use('/api', routerAuth)
 app.use('/', indexRouter)
+app.use('/analyses', analysesRouter)
 
 app.use(errorMiddleware)
 
