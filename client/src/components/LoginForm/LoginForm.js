@@ -5,7 +5,6 @@ import {
   checkUsersAC,
   initUsersAC,
 } from '../../utils/redux/actionCreators/actionCreators'
-import LoginFormStyles from './LoginForm.css'
 import { Link } from 'react-router-dom'
 
 function LoginForm(props) {

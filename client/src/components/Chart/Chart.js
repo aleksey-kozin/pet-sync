@@ -1,27 +1,29 @@
 import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
+import { patternDotsDef, patternSquaresDef } from '@nivo/core'
 
-function Chart(props) {
+function Chart({ el }) {
+  const norm = 5
   let data = [
     {
       id: 'dots',
       type: 'patternDots',
       background: 'inherit',
-      color: 'rgba(255, 255, 255, 0.3)',
+      color: '#74c476',
       size: 100,
       padding: 1,
       stagger: true,
     },
     {
-      id: 'javascript',
-      label: 'javascript',
-      value: 80,
-      color: 'hsl(119, 70%, 50%)',
+      id: 'analyses',
+      label: 'analyses',
+      value: (el / norm) * 100,
+      color: '#74c476',
     },
     {
-      id: 'java',
-      label: 'java',
-      value: 20,
+      id: 'normal',
+      label: 'normal',
+      value: ((norm - el) / norm) * 100,
       color: 'hsl(253, 70%, 50%)',
     },
     // {
@@ -47,6 +49,7 @@ function Chart(props) {
       padAngle={0.7}
       cornerRadius={3}
       activeOuterRadiusOffset={8}
+      colors={{ scheme: 'greens' }}
       borderWidth={1}
       borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
       arcLinkLabelsSkipAngle={10}
@@ -58,100 +61,50 @@ function Chart(props) {
       enableArcLinkLabels={false}
       arcLabelsTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
       defs={[
-        {
-          id: 'dots',
-          type: 'patternDots',
-          background: 'inherit',
-          color: 'rgba(255, 255, 255, 0.3)',
+        patternDotsDef('dots-pattern', {
           size: 4,
-          padding: 1,
-          stagger: true,
-        },
+          padding: 3,
+          stagger: false,
+          background: '#26d959',
+          color: '#33a02c',
+        }),
         {
-          id: 'lines',
-          type: 'patternLines',
-          background: 'inherit',
-          color: 'rgba(255, 255, 255, 0.3)',
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
+          id: 'dots-pattern',
+          type: 'patternDots',
+          size: 3,
+          padding: 5,
+          stagger: false,
+          background: '#1ae031',
+          color: '#2b393b',
         },
+        // {
+        //   id: 'dots',
+        //   type: 'patternDots',
+        //   background: 'inherit',
+        //   color: 'rgba(255, 255, 255, 0.3)',
+        //   size: 4,
+        //   padding: 1,
+        //   stagger: true,
+        // },
+        // {
+        //   id: 'lines',
+        //   type: 'patternLines',
+        //   background: 'inherit',
+        //   color: 'rgba(255, 255, 255, 0.3)',
+        //   rotation: -45,
+        //   lineWidth: 6,
+        //   spacing: 10,
+        // },
       ]}
       fill={[
         {
           match: {
-            id: 'ruby',
+            id: 'analyses',
           },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'c',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'go',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'python',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'scala',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'lisp',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'elixir',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            // id: 'javascript',
-          },
-          id: 'lines',
+          id: 'dots-pattern',
         },
       ]}
-      legends={[
-        {
-          anchor: 'bottom',
-          direction: 'row',
-          justify: false,
-          translateX: 0,
-          translateY: 56,
-          itemsSpacing: 0,
-          itemWidth: 100,
-          itemHeight: 18,
-          itemTextColor: '#999',
-          itemDirection: 'left-to-right',
-          itemOpacity: 1,
-          symbolSize: 18,
-          symbolShape: 'circle',
-          effects: [
-            {
-              on: 'hover',
-              style: {
-                itemTextColor: '#000',
-              },
-            },
-          ],
-        },
-      ]}
+      legends={[]}
     />
     // document.getElementById('root')
   )

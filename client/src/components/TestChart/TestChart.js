@@ -5,7 +5,9 @@ import { initAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
 
 function TestChart(props) {
   const dispatch = useDispatch()
-  const analyses = useSelector((state) => state.analyses)
+  const analyses = useSelector((state) => state.analysesReducer.analyses)
+
+  console.log(analyses)
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses')
@@ -17,7 +19,12 @@ function TestChart(props) {
 
   return (
     <div style={{ height: 400 }}>
-      <Chart />
+      {/* {analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length} */}
+      {
+        <Chart
+          el={analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length}
+        />
+      }
     </div>
   )
 }
