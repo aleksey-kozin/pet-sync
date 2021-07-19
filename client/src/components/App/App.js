@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import store from '../../utils/redux/store'
 import Feed from '../Feed/Feed'
 import FeedAbout from '../FeedAbout/FeedAbout'
+import AddFeed from '../AddFeed/AddFeed'
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
             <Route path={"/profile"} component={Profile} />
             <Route exact path={"/mypets"} component={MyPets} />
             <Route path={"/mypets/:name"} component={PetPersonPage} />
-            <Route path={"/feed/:name"} component={FeedAbout} />
+            <Route path={"/feed/:id"} component={FeedAbout} />
+            <Route path={"/addfeed"} component={AddFeed} />
             <Route path={"/feed"} component={Feed} />
           </Switch>
         </Router>

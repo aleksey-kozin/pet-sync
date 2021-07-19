@@ -27,7 +27,12 @@ function Nav() {
           </li>
            <li>
             <Link onClick={() => setIcon(false)} to="/feed" className="nav-links">
-              Продукты
+              Корм
+            </Link>
+          </li>
+          <li>
+            <Link onClick={() => setIcon(false)} to="/addfeed" className="nav-links">
+              Добавить корм
             </Link>
           </li>
           <li>

@@ -8,7 +8,6 @@ const feedSchema = new Schema({
   veterinaryDiet: { type: String },
   brand: { type: String, require: true },
   name: { type: String, require: true },
-  state: {type: Boolean, default: false}
 });
 
 module.exports = model('Feed', feedSchema)

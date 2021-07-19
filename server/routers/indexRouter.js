@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
 
 router.post('/addPet', async (req, res) => {
   const { name, spacies, sex, breed, birthdate, weight } = req.body
-  console.log(name);
   const newPet = new Pet({
     name,
     spacies,
@@ -19,7 +18,6 @@ router.post('/addPet', async (req, res) => {
     weight,
   });
   newPet.save()
-  console.log(newPet);
   res.json({message: 'Питомец успешно добавлен!'});
 })
 
@@ -32,5 +30,20 @@ router.get("/feed", async (req, res) => {
   const findFeed = await Feed.find();
   res.json({ feedArr: findFeed });
 });
+
+router.post('/addfeed', (req, res) => {
+  const { img, type, age, size, veterinaryDiet, brand, name } = req.body
+  const newFeed = new Feed({
+    img,
+    type,
+    age,
+    size,
+    veterinaryDiet,
+    brand,
+    name,
+  });
+  newFeed.save();
+  res.json({ message: "Корм успешно добавлен в базу данных!" });
+})
 
 module.exports = router

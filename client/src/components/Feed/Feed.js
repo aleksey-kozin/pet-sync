@@ -7,6 +7,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { TextField } from "@material-ui/core";
+import { useDispatch } from 'react-redux';
+import { initFeedAC } from '../../utils/redux/actionCreators/actionCreators';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,8 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Feed(props) {
+function Feed() {
   const [feedArray, setFeedArray] = useState()
+  const dispatch = useDispatch()
   useEffect(() => {
     fetch("http://localhost:4000/feed")
       .then((res) => res.json())
@@ -26,7 +29,9 @@ function Feed(props) {
   }, [])
 
   const classes = useStyles();
-  
+
+  dispatch(initFeedAC(feedArray));
+
   const typePets = [{ typeLabel: "Собаки" }, { typeLabel: "Кошки" }];
   const agePets = [
     { ageLabel: "1 - 12 мес" },
@@ -48,12 +53,11 @@ function Feed(props) {
   const [age, setAge] = useState([]);
   const [size, setSize] = useState([]);
   const [veterinaryDiet, setVeterinaryDiet] = useState([]);
-  console.log(type, age, size, veterinaryDiet);
 
   const filteredUnits =
     type.length || age.length || size.length || veterinaryDiet.length
       ? feedArray.filter((feed) => {
-          console.log("filtering", feed);
+          // console.log("filtering", feed);
           return (
             (!type.length || type.includes(feed.type)) &&
             (!age.length || age.includes(feed.age)) &&
@@ -65,7 +69,7 @@ function Feed(props) {
 
   return (
     <div>
-      <TextField value={(type, age, size, veterinaryDiet)} fullWidth />
+      <TextField fullWidth />
       <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">Животное</FormLabel>
         <FormGroup>

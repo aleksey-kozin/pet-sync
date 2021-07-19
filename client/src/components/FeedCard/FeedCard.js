@@ -28,7 +28,7 @@ function FeedCard({ value }) {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Link to={`/feed/${value.name}`}>
+            <Link to={`/feed/${value._id}`}>
               <Typography gutterBottom variant="h5" component="h2">
                 {value.name}
               </Typography>
