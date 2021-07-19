@@ -4,7 +4,7 @@ import Nav from '../Nav/Nav'
 import Profile from '../Profile/Profile'
 import MyPets from '../MyPets/MyPets'
 import PetPersonPage from '../PetPersonPage/PetPersonPage'
-import TestChart from '../TestChart/TestChart'
+// import TestChart from '../ChartList/ChartList'
 import FormLogin from '../Forms/FormLogin'
 import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
@@ -14,8 +14,7 @@ import FeedAbout from '../FeedAbout/FeedAbout'
 import AddFeed from '../AddFeed/AddFeed'
 import Appointment from '../Appointment/Appointment'
 import PetCard from '../PetCard/PetCard'
-
-
+import ChartList from '../ChartList/ChartList'
 
 function App() {
   return (
@@ -26,22 +25,23 @@ function App() {
           {/* <TestChart/> */}
           <Switch>
             <Route path={'/'} exact component={Main} />
-            <Route path={'/testchart'} component={TestChart} />
+            {/* <Route path={'/testchart'} component={TestChart} /> */}
             <Route path={'/login'} component={FormLogin} />
             <Route path={'/signup'} component={FormSignUp} />
             <Route path={'/profile'} component={Profile} />
+            <Route path={'/mypets/:id'} component={PetPersonPage} />
             <Route path={'/mypets'} component={MyPets} />
             <Route path={'/petcard'} component={PetCard} />
             <Route path={'/appointment'} component={Appointment} />
-            <Route path={'/mypets/:name'} component={PetPersonPage} />
-            <Route path={"/feed/:id"} component={FeedAbout} />
-            <Route path={"/addfeed"} component={AddFeed} />
-            <Route path={"/feed"} component={Feed} />
+            <Route path={'/feed/:id'} component={FeedAbout} />
+            <Route path={'/addfeed'} component={AddFeed} />
+            <Route path={'/feed'} component={Feed} />
+            {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
           </Switch>
         </Router>
       </Provider>
     </>
-  );
+  )
 }
 
 export default App

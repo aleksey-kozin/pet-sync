@@ -3,6 +3,7 @@ import {
   INIT_USERS,
   INIT_ANALYSES,
   INIT_FEED,
+  INIT_PET,
 } from '../actionTypes/actionTypes'
 
 export function initUsersAC(payload) {
@@ -20,4 +21,8 @@ export function checkUsersAC(payload) {
 export function initAnalysesAC(payload) {
   return { type: INIT_ANALYSES, payload }
 
+}
+
+export function initPetAC(payload) {
+  return { type: INIT_PET, payload }
 }
