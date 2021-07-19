@@ -1,0 +1,19 @@
+.profile-menu {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.profile-links {
+  text-decoration: none;
+  padding-right: 15px;
+  color: #000;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.main-profile {
+  margin-top: 50px;
+}

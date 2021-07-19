@@ -1,5 +1,9 @@
+
 import React, { useEffect } from 'react'
+import './Profile.css'
+import './ProfileNav'
 import PetCard from '../PetCard/PetCard'
+import ProfileNav from './ProfileNav'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { checkUsersAC } from '../../utils/redux/actionCreators/actionCreators'
@@ -21,11 +25,15 @@ function Profile() {
   }, [dispatch])
   return (
     <>
-      {userState.isAuth && userState.user.isActivated ? (
-        <PetCard />
-      ) : (
-        '!!!!!!!!!!!!!!!'
-      )}
+      <div className="container">
+        <div className="main-wrapper1">
+          <ProfileNav />
+          {/* <PetCard /> */}
+          <div className="main-profile">
+            <p>Информация о профиле</p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
