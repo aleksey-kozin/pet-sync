@@ -13,7 +13,7 @@ function MyPets() {
 
   const petState = useSelector((state) => state.petsReducer.pet)
   const dispatch = useDispatch()
-  
+
   //fetch в БД, получаем (пока) всех животных
   useEffect(() => {
     fetch('http://localhost:4000/findpet', {
@@ -21,16 +21,16 @@ function MyPets() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id: userState.user.id}),
+      body: JSON.stringify({ id: userState.user.id }),
     })
-    .then((res) => res.json())
-    // .then((result) => console.log(result.petsArr))
-    .then((result) => {
-      // console.log(result);
-      dispatch(initPetAC(result.petsArr))
-    })
+      .then((res) => res.json())
+      // .then((result) => console.log(result.petsArr))
+      .then((result) => {
+        // console.log(result);
+        dispatch(initPetAC(result.petsArr))
+      })
   }, [userState])
-  
+
   console.log(petState)
   // console.log(petArr)
 
@@ -40,14 +40,15 @@ function MyPets() {
         <div className="main-wrapper1">
           <ProfileNav />
           <div className="pet-wrapper">
-            {petState && petState.map((pet) => <Pet key={pet._id} value={pet} />)}
-          </div>
+            {petState &&
+              petState.map((pet) => <Pet key={pet._id} value={pet} />)}
 
-          <Link to="/petcard">
-            <div className="pet-item-add">
-              <p>Добавить питомца</p>
-            </div>
-          </Link>
+            <Link to="/petcard">
+              <div className="pet-item-add">
+                <p>Добавить питомца</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </>
