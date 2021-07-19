@@ -1,7 +1,6 @@
 const Pet = require('../db/models/Pet')
 const router = require('express').Router()
 
-
 router.get('/', (req, res) => {
   res.status(200).send('hello')
 })
@@ -16,15 +15,17 @@ router.post('/addPet', async (req, res) => {
     breed,
     birthdate,
     weight,
-    owner
-  });
+    owner,
+  })
   newPet.save()
-  res.json({message: 'Питомец успешно добавлен!'});
+  res.json({ message: 'Питомец успешно добавлен!' })
 })
 
-router.get('/findpet', async (req, res) => {
-  const findPets = await Pet.find()
-  res.json({petsArr: findPets})
-});
+router.post('/findpet', async (req, res) => {
+  const { id } = req.body
+  const findPets = await Pet.find({ owner: id })
+  console.log(findPets);
+  res.json({ petsArr: findPets })
+})
 
 module.exports = router
