@@ -6,6 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,173 +25,139 @@ function Feed(props) {
       .then((result) => setFeedArray(result.feedArr));
   }, [])
 
-  console.log(feedArray);
-
-const classes = useStyles();
-
-const [state, setState] = useState({
-  type: false,
-  age: false,
-  size: false,
-  veterinaryDiet: false,
-});
+  const classes = useStyles();
   
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-  
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-  
+  const typePets = [{ typeLabel: "Собаки" }, { typeLabel: "Кошки" }];
+  const agePets = [
+    { ageLabel: "1 - 12 мес" },
+    { ageLabel: "от 1 года до 7 лет" },
+    { ageLabel: "от 7 лет" },
+  ];
+  const sizePets = [
+    { sizeLabel: "Маленькая" },
+    { sizeLabel: "Средняя" },
+    { sizeLabel: "Крупная" },
+  ];
+  const veterinaryDietPets = [
+    { veterinaryDietLabel: "Чувствительное пищеварение" },
+    { veterinaryDietLabel: "Стерилизованное или кастрированное животное" },
+    { veterinaryDietLabel: "Контроль над весом" },
+  ];
 
-const { type, age, size, veterinaryDiet } = state;
-  // const error =
-  //   [cat, dog, young, adult, old, small, medium, big, sterilization, digestion, weight].filter((v) => v)
-  //     .length !== 2;
+  const [type, setType] = useState([]);
+  const [age, setAge] = useState([]);
+  const [size, setSize] = useState([]);
+  const [veterinaryDiet, setVeterinaryDiet] = useState([]);
+  console.log(type, age, size, veterinaryDiet);
+
+  const filteredUnits =
+    type.length || age.length || size.length || veterinaryDiet.length
+      ? feedArray.filter((feed) => {
+          console.log("filtering", feed);
+          return (
+            (!type.length || type.includes(feed.type)) &&
+            (!age.length || age.includes(feed.age)) &&
+            (!size.length || size.includes(feed.size)) &&
+            (!veterinaryDiet.length || veterinaryDiet.includes(feed.veterinaryDiet))
+          );
+        })
+      : feedArray;
 
   return (
     <div>
-      <div className={classes.root}>
-        <FormControl component="fieldset" className={classes.formControl}>
-          <FormLabel component="legend">Животное</FormLabel>
-          <FormGroup>
+      <TextField value={(type, age, size, veterinaryDiet)} fullWidth />
+      <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Животное</FormLabel>
+        <FormGroup>
+          {typePets.map((animal, i) => (
             <FormControlLabel
+              key={i}
               control={
                 <Checkbox
-                  checked={type}
-                  onChange={handleChange}
-                  name="type"
-                  value="Кошки"
+                  onChange={(event) =>
+                    setType((prev) =>
+                      event.target.checked ? [...prev, animal.typeLabel] : []
+                    )
+                  }
                 />
               }
-              label="Кошки"
+              label={animal.typeLabel}
+              value={animal.typeLabel}
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={type}
-                  onChange={handleChange}
-                  name="type"
-                  value="Собаки"
-                />
-              }
-              label="Собаки"
-            />
-          </FormGroup>
+          ))}
+        </FormGroup>
+      </FormControl>
 
-          <FormLabel component="legend">Возраст</FormLabel>
-          <FormGroup>
+      <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Возраст</FormLabel>
+        <FormGroup>
+          {agePets.map((age, i) => (
             <FormControlLabel
+              key={i}
               control={
                 <Checkbox
-                  checked={age}
-                  onChange={handleChange}
-                  name="age"
-                  value="1 - 12 мес"
+                  onChange={(event) =>
+                    setAge((prev) =>
+                      event.target.checked ? [...prev, age.ageLabel] : []
+                    )
+                  }
                 />
               }
-              label="1 - 12 мес"
+              label={age.ageLabel}
+              value={age.ageLabel}
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={age}
-                  onChange={handleChange}
-                  name="age"
-                  value="от 1 года до 7 лет"
-                />
-              }
-              label="от 1 года до 7 лет"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={age}
-                  onChange={handleChange}
-                  name="age"
-                  value="от 7 лет"
-                />
-              }
-              label="от 7 лет"
-            />
-          </FormGroup>
-          <FormLabel component="legend">Размер</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={size}
-                  onChange={handleChange}
-                  name="size"
-                  value="Маленькая"
-                />
-              }
-              label="Маленькая"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={size}
-                  onChange={handleChange}
-                  name="size"
-                  value="Средняя"
-                />
-              }
-              label="Средняя"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={size}
-                  onChange={handleChange}
-                  name="size"
-                  value="Крупная"
-                />
-              }
-              label="Крупная"
-            />
-          </FormGroup>
-          <FormLabel component="legend">Особые потребности</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={veterinaryDiet}
-                  onChange={handleChange}
-                  name="veterinaryDiet"
-                  value="Стерилизованное или кастрированное животное"
-                />
-              }
-              label="Стерилизованное или кастрированное животное"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={veterinaryDiet}
-                  onChange={handleChange}
-                  name="veterinaryDiet"
-                  value="Чувствительное пищеварение"
-                />
-              }
-              label="Чувствительное пищеварение"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={veterinaryDiet}
-                  onChange={handleChange}
-                  name="veterinaryDiet"
-                  value="Контроль над весом"
-                />
-              }
-              label="Контроль над весом"
-            />
-          </FormGroup>
-        </FormControl>
-      </div>
+          ))}
+        </FormGroup>
+      </FormControl>
 
-      {feedArray && feedArray.map((el) => <FeedCard key={el._id} value={el} />)}
+      <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Размер</FormLabel>
+        <FormGroup>
+          {sizePets.map((size, i) => (
+            <FormControlLabel
+              key={i}
+              control={
+                <Checkbox
+                  onChange={(event) =>
+                    setSize((prev) =>
+                      event.target.checked ? [...prev, size.sizeLabel] : []
+                    )
+                  }
+                />
+              }
+              label={size.sizeLabel}
+              value={size.sizeLabel}
+            />
+          ))}
+        </FormGroup>
+      </FormControl>
+
+      <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Особые потребности</FormLabel>
+        <FormGroup>
+          {veterinaryDietPets.map((diet, i) => (
+            <FormControlLabel
+              key={i}
+              control={
+                <Checkbox
+                  onChange={(event) =>
+                    setVeterinaryDiet((prev) =>
+                      event.target.checked
+                        ? [...prev, diet.veterinaryDietLabel]
+                        : []
+                    )
+                  }
+                />
+              }
+              label={diet.veterinaryDietLabel}
+              value={diet.veterinaryDietLabel}
+            />
+          ))}
+        </FormGroup>
+      </FormControl>
+
+      {filteredUnits &&
+        filteredUnits.map((el) => <FeedCard key={el._id} value={el} />)}
     </div>
   );
 }
