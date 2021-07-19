@@ -1,0 +1,42 @@
+.pet-wrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pet-item {
+  min-width: 330px;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 10px;
+}
+
+.pet-item-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 10px;
+  border: 2px dashed lightgray;
+  font-size: 18px;
+  font-weight: 700;
+  color: lightgray;
+}
+
+.pet-title {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.pet-desc {
+  margin-bottom: 20px;
+}

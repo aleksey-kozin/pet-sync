@@ -9,6 +9,7 @@ import FormLogin from '../Forms/FormLogin'
 import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
 import store from '../../utils/redux/store'
+import Appointment from '../Appointment/Appointment'
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
             <Route path={'/login'} component={FormLogin} />
             <Route path={'/signup'} component={FormSignUp} />
             <Route path={'/profile'} component={Profile} />
-            <Route exact path={'/mypets'} component={MyPets} />
+            <Route path={'/mypets'} component={MyPets} />
+            <Route path={'/appointment'} component={Appointment} />
             <Route path={'/mypets/:name'} component={PetPersonPage} />
           </Switch>
         </Router>
