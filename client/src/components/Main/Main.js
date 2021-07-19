@@ -6,7 +6,7 @@ import './Main.css'
 function Main() {
   return (
     <>
-    <TestChart/>
+    
       <div className="container">
         <Slider />
         <div className="main-wrapper1">

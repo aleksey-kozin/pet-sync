@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './FormStyle.css'
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,8 +11,9 @@ import AuthService from '../../services/AuthServices'
 
 function FormSignUp() {
   const userState = useSelector((state) => state.usersReducer)
-  console.log(userState)
+  // console.log(userState)
   const dispatch = useDispatch()
+  const history = useHistory()
 
   useEffect(() => {
     ;(async () => {
@@ -35,6 +36,7 @@ function FormSignUp() {
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
+      history.push('/profile')
     } catch (error) {
       console.log(error.response?.data?.message)
     }
