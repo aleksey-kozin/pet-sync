@@ -9,7 +9,11 @@ import FormLogin from '../Forms/FormLogin'
 import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
 import store from '../../utils/redux/store'
+import Feed from '../Feed/Feed'
+import FeedAbout from '../FeedAbout/FeedAbout'
+import AddFeed from '../AddFeed/AddFeed'
 import Appointment from '../Appointment/Appointment'
+
 
 function App() {
   return (
@@ -26,11 +30,14 @@ function App() {
             <Route path={'/mypets'} component={MyPets} />
             <Route path={'/appointment'} component={Appointment} />
             <Route path={'/mypets/:name'} component={PetPersonPage} />
+            <Route path={"/feed/:id"} component={FeedAbout} />
+            <Route path={"/addfeed"} component={AddFeed} />
+            <Route path={"/feed"} component={Feed} />
           </Switch>
         </Router>
       </Provider>
     </>
-  )
+  );
 }
 
 export default App
