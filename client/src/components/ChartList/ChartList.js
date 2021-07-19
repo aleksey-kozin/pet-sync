@@ -3,7 +3,7 @@ import Chart from '../Chart/Chart'
 import { useDispatch, useSelector } from 'react-redux'
 import { initAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
 
-function TestChart(props) {
+function ChartList(props) {
   const dispatch = useDispatch()
   const analyses = useSelector((state) => state.analysesReducer.analyses)
 
@@ -21,7 +21,8 @@ function TestChart(props) {
     <div style={{ height: 400 }}>
       {/* {analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length} */}
       {
-        <Chart analyses={analyses}
+        <Chart
+          analyses={analyses}
           // el={analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length}
         />
       }
@@ -29,4 +30,4 @@ function TestChart(props) {
   )
 }
 
-export default TestChart
+export default ChartList

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Slider from '../Slider/Slider'
-import TestChart from '../TestChart/TestChart'
+import TestChart from '../ChartList/ChartList'
 import './Main.css'
 
 function Main() {
