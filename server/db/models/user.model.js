@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: { type: String, require: true },
   isActivated: { type: Boolean, default: false },
   activationLink: { type: String }, // link to activated
-  pets: [{ type: Schema.Types.ObjectId, ref: 'Pet' }],
+  pets: { type: Schema.Types.ObjectId, ref: 'Pet' },
 })
 
 // const User = model('User', userSchema)

@@ -21,8 +21,8 @@ function TestChart(props) {
     <div style={{ height: 400 }}>
       {/* {analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length} */}
       {
-        <Chart
-          el={analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length}
+        <Chart analyses={analyses}
+          // el={analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length}
         />
       }
     </div>

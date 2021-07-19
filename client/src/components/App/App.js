@@ -15,12 +15,14 @@ import AddFeed from '../AddFeed/AddFeed'
 import Appointment from '../Appointment/Appointment'
 
 
+
 function App() {
   return (
     <>
       <Provider store={store}>
         <Router>
           <Nav />
+          {/* <TestChart/> */}
           <Switch>
             <Route path={'/'} exact component={Main} />
             <Route path={'/testchart'} component={TestChart} />
