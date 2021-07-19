@@ -27,7 +27,7 @@ function FormSignUp() {
                 <FcGoogle />
               </div>
             </div>
-            <hr class="hr-line" />
+            <hr className="hr-line" />
             <div className="form-login">
               <p>Еще нет аккаунта?</p>
               <Link to="/signup">

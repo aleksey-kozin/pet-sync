@@ -10,7 +10,7 @@ function Nav() {
   return (
     <>
       <nav className="navbar-item">
-        <h1 className="navbar-logo">PETSYNC</h1>
+      <Link to="/" className="navbar-logo"><h1>PETSYNC</h1></Link>
         <div onClick={() => setIcon(!icon)} className="menu-icon">
           {icon ? <VscClose /> : <FiMenu />}
         </div>

@@ -9,6 +9,8 @@
 .navbar-logo {
   margin-left: 20px;
   cursor: pointer;
+  text-decoration: none;
+  color: #000;
 }
 
 .menu-icon {
