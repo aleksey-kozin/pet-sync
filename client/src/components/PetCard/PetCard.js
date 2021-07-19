@@ -1,33 +1,35 @@
-import React, { useRef } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from "@material-ui/core/Button";
-import { useHistory } from 'react-router-dom';
+import React, { useRef } from 'react'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 //стили material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& .MuiTextField-root": {
+    '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: '25ch',
     },
-    "& > *": {
+    '& > *': {
       margin: theme.spacing(1),
     },
     input: {
-      display: "none",
+      display: 'none',
     },
   },
-}));
+}))
 
 function PetCard() {
-  const classes = useStyles();
-  const text = useRef();
+  const userState = useSelector((state) => state.usersReducer)
+  const classes = useStyles()
+  const text = useRef()
   const history = useHistory()
-
+  console.log(userState.user.id)
   //событие по кнопке
   const addAnimal = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     //объект для загрузки в бд
     const newPet = {
       name: text.current.name.value,
@@ -36,21 +38,22 @@ function PetCard() {
       breed: text.current.breed.value,
       birthdate: text.current.birthdate.value,
       weight: text.current.weight.value,
-    };
+      owner: userState.user.id,
+    }
 
     //fetch к бд
-    fetch("http://localhost:4000/addPet", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetch('http://localhost:4000/addPet', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPet),
     })
       .then((res) => res.json())
       //alert "питомец загружен"
       .then((result) => alert(result.message))
       //редирект на MyPets
-      .then(() => history.push("/mypets"));
-  };
-  
+      .then(() => history.push('/mypets'))
+  }
+
   return (
     <div>
       <form ref={text} className={classes.root} noValidate autoComplete="off">
@@ -111,9 +114,8 @@ function PetCard() {
           Добавить питомца
         </Button>
       </form>
-      
     </div>
-  );
+  )
 }
 
-export default PetCard;
+export default PetCard

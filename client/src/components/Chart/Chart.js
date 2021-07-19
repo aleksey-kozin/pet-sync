@@ -2,8 +2,11 @@ import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
 import { patternDotsDef, patternSquaresDef } from '@nivo/core'
 
-function Chart({ el }) {
-  const norm = 5
+function Chart({ analyses }) {
+  console.log(analyses)
+
+  
+
   let data = [
     {
       id: 'dots',
@@ -17,13 +20,13 @@ function Chart({ el }) {
     {
       id: 'analyses',
       label: 'analyses',
-      value: (el / norm) * 100,
+      value: (analyses.one + analyses.two + analyses.three) / analyses.length,
       color: '#74c476',
     },
     {
       id: 'normal',
       label: 'normal',
-      value: ((norm - el) / norm) * 100,
+      value: 20,
       color: 'hsl(253, 70%, 50%)',
     },
     // {

@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/addPet', async (req, res) => {
-  const { name, spacies, sex, breed, birthdate, weight } = req.body
-  console.log(name);
+  const { name, spacies, sex, breed, birthdate, weight, owner } = req.body
+  // console.log(name);
   const newPet = new Pet({
     name,
     spacies,
@@ -16,6 +16,7 @@ router.post('/addPet', async (req, res) => {
     breed,
     birthdate,
     weight,
+    owner
   });
   newPet.save()
   res.json({message: 'Питомец успешно добавлен!'});

@@ -10,12 +10,14 @@ import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
 import store from '../../utils/redux/store'
 
+
 function App() {
   return (
     <>
       <Provider store={store}>
         <Router>
           <Nav />
+          {/* <TestChart/> */}
           <Switch>
             <Route path={'/'} exact component={Main} />
             <Route path={'/login'} component={FormLogin} />

@@ -6,6 +6,7 @@ import {
   initUsersAC,
 } from '../../utils/redux/actionCreators/actionCreators'
 import { Link } from 'react-router-dom'
+import TestChart from '../TestChart/TestChart'
 
 function LoginForm(props) {
   const userState = useSelector((state) => state.usersReducer)
@@ -39,7 +40,7 @@ function LoginForm(props) {
   }
   return (
     <>
-      <h1>
+      {/* <h1>
         {userState.isAuth
           ? `Пользователь авторизован ${userState.user.email}`
           : 'АВТОРИЗУЙТЕСЬ'}
@@ -48,7 +49,9 @@ function LoginForm(props) {
         {userState.user.isActivated
           ? 'Аккаунт подтвержден по почте'
           : 'ПОДТВЕРДИТЕ АККАУНТ!!!!'}
-      </h1>
+      </h1> */}
+      {(userState.isAuth && userState.user.isActivated) ? <TestChart /> : '!!!!!!!!!!!!!!!'}
+
       <div className="container">
         <form onSubmit={handlerSubmit}>
           <div className="container">
