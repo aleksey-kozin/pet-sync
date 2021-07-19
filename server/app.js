@@ -8,17 +8,21 @@ const errorMiddleware = require('./middlewares/error.middleware.js')
 
 const routerAuth = require('./routers/index.js')
 const indexRouter = require('./routers/indexRouter')
+const seed = require('./db/seed')
 
 const app = express()
+// seed()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(
-  cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
-  })
+  cors(
+    // {
+    // credentials: true,
+    // origin: process.env.CLIENT_URL,
+    // }
+  )
 )
 
 app.use('/api', routerAuth)

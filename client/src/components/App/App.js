@@ -8,6 +8,8 @@ import FormLogin from '../Forms/FormLogin'
 import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
 import store from '../../utils/redux/store'
+import Feed from '../Feed/Feed'
+import FeedAbout from '../FeedAbout/FeedAbout'
 
 function App() {
   return (
@@ -16,17 +18,19 @@ function App() {
         <Router>
           <Nav />
           <Switch>
-            <Route path={'/'} exact component={Main} />
-            <Route path={'/login'} component={FormLogin} />
-            <Route path={'/signup'} component={FormSignUp} />
-            <Route path={'/profile'} component={Profile} />
-            <Route exact path={'/mypets'} component={MyPets} />
-            <Route path={'/mypets/:name'} component={PetPersonPage} />
+            <Route path={"/"} exact component={Main} />
+            <Route path={"/login"} component={FormLogin} />
+            <Route path={"/signup"} component={FormSignUp} />
+            <Route path={"/profile"} component={Profile} />
+            <Route exact path={"/mypets"} component={MyPets} />
+            <Route path={"/mypets/:name"} component={PetPersonPage} />
+            <Route path={"/feed/:name"} component={FeedAbout} />
+            <Route path={"/feed"} component={Feed} />
           </Switch>
         </Router>
       </Provider>
     </>
-  )
+  );
 }
 
 export default App

@@ -37,7 +37,6 @@ function PetCard() {
       birthdate: text.current.birthdate.value,
       weight: text.current.weight.value,
     };
-
     //fetch к бд
     fetch("http://localhost:4000/addPet", {
       method: "POST",

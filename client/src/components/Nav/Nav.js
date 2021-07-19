@@ -25,6 +25,11 @@ function Nav() {
               Профиль
             </Link>
           </li>
+           <li>
+            <Link onClick={() => setIcon(false)} to="/feed" className="nav-links">
+              Продукты
+            </Link>
+          </li>
           <li>
             <Link onClick={() => setIcon(false)} to="/signup" className="nav-links">
               Добавить питомца
