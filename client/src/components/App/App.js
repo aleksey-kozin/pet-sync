@@ -13,6 +13,7 @@ import Feed from '../Feed/Feed'
 import FeedAbout from '../FeedAbout/FeedAbout'
 import AddFeed from '../AddFeed/AddFeed'
 import Appointment from '../Appointment/Appointment'
+import PetCard from '../PetCard/PetCard'
 
 
 
@@ -30,6 +31,7 @@ function App() {
             <Route path={'/signup'} component={FormSignUp} />
             <Route path={'/profile'} component={Profile} />
             <Route path={'/mypets'} component={MyPets} />
+            <Route path={'/petcard'} component={PetCard} />
             <Route path={'/appointment'} component={Appointment} />
             <Route path={'/mypets/:name'} component={PetPersonPage} />
             <Route path={"/feed/:id"} component={FeedAbout} />

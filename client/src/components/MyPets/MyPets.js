@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import Pet from '../Pet/Pet'
 import ProfileNav from '../Profile/ProfileNav'
 import '../Pet/Pet.css'
+import { Link } from 'react-router-dom'
 
 
 function MyPets() {
@@ -29,11 +30,13 @@ function MyPets() {
         <div className="main-wrapper1">
           <ProfileNav />
           <div className="pet-wrapper">
-          {petArr && petArr.map((pet) => <Pet key={pet._id} value={pet} />)}
+            {petArr && petArr.map((pet) => <Pet key={pet._id} value={pet} />)}
           </div>
-          <div className="pet-item-add">
-          <p>Добавить питомца</p>
-        </div>
+
+            
+          <Link to="/petcard"><div className="pet-item-add">
+              <p>Добавить питомца</p>
+          </div></Link>
         </div>
       </div>
     </>
