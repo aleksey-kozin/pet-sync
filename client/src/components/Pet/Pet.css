@@ -16,9 +16,9 @@
 }
 
 .pet-item-add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
   width: 330px;
   height: 400px;
   background-color: #fff;
@@ -29,6 +29,11 @@
   font-size: 18px;
   font-weight: 700;
   color: lightgray;
+  padding: auto 0;
+}
+
+.pet-item-add p {
+  margin: 150px 0;
 }
 
 .pet-title {

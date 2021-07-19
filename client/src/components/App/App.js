@@ -10,6 +10,7 @@ import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
 import store from '../../utils/redux/store'
 import Appointment from '../Appointment/Appointment'
+import PetCard from '../PetCard/PetCard'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path={'/signup'} component={FormSignUp} />
             <Route path={'/profile'} component={Profile} />
             <Route path={'/mypets'} component={MyPets} />
+            <Route path={'/petcard'} component={PetCard} />
             <Route path={'/appointment'} component={Appointment} />
             <Route path={'/mypets/:name'} component={PetPersonPage} />
           </Switch>
