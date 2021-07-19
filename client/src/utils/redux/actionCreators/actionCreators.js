@@ -11,6 +11,7 @@ export function initUsersAC(payload) {
 
 export function initFeedAC(payload) {
   return {type: INIT_FEED, payload}
+}
 
 export function checkUsersAC(payload) {
   return { type: CHECK_USERS, payload }

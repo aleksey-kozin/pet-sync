@@ -15,7 +15,7 @@ function FormSignUp() {
       const email = event.target.email.value
       const password = event.target.password.value
       const response = await AuthService.registration(email, password)
-      // console.log(response)
+      console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
     } catch (error) {

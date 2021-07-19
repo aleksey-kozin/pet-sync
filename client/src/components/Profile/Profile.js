@@ -8,6 +8,7 @@ import ProfileNav from './ProfileNav'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkUsersAC } from '../../utils/redux/actionCreators/actionCreators'
 import AuthService from '../../services/AuthServices'
+import { Link } from 'react-router-dom'
 
 function Profile() {
   const userState = useSelector((state) => state.usersReducer)
@@ -31,7 +32,10 @@ function Profile() {
           {/* <PetCard /> */}
           <div className="main-profile">
             <p>Информация о профиле</p>
+            <Link to="/addfeed">Добавить корм</Link>
+            <Link to="/feed">Корма</Link>
           </div>
+ 
         </div>
       </div>
     </>
