@@ -16,6 +16,7 @@ import Appointment from '../Appointment/Appointment'
 import PetCard from '../PetCard/PetCard'
 import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
+import AnalysisForm from '../AnalysisForm/AnalysisForm'
 
 function App() {
   return (
@@ -25,26 +26,27 @@ function App() {
           <Nav />
           {/* <TestChart/> */}
           <Switch>
-            <Route path={'/'} exact component={Main} />
+            <Route path={"/"} exact component={Main} />
             {/* <Route path={'/testchart'} component={TestChart} /> */}
-            <Route path={'/detailsanalyse'} component={DetailsBloodAnalyse} />
-            <Route path={'/login'} component={FormLogin} />
-            <Route path={'/signup'} component={FormSignUp} />
-            <Route path={'/profile'} component={Profile} />
-            <Route path={'/mypets/:id'} component={PetPersonPage} />
-            <Route path={'/mypets'} component={MyPets} />
-            <Route path={'/petcard'} component={PetCard} />
-            <Route path={'/appointment'} component={Appointment} />
-            <Route path={'/feed/:id'} component={FeedAbout} />
+            <Route path={"/detailsanalyse"} component={DetailsBloodAnalyse} />
+            <Route path={"/login"} component={FormLogin} />
+            <Route path={"/signup"} component={FormSignUp} />
+            <Route path={"/profile"} component={Profile} />
+            <Route path={"/mypets/:id"} component={PetPersonPage} />
+            <Route path={"/mypets"} component={MyPets} />
+            <Route path={"/petcard"} component={PetCard} />
+            <Route path={"/appointment"} component={Appointment} />
+            <Route path={"/feed/:id"} component={FeedAbout} />
 
-            <Route path={'/addfeed'} component={AddFeed} />
-            <Route path={'/feed'} component={Feed} />
+            <Route path={"/addfeed"} component={AddFeed} />
+            <Route path={"/feed"} component={Feed} />
             {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
+            <Route path={"/addanalysis/:id"} component={AnalysisForm} />
           </Switch>
         </Router>
       </Provider>
     </>
-  )
+  );
 }
 
 export default App
