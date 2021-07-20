@@ -1,9 +1,18 @@
 .navbar-item {
   height: 70px;
-  background-color: #f0f0f0;
+  background-color: rgba(240, 240, 240, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 11111;
+  
+  /* box-shadow: 0 10px 4px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
 }
 
 .navbar-logo {
@@ -54,7 +63,6 @@
 }
 
 @media screen and (max-width: 760px) {
-
   .navbar-item {
     position: relative;
   }
