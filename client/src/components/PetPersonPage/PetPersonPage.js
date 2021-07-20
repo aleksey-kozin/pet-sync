@@ -20,10 +20,12 @@ function PetPersonPage(props) {
 
   const handleDelete = () => {
     fetch(`http://localhost:4000/delete/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
-      .then(res => res.json())
-      .then((result) => {if(result.status) console.log("Питомец удален")})
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.status) console.log('Питомец удален')
+      })
       .then(() => history.push('/mypets'))
   }
 
@@ -35,33 +37,40 @@ function PetPersonPage(props) {
     const sex = text.current.sex.value
     const weight = text.current.weight.value
     const birthdate = text.current.birthdate.value
-    dispatch(editPetAC({name,spacies,breed,sex, weight, birthdate, id}))
+    dispatch(editPetAC({ name, spacies, breed, sex, weight, birthdate, id }))
     setState(true)
     fetch(`http://localhost:4000/put/${id}`, {
       method: 'PUT',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({name,spacies,breed,sex, weight, birthdate})
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, spacies, breed, sex, weight, birthdate }),
     })
-      .then(res => res.json())
-      .then(result => {if(result.status) console.log("Питомец изменен")})
-    
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.status) console.log('Питомец изменен')
+      })
   }
   return (
     <>
       <div className="container">
         <div className="main-wrapper1">
           <ProfileNav />
-          <ChartList />
+
           {state ? (
             <div className="pet-profile">
-              <h4>Кличка: {pet.name}</h4>
-              <p>Вид: {pet.spacies} </p>
-              <p>Порода: {pet.breed}</p>
-              <p>Пол:{pet.sex} </p>
-              <p>Вес: {pet.weight}</p>
-              <p>Дата рождения:{pet.birthdate} </p>
-              <button onClick={handleDelete}>удалить</button>
-              <button onClick={() => setState(false)}>изменить</button>
+              <div className="formater">
+                <img src="/djek.png" alt="" width="230px" />
+
+                <div className="pet-info">
+                  <h2>Кличка: {pet.name}</h2>
+                  <p>Вид: {pet.spacies} </p>
+                  <p>Порода: {pet.breed}</p>
+                  <p>Пол:{pet.sex} </p>
+                  <p>Вес: {pet.weight}</p>
+                  <p>Дата рождения:{pet.birthdate} </p>
+                  <button onClick={handleDelete}>удалить</button>
+                  <button onClick={() => setState(false)}>изменить</button>
+                </div>
+              </div>
             </div>
           ) : (
             <div className="pet-profile">
@@ -75,7 +84,7 @@ function PetPersonPage(props) {
                 </p>
                 <p>
                   Порода:
-                  <input name="breed" defaultValue={pet.breed} />{" "}
+                  <input name="breed" defaultValue={pet.breed} />{' '}
                 </p>
                 <p>
                   Пол: <input name="sex" defaultValue={pet.sex} />
@@ -84,7 +93,7 @@ function PetPersonPage(props) {
                   Вес: <input name="weight" defaultValue={pet.weight} />
                 </p>
                 <p>
-                  Дата рождения:{" "}
+                  Дата рождения:{' '}
                   <input name="birthdate" defaultValue={pet.birthdate} />
                 </p>
                 <button onClick={handleChange}>Сохранить</button>
@@ -98,13 +107,37 @@ function PetPersonPage(props) {
               </form>
             </div>
           )}
+          
           <Link to={`/addanalysis/${id}`}>
             <button>Добавить анализ</button>
           </Link>
+          
+          <div className="diet">
+            <div className="pet-diet-base">
+              <h2>Компонент диеты для животного</h2>
+              <p>Базовая диета</p>
+            </div>
+            <div className="pet-diet-exact">
+              <h2>Компонент диеты для животного</h2>
+              <p>Точная диета</p>
+            </div>
+          </div>
+
+          <div className="pet-test">
+            <div className="test-item">
+              <h2 className="test-title">Название теста</h2>
+              <p className="test-desc">Описание теста</p>
+              <img className="img" src="/test.jpeg" alt="" width="260px" />
+            </div>
+            <div className="pet-item-add">
+                <p>Добавить анализ</p>
+              </div>
+          </div>
+          <ChartList />
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default PetPersonPage

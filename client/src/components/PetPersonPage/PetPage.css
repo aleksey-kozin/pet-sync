@@ -10,4 +10,68 @@
 
 .pet-profile * {
   margin-bottom: 10px;
+
 }
+
+.formater {
+  display: flex;
+}
+
+.pet-info {
+  margin-left: 40px;
+}
+
+.diet {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pet-diet-base {
+  min-width: 49%;
+  max-height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 0 10px 50px 0;
+  margin-right: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.pet-diet-exact {
+  min-width: 49%;
+  max-height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 0 0 50px 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.pet-test {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.test-item {
+  min-width: 330px;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: box-shadow 0.15s linear;
+}
+
+.test-item:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.test-title {
+  
+}
+ .test-desc {
+
+ }
