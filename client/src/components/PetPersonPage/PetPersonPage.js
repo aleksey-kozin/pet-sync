@@ -5,8 +5,7 @@ import ProfileNav from '../Profile/ProfileNav'
 import './PetPage.css'
 import ChartList from '../ChartList/ChartList'
 import { editPetAC } from '../../utils/redux/actionCreators/actionCreators'
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom'
 
 function PetPersonPage(props) {
   const { id } = useParams()
@@ -99,19 +98,15 @@ function PetPersonPage(props) {
                 <button onClick={handleChange}>Сохранить</button>
                 <button
                   onClick={() => {
-                    setState(true);
+                    setState(true)
                   }}
                 >
-                  Передумал
+                  Назад
                 </button>
               </form>
             </div>
-          )}
-          
-          <Link to={`/addanalysis/${id}`}>
-            <button>Добавить анализ</button>
-          </Link>
-          
+          )}          
+
           <div className="diet">
             <div className="pet-diet-base">
               <h2>Компонент диеты для животного</h2>
@@ -129,9 +124,11 @@ function PetPersonPage(props) {
               <p className="test-desc">Описание теста</p>
               <img className="img" src="/test.jpeg" alt="" width="260px" />
             </div>
+            <Link to={`/addanalysis/${id}`}>
             <div className="pet-item-add">
-                <p>Добавить анализ</p>
-              </div>
+              <p>Добавить анализ</p>
+            </div>
+            </Link>
           </div>
           <ChartList />
         </div>
