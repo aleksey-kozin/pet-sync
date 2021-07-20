@@ -47,6 +47,16 @@ router.post('/addfeed', (req, res) => {
   res.json({ message: "Корм успешно добавлен в базу данных!" });
 })
 
+
+router.delete('/delete/:petid', async (req, res) => {
+  const delPet = await Pet.findByIdAndDelete({_id: req.params.petid})
+  if(delPet){
+    res.json({status: true})
+  } else {
+    res.json({status: false})
+  }
+})
+
 router.delete('/delfeed/:id', async (req, res) => {
   const delFeed = await Feed.findByIdAndDelete({ _id: req.params.id })
   if (delFeed) {
@@ -56,10 +66,16 @@ router.delete('/delfeed/:id', async (req, res) => {
   }
 })
 
+router.put('/put/:petid', async (req, res) => {
+  const {name,spacies,breed,sex, weight, birthdate} = req.body
+  await Pet.findOneAndUpdate({_id: req.params.petid}, {name,spacies,breed,sex, weight, birthdate})
+  res.json({ status: true })
+})
+
 router.put('/edit/:id', async (req, res) => {
   const {img, type, age, size, veterinaryDiet, brand, name} = req.body
   const editFeed = await Feed.findByIdAndUpdate({ _id: req.params.id }, { img, type, age, size, veterinaryDiet, brand, name })
-  res.json({ status: true });
+  res.json({ status: true })
 })
 
 module.exports = router
