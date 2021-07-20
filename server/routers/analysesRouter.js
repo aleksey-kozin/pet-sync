@@ -26,9 +26,9 @@ const AnalysesHearths = require('../db/models/analysesHeart.models.js')
 // })
 
 router.get('/', async (req, res) => {
-  const analyses = await AnalysesHearths.find().sort({date: -1})
-  const resultAnalyses = analyses[0]
- let chartValue = 0
+  const analyses = await AnalysesHearths.find().sort({ date: -1 })
+  const resultAnalyses = analyses[0]._doc
+  let chartValue = 0
   const normal = {
     LDH: [320, 460],
     GPT: [8, 52],
@@ -37,27 +37,19 @@ router.get('/', async (req, res) => {
     T_Pro: [43, 75],
     T_Bil: [2, 5],
   }
-  // console.log(analyses);
-let count = 0
-  // analyses.map((el) => {
-  //   const keys = Object.keys(el._doc)
-  //   // console.log(keys)
-  //   keys.forEach((key) => {
-  //           console.log('key', key)
-  //           console.log('val', el[key])})
-  // })
-for(let key in normal){
-  // console.log('norma',normal[key]);
-  // console.log(resultAnalyses[key]);
-  if(normal[key][0] <= resultAnalyses[key] && normal[key][1] >= resultAnalyses[key]){
-    chartValue += 16.6
+  let count = 0
+  for (let key in normal) {
+    if (
+      normal[key][0] <= resultAnalyses[key] &&
+      normal[key][1] >= resultAnalyses[key]
+    ) {
+      chartValue += 16.6
+    }
   }
-}
-console.log(chartValue);
-      
- 
-
-  
+  console.log(chartValue)
+  const finalAnalyse = { ...resultAnalyses }
+  finalAnalyse['chart'] = chartValue
+  res.json(finalAnalyse)
 })
 
 module.exports = router

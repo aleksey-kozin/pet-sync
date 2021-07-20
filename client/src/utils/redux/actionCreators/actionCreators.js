@@ -4,14 +4,19 @@ import {
   INIT_ANALYSES,
   INIT_FEED,
   INIT_PET,
+  LOGOUT_USERS,
 } from '../actionTypes/actionTypes'
 
 export function initUsersAC(payload) {
   return { type: INIT_USERS, payload }
 }
 
+export function logoutUsersAC(payload) {
+  return { type: LOGOUT_USERS, payload }
+}
+
 export function initFeedAC(payload) {
-  return {type: INIT_FEED, payload}
+  return { type: INIT_FEED, payload }
 }
 
 export function checkUsersAC(payload) {
@@ -20,7 +25,6 @@ export function checkUsersAC(payload) {
 
 export function initAnalysesAC(payload) {
   return { type: INIT_ANALYSES, payload }
-
 }
 
 export function initPetAC(payload) {

@@ -1,4 +1,8 @@
-import { CHECK_USERS, INIT_USERS } from '../actionTypes/actionTypes'
+import {
+  CHECK_USERS,
+  INIT_USERS,
+  LOGOUT_USERS,
+} from '../actionTypes/actionTypes'
 
 const initialStateAuth = {
   user: {},
@@ -14,6 +18,9 @@ const usersReducer = (state = initialStateAuth, action) => {
     case CHECK_USERS:
       // console.log(action.payload);
       return { ...state, user: action.payload, isAuth: true, isLoading: true }
+
+    case LOGOUT_USERS:
+      return { ...state, user: action.payload, isAuth: false }
 
     default:
       return state

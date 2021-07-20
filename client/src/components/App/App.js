@@ -15,6 +15,7 @@ import AddFeed from '../AddFeed/AddFeed'
 import Appointment from '../Appointment/Appointment'
 import PetCard from '../PetCard/PetCard'
 import ChartList from '../ChartList/ChartList'
+import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Switch>
             <Route path={'/'} exact component={Main} />
             {/* <Route path={'/testchart'} component={TestChart} /> */}
+            <Route path={'/detailsanalyse'} component={DetailsBloodAnalyse} />
             <Route path={'/login'} component={FormLogin} />
             <Route path={'/signup'} component={FormSignUp} />
             <Route path={'/profile'} component={Profile} />
@@ -34,6 +36,7 @@ function App() {
             <Route path={'/petcard'} component={PetCard} />
             <Route path={'/appointment'} component={Appointment} />
             <Route path={'/feed/:id'} component={FeedAbout} />
+
             <Route path={'/addfeed'} component={AddFeed} />
             <Route path={'/feed'} component={Feed} />
             {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
