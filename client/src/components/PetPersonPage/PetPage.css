@@ -4,5 +4,6 @@
   background-color: #fff;
   border-radius: 25px;
   padding: 30px;
-  margin-top: 50px;
+  margin: 50px 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

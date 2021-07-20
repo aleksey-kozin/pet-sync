@@ -7,10 +7,8 @@
 }
 
 .navbar-logo {
-  margin-left: 20px;
+  margin-left: 30px;
   cursor: pointer;
-  text-decoration: none;
-  color: #000;
 }
 
 .menu-icon {
@@ -29,6 +27,30 @@
   text-decoration: none;
   padding: 15px;
   color: #000;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.nav-links-login {
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: color 0.15s linear;
+}
+
+.nav-links-login:hover {
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px;
+  color: #f0f0f0;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 760px) {
@@ -66,10 +88,6 @@
     display: table;
     padding: 15px 0;
     color: #000;
-  }
-
-  .nav-links.hover {
-    color: #7a0404;
   }
 
   .menu-icon {

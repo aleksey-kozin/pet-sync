@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
 
 
 function ProfileNav(props) {
@@ -7,19 +9,19 @@ function ProfileNav(props) {
     <nav>
     <ul className="profile-menu">
       <li>
-        <Link to="/profile" className="profile-links">
+        <NavLink to="/profile" className="profile-links" activeClassName={"profile-links-selected"}>
           Мой профиль
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/mypets" className="profile-links">
+        <NavLink to="/mypets" className="profile-links" activeClassName={"profile-links-selected"}>
           Мои питомцы
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/appointment" className="profile-links">
+        <NavLink to="/appointment" className="profile-links" activeClassName={"profile-links-selected"}>
           Мои записи
-        </Link>
+        </NavLink>
       </li>
     </ul>
   </nav>

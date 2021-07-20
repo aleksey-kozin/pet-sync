@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FiMenu } from 'react-icons/fi'
 import { VscClose } from 'react-icons/vsc'
 import './Nav.css'
@@ -40,34 +41,34 @@ function Nav() {
     <>
       {userState.isAuth && userState.user.isActivated ? (
         <nav className="navbar-item">
-          <h1 className="navbar-logo">PETSYNC</h1>
+          <NavLink to="/" className="navbar-logo"><img src="/logo.png" width="180px" alt="logo" /></NavLink>
           <div onClick={() => setIcon(!icon)} className="menu-icon">
             {icon ? <VscClose /> : <FiMenu />}
           </div>
           <ul className={icon ? 'nav-menu active' : 'nav-menu'}>
-            <li>
-              <Link onClick={() => setIcon(false)} to="/" className="nav-links">
+            {/* <li>
+              <NavLink onClick={() => setIcon(false)} to="/" className="nav-links" activeStyle={{backgroundColor: 'white'}}>
                 Главная
-              </Link>
-            </li>
+              </NavLink>
+            </li> */}
             <li>
-              <Link
+              <NavLink
                 onClick={() => setIcon(false)}
                 to="/profile"
                 className="nav-links"
               >
                 Профиль
-              </Link>
+              </NavLink>
             </li>
-            <li>
-              <Link
+            {/* <li>
+              <NavLink
                 onClick={() => setIcon(false)}
                 to="/signup"
                 className="nav-links"
               >
                 Добавить питомца
-              </Link>
-            </li>
+              </NavLink>
+            </li> */}
             <li>
               <Link
                 onClick={() => handlerLogout()}
@@ -80,25 +81,25 @@ function Nav() {
         </nav>
       ) : (
         <nav className="navbar-item">
-          <h1 className="navbar-logo">PETSYNC</h1>
+          <NavLink to="/" className="navbar-logo"><img src="/logo.png" width="180px" alt="logo" /></NavLink>
           <div onClick={() => setIcon(!icon)} className="menu-icon">
             {icon ? <VscClose /> : <FiMenu />}
           </div>
           <ul className={icon ? 'nav-menu active' : 'nav-menu'}>
-            <li>
-              <Link onClick={() => setIcon(false)} to="/" className="nav-links">
+            {/* <li>
+              <NavLink onClick={() => setIcon(false)} to="/" className="nav-links">
                 Главная
-              </Link>
-            </li>
+              </NavLink>
+            </li> */}
 
             <li>
-              <Link
+              <NavLink
                 onClick={() => setIcon(false)}
                 to="/login"
-                className="nav-links"
+                className="nav-links-login"
               >
                 Войти
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

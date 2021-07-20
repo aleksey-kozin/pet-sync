@@ -4,6 +4,20 @@
   margin: 0 auto;
 }
 
+.offer {
+  display: flex;
+  align-items: center;
+}
+
+.offer-title {
+  
+}
+
+.img-offer {
+  position: relative;
+  transform: translate(70px, 10px);
+}
+
 .main-wrapper1 {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -32,6 +46,7 @@
   border-radius: 25px;
   padding: 30px;
   margin: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 /* .main-item1:nth-child(1) {

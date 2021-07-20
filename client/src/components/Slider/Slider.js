@@ -11,19 +11,19 @@ function Slider() {
             Инфографика по состоянию здоровья вашего животного на основе
             анализов
           </p>
-          <img src="/620x414.jpeg" alt="" width="170px" />
+          <img className="img1" src="/dogbg.png" alt="" width="180px" />
         </div>
         <div className="main-item">
           <h2 className="main-title">Удобные напоминаия</h2>
           <p className="main-desc">
             Напоминание о вакцинации и дегельминтизации
           </p>
-          <img src="/620x414.jpeg" alt="" width="170px" />
+          <img className="img2" src="/kotenok.jpeg" alt="" width="270px" />
         </div>
         <div className="main-item">
           <h2 className="main-title">Электронная запись</h2>
           <p className="main-desc">Онлайн чат с клиникой</p>
-          <img src="/620x414.jpeg" alt="" width="170px" />
+          <img className="img3" src="/djek.png" alt="" width="230px" />
         </div>
       </div>
     </div>
