@@ -24,7 +24,6 @@ router.post('/addPet', async (req, res) => {
 router.post('/findpet', async (req, res) => {
   const { id } = req.body
   const findPets = await Pet.find({ owner: id })
-  console.log(findPets);
   res.json({ petsArr: findPets })
 })
 
@@ -48,6 +47,7 @@ router.post('/addfeed', (req, res) => {
   res.json({ message: "Корм успешно добавлен в базу данных!" });
 })
 
+
 router.delete('/delete/:petid', async (req, res) => {
   const delPet = await Pet.findByIdAndDelete({_id: req.params.petid})
   if(delPet){
@@ -57,10 +57,25 @@ router.delete('/delete/:petid', async (req, res) => {
   }
 })
 
+router.delete('/delfeed/:id', async (req, res) => {
+  const delFeed = await Feed.findByIdAndDelete({ _id: req.params.id })
+  if (delFeed) {
+    res.json({status: true})
+  } else {
+    res.json({status: false})
+  }
+})
+
 router.put('/put/:petid', async (req, res) => {
   const {name,spacies,breed,sex, weight, birthdate} = req.body
   await Pet.findOneAndUpdate({_id: req.params.petid}, {name,spacies,breed,sex, weight, birthdate})
-  res.json({status: true})
+  res.json({ status: true })
+})
+
+router.put('/edit/:id', async (req, res) => {
+  const {img, type, age, size, veterinaryDiet, brand, name} = req.body
+  const editFeed = await Feed.findByIdAndUpdate({ _id: req.params.id }, { img, type, age, size, veterinaryDiet, brand, name })
+  res.json({ status: true })
 })
 
 module.exports = router

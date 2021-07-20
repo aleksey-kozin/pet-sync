@@ -12,8 +12,7 @@ function PetPersonPage(props) {
   const petState = useSelector((state) => state.petsReducer.pet)
   const dispatch = useDispatch()
   const pet = petState.find((el) => el._id === id)
-  console.log(id,pet)
-  console.log(petState)
+
   const [state, setState] = useState(true)
   const text = useRef()
 
@@ -75,7 +74,6 @@ function PetPersonPage(props) {
               </form>
             </div>              
             }
-            
         </div>
       </div>
     </>

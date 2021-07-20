@@ -5,5 +5,4 @@ export const CHECK_USERS = 'CHECK_USERS'
 export const INIT_ANALYSES = 'INIT_ANALYSES'
 export const INIT_PET = 'INIT_PET'
 export const EDIT_PET = 'EDIT_PET'
-
-
+export const EDIT_FEED = 'EDIT_FEED'

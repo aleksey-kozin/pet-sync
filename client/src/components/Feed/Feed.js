@@ -7,7 +7,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { TextField } from "@material-ui/core";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { initFeedAC } from '../../utils/redux/actionCreators/actionCreators';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,17 +20,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Feed() {
-  const [feedArray, setFeedArray] = useState()
+  const feedArray = useSelector((state) => state.feedReducer.feed);
   const dispatch = useDispatch()
   useEffect(() => {
     fetch("http://localhost:4000/feed")
       .then((res) => res.json())
-      .then((result) => setFeedArray(result.feedArr));
+      .then((result) => dispatch(initFeedAC(result.feedArr)));
   }, [])
-
   const classes = useStyles();
-
-  dispatch(initFeedAC(feedArray));
 
   const typePets = [{ typeLabel: "Собаки" }, { typeLabel: "Кошки" }];
   const agePets = [

@@ -17,6 +17,7 @@
   border-radius: 25px;
   padding: 30px;
   margin-right: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .main-title {
@@ -29,6 +30,21 @@
 .main-desc {
   width: 100%;
   margin-bottom: 20px;
+}
+
+.img1 {
+  position: relative;
+  transform: translate(35px, 15px);
+}
+
+.img2 {
+  position: relative;
+  transform: translate(10px, 25px);
+}
+
+.img3 {
+  position: relative;
+  transform: translate(10px, 42px);
 }
 
 @media screen and (max-width: 1000px) {
