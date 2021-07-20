@@ -31,9 +31,18 @@ function Profile() {
           <ProfileNav />
           {/* <PetCard /> */}
           <div className="main-profile">
-            <p>Информация о профиле</p>
+            <p></p>
+            <div className="profile-item">
+              <h2 className="profile-title">Информация о профиле</h2>
+              <p className="profile-desc">
+                Инфографика по состоянию здоровья вашего животного на основе
+                анализов
+              </p>
+            </div>
+            <div>
             <Link to="/addfeed">Добавить корм</Link>
             <Link to="/feed">Корма</Link>
+            </div>
           </div>
  
         </div>

@@ -45,3 +45,9 @@
 .pet-desc {
   margin-bottom: 20px;
 }
+
+.img {
+  position: absolute;
+  transform: translateX(10px);
+  transform: translateY(50px);
+}

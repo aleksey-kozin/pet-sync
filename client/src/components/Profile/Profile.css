@@ -17,3 +17,12 @@
 .main-profile {
   margin-top: 50px;
 }
+
+.profile-item {
+  max-width: 100%;
+  max-height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+
+}
