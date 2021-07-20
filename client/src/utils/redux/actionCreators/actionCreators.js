@@ -5,7 +5,8 @@ import {
   INIT_FEED,
   INIT_PET,
   LOGOUT_USERS,
-} from '../actionTypes/actionTypes'
+  EDIT_FEED,
+} from "../actionTypes/actionTypes";
 
 export function initUsersAC(payload) {
   return { type: INIT_USERS, payload }
@@ -29,4 +30,8 @@ export function initAnalysesAC(payload) {
 
 export function initPetAC(payload) {
   return { type: INIT_PET, payload }
+}
+
+export function editFeedAC(payload) {
+  return { type: EDIT_FEED, payload };
 }

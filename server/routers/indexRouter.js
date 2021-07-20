@@ -24,7 +24,6 @@ router.post('/addPet', async (req, res) => {
 router.post('/findpet', async (req, res) => {
   const { id } = req.body
   const findPets = await Pet.find({ owner: id })
-  console.log(findPets);
   res.json({ petsArr: findPets })
 })
 
@@ -46,6 +45,21 @@ router.post('/addfeed', (req, res) => {
   });
   newFeed.save();
   res.json({ message: "Корм успешно добавлен в базу данных!" });
+})
+
+router.delete('/delfeed/:id', async (req, res) => {
+  const delFeed = await Feed.findByIdAndDelete({ _id: req.params.id })
+  if (delFeed) {
+    res.json({status: true})
+  } else {
+    res.json({status: false})
+  }
+})
+
+router.put('/edit/:id', async (req, res) => {
+  const {img, type, age, size, veterinaryDiet, brand, name} = req.body
+  const editFeed = await Feed.findByIdAndUpdate({ _id: req.params.id }, { img, type, age, size, veterinaryDiet, brand, name })
+  res.json({ status: true });
 })
 
 module.exports = router
