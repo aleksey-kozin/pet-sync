@@ -23,6 +23,19 @@ function Nav() {
     })()
   }, [])
 
+  const handlerLogout = async (event) => {
+    try {
+      const response = await AuthService.logout();
+      console.log(response);
+      localStorage.removeItem('token');
+      // this.setAuth(false);
+      // this.setUser({} as IUser);
+      dispatch(checkUsersAC({}))
+  } catch (e) {
+      console.log(e.response?.data?.message);
+  }
+  }
+
   return (
     <>
       {userState.isAuth && userState.user.isActivated ? (
@@ -57,11 +70,10 @@ function Nav() {
             </li>
             <li>
               <Link
-                onClick={() => setIcon(false)}
-                to="/login"
+                onClick={() => handlerLogout()}
                 className="nav-links"
               >
-                Войти
+                Выйти
               </Link>
             </li>
           </ul>

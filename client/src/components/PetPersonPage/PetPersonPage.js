@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import ProfileNav from '../Profile/ProfileNav'
 import './PetPage.css'
+import ChartList from '../ChartList/ChartList'
 
 function PetPersonPage(props) {
   const { id } = useParams()
@@ -14,6 +15,7 @@ function PetPersonPage(props) {
       <div className="container">
         <div className="main-wrapper1">
           <ProfileNav />
+           <ChartList />
           <div className="pet-profile">
           <h4>Кличка: {pet.name}</h4>
           <p>Вид: </p>
