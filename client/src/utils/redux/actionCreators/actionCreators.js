@@ -5,6 +5,7 @@ import {
   INIT_FEED,
   INIT_PET,
   LOGOUT_USERS,
+  EDIT_PET
 } from '../actionTypes/actionTypes'
 
 export function initUsersAC(payload) {
@@ -29,4 +30,8 @@ export function initAnalysesAC(payload) {
 
 export function initPetAC(payload) {
   return { type: INIT_PET, payload }
+}
+
+export function editPetAC(payload) {
+  return { type: EDIT_PET, payload }
 }
