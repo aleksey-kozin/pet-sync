@@ -5,6 +5,8 @@ import ProfileNav from '../Profile/ProfileNav'
 import './PetPage.css'
 import ChartList from '../ChartList/ChartList'
 import { editPetAC } from '../../utils/redux/actionCreators/actionCreators'
+import { Link } from "react-router-dom";
+
 
 function PetPersonPage(props) {
   const { id } = useParams()
@@ -49,35 +51,60 @@ function PetPersonPage(props) {
       <div className="container">
         <div className="main-wrapper1">
           <ProfileNav />
-            <ChartList />
-            { 
-              state
-              ? <div className="pet-profile" >
-                  <h4>Кличка: {pet.name}</h4>
-                  <p>Вид: {pet.spacies} </p>
-                  <p>Порода: {pet.breed}</p>
-                  <p>Пол:{pet.sex} </p>
-                  <p>Вес: {pet.weight}</p>
-                  <p>Дата рождения:{pet.birthdate} </p>
-                  <button onClick={handleDelete} >удалить</button>
-                  <button onClick={()=>setState(false)} >изменить</button>
-                </div>
-              : <div className="pet-profile" >
-                <form ref={text}>
-              <h4>Кличка:<input name="name" defaultValue={pet.name}/></h4>
-              <p>Вид: <input name="spacies" defaultValue={pet.spacies}/></p>
-              <p>Порода:<input name="breed" defaultValue={pet.breed}/> </p>
-              <p>Пол: <input name="sex" defaultValue={pet.sex}/></p>
-              <p>Вес: <input name="weight" defaultValue={pet.weight}/></p>
-              <p>Дата рождения: <input name="birthdate" defaultValue={pet.birthdate}/></p>
-              <button onClick={handleChange}>Сохранить</button>
+          <ChartList />
+          {state ? (
+            <div className="pet-profile">
+              <h4>Кличка: {pet.name}</h4>
+              <p>Вид: {pet.spacies} </p>
+              <p>Порода: {pet.breed}</p>
+              <p>Пол:{pet.sex} </p>
+              <p>Вес: {pet.weight}</p>
+              <p>Дата рождения:{pet.birthdate} </p>
+              <button onClick={handleDelete}>удалить</button>
+              <button onClick={() => setState(false)}>изменить</button>
+            </div>
+          ) : (
+            <div className="pet-profile">
+              <form ref={text}>
+                <h4>
+                  Кличка:
+                  <input name="name" defaultValue={pet.name} />
+                </h4>
+                <p>
+                  Вид: <input name="spacies" defaultValue={pet.spacies} />
+                </p>
+                <p>
+                  Порода:
+                  <input name="breed" defaultValue={pet.breed} />{" "}
+                </p>
+                <p>
+                  Пол: <input name="sex" defaultValue={pet.sex} />
+                </p>
+                <p>
+                  Вес: <input name="weight" defaultValue={pet.weight} />
+                </p>
+                <p>
+                  Дата рождения:{" "}
+                  <input name="birthdate" defaultValue={pet.birthdate} />
+                </p>
+                <button onClick={handleChange}>Сохранить</button>
+                <button
+                  onClick={() => {
+                    setState(true);
+                  }}
+                >
+                  Передумал
+                </button>
               </form>
-            </div>              
-            }
+            </div>
+          )}
+          <Link to={`/addanalysis/${id}`}>
+            <button>Добавить анализ</button>
+          </Link>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default PetPersonPage
