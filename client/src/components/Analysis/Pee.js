@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
 import ProfileNav from '../Profile/ProfileNav'
@@ -11,19 +11,6 @@ function Pee() {
 
   const index = petState.findIndex((el) => el._id === id);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:4000/findpee", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ id: petState[index]._id }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       dispatch(initPetAC(result.petsArr));
-  //     });
-  // }, [userState, modalActive]);
 
   const addPee = (ev) => {
     ev.preventDefault();

@@ -1,28 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ResponsiveRadar } from '@nivo/radar'
-import ChartLine from '../ChartLine/ChartLineLDH'
 import { listAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
-import { Link } from 'react-router-dom'
 
 function DetailsBloodAnalyse(props) {
   const analyses = useSelector((state) => state.analysesReducer.analyses)
-  const listAnalyses = useSelector(
-    (state) => state.analysesReducer.listAnalyses
-  )
   const dispatch = useDispatch()
-  // console.log('sssss',analyses);
-
-  // console.log('state', analyses)
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/list')
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
-    // .then((data) => console.log('data',data))
   }, [dispatch])
 
-  // console.log(analyses)
   let data = [
     {
       taste: 'normalALB',
@@ -94,34 +84,7 @@ function DetailsBloodAnalyse(props) {
         animate={true}
         motionConfig="wobbly"
         isInteractive={true}
-        // legends={[
-        //   {
-        //     anchor: 'top-left',
-        //     direction: 'column',
-        //     translateX: -50,
-        //     translateY: -40,
-        //     itemWidth: 80,
-        //     itemHeight: 20,
-        //     itemTextColor: '#999',
-        //     symbolSize: 12,
-        //     symbolShape: 'circle',
-        //     effects: [
-        //       {
-        //         on: 'hover',
-        //         style: {
-        //           itemTextColor: '#000',
-        //         },
-        //       },
-        //     ],
-        //   },
-        // ]}
       />
-      {/* {listAnalyses.map((el)=><ChartLine el={el} />)} */}
-      {/* <ChartLine listAnalyses={listAnalyses} /> */}
-      {/* <Link to="/chartline">
-        <h3>+++++++</h3>
-      </Link> */}
-      {/* <ChartLine/> */}
     </div>
   )
 }

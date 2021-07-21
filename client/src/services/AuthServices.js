@@ -1,7 +1,5 @@
 import instance from '../http/index'
-// import { AxiosResponse } from 'axios'
 import axios from 'axios'
-// import {AuthResponse} from "../models/response/AuthResponse";
 import { API_URL } from '../http/index'
 
 export default class AuthService {
@@ -21,7 +19,6 @@ export default class AuthService {
     const response = await axios.get(`${API_URL}/refresh`, {
       withCredentials: true,
     })
-    // console.log(response)
     localStorage.setItem('token', response.data.accessToken)
     return response
   }

@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import ProfileNav from '../Profile/ProfileNav'
 import './PetPage.css'
-import ChartList from '../ChartList/ChartList'
 import {
   editPetAC,
   editPetImgAC,
-  initPetAC,
 } from '../../utils/redux/actionCreators/actionCreators'
 import { Link } from 'react-router-dom'
 import { useCallback } from 'react'
@@ -24,35 +22,15 @@ function PetPersonPage(props) {
   const dispatch = useDispatch()
 
   const pet = petState.find((el) => el._id === id)
-  // const petDate = pet.birthdate.slice(0,10)
-
+  console.log('state',petState)
+  
   const [petImg, setPetImg] = useState(pet.image !== '')
 
   const [loading, setLoading] = useState(false)
 
   const [modalActive, setModalActive] = useState(false)
 
-  const [state, setState] = useState(true)
   const text = useRef()
-
-
-    //fetch в БД, получаем животных
-    useEffect(() => {
-      fetch('http://localhost:4000/findpet', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: localStorage.getItem('id') }),
-      })
-        .then((res) => res.json())
-        // .then((result) => console.log(result.petsArr))
-        .then((result) => {
-          // console.log(result);
-          dispatch(initPetAC(result.petsArr))
-        })
-    }, [petState, dispatch])
-
 
 
   const handleDelete = () => {
@@ -61,11 +39,9 @@ function PetPersonPage(props) {
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result.status) console.log('Питомец удален')
       })
       .then(() => history.push('/mypets'))
   }
-
 
   const handleChange = (event) => {
     event.preventDefault()
@@ -76,7 +52,7 @@ function PetPersonPage(props) {
     const weight = text.current.weight.value
     const birthdate = text.current.birthdate.value
     dispatch(editPetAC({ name, spacies, breed, sex, weight, birthdate, id }))
-    setState(true)
+    
     fetch(`http://localhost:4000/put/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -116,20 +92,18 @@ function PetPersonPage(props) {
       const result = await res.json()
       let token = result.downloadTokens
       const url = `https://firebasestorage.googleapis.com/v0/b/pet-sync-e6f45.appspot.com/o/photos%2F${file.name}?alt=media&token=${token}`
-      console.log(url)
       const photo = await fetch(`http://localhost:4000/put/photo/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: url }),
       })
       const resultFetch = await photo.json()
-      console.log('fetch', resultFetch)
       dispatch(editPetImgAC({ url: resultFetch.name, id: pet._id }))
 
       setPetImg(true)
       setLoading(false)
     },
-    [storage]
+    [storage, dispatch, id, pet._id]
   )
 
   useEffect(() => {}, [petState])
@@ -184,43 +158,26 @@ function PetPersonPage(props) {
                 <p className="info-item">Вес: {pet.weight}</p>
                 <p className="info-item">Дата рождения: {pet.birthdate}</p>
               </div>
-            <div className="edit">
-              <img
+              <div className="edit">
+                <img
                   onClick={() => setModalActive(true)}
-                  
                   src="/pencil.svg"
                   alt="Изменить информацию"
                   width="50px"
                   title="Изменить информацию"
                 />
-                </div>
-            <div className="del">
-              <img
-                  onClick={handleDelete}
-                  
-                  src="/delete.svg"
-                  alt="Удалить питомца"
-                  width="50px"
-                  title="Удалить питомца"
-                />
-                </div>
-            </div>
-                {/* <img
-                  onClick={() => setModalActive(true)}
-                  className="edit"
-                  src="/pencil.svg"
-                  alt="Изменить информацию"
-                  width="50px"
-                  title="Изменить информацию"
-                />
+              </div>
+              <div className="del">
                 <img
                   onClick={handleDelete}
-                  className="del"
                   src="/delete.svg"
                   alt="Удалить питомца"
                   width="50px"
                   title="Удалить питомца"
-                /> */}
+                />
+              </div>
+            </div>
+
           </div>
           <Modal active={modalActive} setActive={setModalActive}>
             <form ref={text} className="form-body">
@@ -279,10 +236,11 @@ function PetPersonPage(props) {
                   defaultValue={pet.birthdate}
                 />
               </div>
-              <button onClick={handleChange} className="form-buttom">Изменить</button>
+              <button onClick={handleChange} className="form-buttom">
+                Изменить
+              </button>
             </form>
           </Modal>
-
 
           <div className="diet">
             <Link to={`/feed/${pet._id}`}>

@@ -21,19 +21,12 @@ function Blood(props) {
   const [details, setDetails] = useState(false)
   const { id } = useParams()
 
-  // const listAnalyses = useSelector(
-  //   (state) => state.analysesReducer.listAnalyses
-  // )
   const dispatch = useDispatch()
-  // console.log('sssss',analyses);
-
-  // console.log('state', analyses)
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/list')
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
-    // .then((data) => console.log('data',data))
   }, [dispatch])
 
   const [state, setState] = useState(false)
@@ -89,9 +82,6 @@ function Blood(props) {
                 <p>Добавить анализ</p>
               </div>
 
-              {/* <Link to={`/tests/blood/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                
-              </Link> */}
             </div>
             <div style={{ marginBottom: '50px' }}>
               <ChartList />

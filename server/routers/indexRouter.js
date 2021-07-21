@@ -79,9 +79,9 @@ router.put('/put/:petid', async (req, res) => {
   res.json({ status: true })
 })
 router.put('/put/photo/:petid', async (req, res) => {
-  const {name} = req.body
+  const {name} = req.body  
   await Pet.findOneAndUpdate({_id: req.params.petid}, {image: name})
-  res.json({ status: true })
+  res.json({ status: true, name })
 })
 
 router.put('/edit/:id', async (req, res) => {

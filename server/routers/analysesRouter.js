@@ -9,7 +9,6 @@ router.get('/list', async (req, res) => {
 router.get('/', async (req, res) => {
   const analyses = await AnalysesBioCat.find().sort({ date: -1 })
   const resultAnalyses = analyses[0]._doc
-  // console.log(resultAnalyses);
   let chartValue = 0
   const normal = {
     LDH: [320, 460],
@@ -31,7 +30,6 @@ router.get('/', async (req, res) => {
       chartValue += 11.1
     }
   }
-  console.log(chartValue)
   const finalAnalyse = { ...resultAnalyses }
   finalAnalyse['chart'] = chartValue
   res.json(finalAnalyse)
