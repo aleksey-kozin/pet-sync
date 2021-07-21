@@ -50,8 +50,8 @@ function DetailsBloodAnalyse(props) {
     },
     {
       taste: 'normalALP',
-      Max: 12,
-      Min: 65,
+      Max: 65,
+      Min: 12,
       Fact: analyses.ALP,
     },
   ]

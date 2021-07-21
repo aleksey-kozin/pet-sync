@@ -10,7 +10,7 @@ const ChartLineLDH = () => {
   const listAnalyses = useSelector(
     (state) => state.analysesReducer.listAnalyses
   )
-  console.log('listAnalyses',listAnalyses);
+  console.log('listAnalyses', listAnalyses)
 
   const anal = listAnalyses
   const length = anal.length
@@ -31,7 +31,7 @@ const ChartLineLDH = () => {
     },
   ]
 
-  console.log('data', data);
+  console.log('data', data)
   // useEffect(() => {
   //   fetch('http://localhost:4000/analyses/list')
   //     .then((res) => res.json())
@@ -85,7 +85,11 @@ const ChartLineLDH = () => {
         yScale={{
           type: 'linear',
           stacked: ('stacked', false),
+          // min: 'auto',
+          // max: 'auto',
         }}
+        axisTop={null}
+        axisRight={null}
         axisLeft={{
           orient: 'left',
           tickSize: 5,

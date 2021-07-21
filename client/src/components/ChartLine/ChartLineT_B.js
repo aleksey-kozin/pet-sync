@@ -11,7 +11,7 @@ const ChartLineT_B = () => {
   const length = anal.length
   let result = []
   for (let i = 0; i < length; i++) {
-    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].T_B })
+    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].T_Bil })
   }
 
   let data = [

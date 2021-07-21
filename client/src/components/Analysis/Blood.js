@@ -8,9 +8,9 @@ import ChartLineALP from '../ChartLine/ChartLineALP'
 import ChartLineALT from '../ChartLine/ChartLineALT'
 import ChartLineAST from '../ChartLine/ChartLineAST'
 import ChartLineGLU from '../ChartLine/ChartLineGLU'
-import ChartLineT_B from '../ChartLine/ChartLineT_B'
-import ChartLineT_Cho from '../ChartLine/ChartLineT_Cho'
-import ChartLineT_P from '../ChartLine/ChartLineT_P'
+import ChartLineTB from '../ChartLine/ChartLineT_B'
+import ChartLineTCho from '../ChartLine/ChartLineT_Cho'
+import ChartLineTP from '../ChartLine/ChartLineT_P'
 
 import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
@@ -70,9 +70,9 @@ function Blood(props) {
                 <ChartLineALT />
                 <ChartLineAST />
                 <ChartLineGLU />
-                <ChartLineT_B />
-                <ChartLineT_Cho />
-                <ChartLineT_P/> <ChartLineALP />
+                <ChartLineTB />
+                <ChartLineTCho />
+                <ChartLineTP/> <ChartLineALP />
               </>
             ) : null}
           </div>
