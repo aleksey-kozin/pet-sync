@@ -30,7 +30,7 @@ function ChartList(props) {
         />
       }
       <Link to="/detailsanalyse">
-        <h3>Подробный анализ</h3>
+        {/* <h3>Подробный анализ</h3> */}
       </Link>
     </div>
   )

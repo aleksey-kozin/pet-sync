@@ -149,7 +149,7 @@ function PetPersonPage(props) {
               <p>Добавить анализ</p>
             </div>
             </Link> */}
-          <ChartList />
+          {/* <ChartList  /> */}
         </div>
       </div>
     </>

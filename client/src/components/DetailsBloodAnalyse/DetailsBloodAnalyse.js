@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ResponsiveRadar } from '@nivo/radar'
-import ChartLine from '../ChartLine/ChartLine'
+import ChartLine from '../ChartLine/ChartLineLDH'
 import { listAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
 import { Link } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ function DetailsBloodAnalyse(props) {
   const dispatch = useDispatch()
   // console.log('sssss',analyses);
 
-  console.log('state', analyses)
+  // console.log('state', analyses)
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/list')
@@ -22,7 +22,7 @@ function DetailsBloodAnalyse(props) {
     // .then((data) => console.log('data',data))
   }, [dispatch])
 
-  console.log(analyses)
+  // console.log(analyses)
   let data = [
     {
       taste: 'normalALB',
@@ -118,9 +118,10 @@ function DetailsBloodAnalyse(props) {
       />
       {/* {listAnalyses.map((el)=><ChartLine el={el} />)} */}
       {/* <ChartLine listAnalyses={listAnalyses} /> */}
-      <Link to="/chartline">
+      {/* <Link to="/chartline">
         <h3>+++++++</h3>
-      </Link>
+      </Link> */}
+      {/* <ChartLine/> */}
     </div>
   )
 }
