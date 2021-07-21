@@ -18,6 +18,11 @@ import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 import AnalysisForm from '../AnalysisForm/AnalysisForm'
 import ChartLine from '../ChartLine/ChartLine'
+import Blood from '../Analysis/Blood'
+import Pee from '../Analysis/Pee'
+import Hormonal from '../Analysis/Hormonal'
+import AddPet from '../AddPet/AddPet'
+
 
 function App() {
   return (
@@ -36,10 +41,12 @@ function App() {
             <Route path={"/profile"} component={Profile} />
             <Route path={"/mypets/:id"} component={PetPersonPage} />
             <Route path={"/mypets"} component={MyPets} />
-            <Route path={"/petcard"} component={PetCard} />
+            <Route path={"/petcard"} component={AddPet} />
             <Route path={"/appointment"} component={Appointment} />
             <Route path={"/feed/:id"} component={FeedAbout} />
-
+            <Route path={"/tests/blood/:id"} component={Blood} />
+            <Route path={"/tests/pee/:id"} component={Pee} />
+            <Route path={"/tests/research/:id"} component={Hormonal} />
             <Route path={"/addfeed"} component={AddFeed} />
             <Route path={"/feed"} component={Feed} />
             {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
