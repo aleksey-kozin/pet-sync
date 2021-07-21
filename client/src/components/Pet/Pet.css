@@ -38,6 +38,7 @@
   font-weight: 700;
   color: lightgray;
   padding: auto 0;
+  cursor: pointer;
 }
 
 .pet-item-add p {
