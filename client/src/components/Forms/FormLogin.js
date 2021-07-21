@@ -35,6 +35,7 @@ function FormSignUp() {
       const response = await AuthService.login(email, password)
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
+      localStorage.setItem('id', response.data.user.id)
       dispatch(initUsersAC(response.data.user))
       history.push('/profile')
     } catch (error) {

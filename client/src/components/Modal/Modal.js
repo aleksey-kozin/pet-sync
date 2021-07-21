@@ -1,7 +1,7 @@
 import React from 'react';
-import './AddPet.css'
+import './Modal.css'
 
-function AddPet({ active, setActive, children }) {
+function Modal({ active, setActive, children }) {
 
   return (
     <>
@@ -14,4 +14,4 @@ function AddPet({ active, setActive, children }) {
   );
 }
 
-export default AddPet;
+export default Modal;

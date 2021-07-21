@@ -5,7 +5,7 @@ import ProfileNav from '../Profile/ProfileNav'
 import '../Pet/Pet.css'
 import { Link, useHistory } from 'react-router-dom'
 import { initPetAC } from '../../utils/redux/actionCreators/actionCreators'
-import AddPet from '../AddPet/AddPet'
+import Modal from '../Modal/Modal'
 import PetCard from '../PetCard/PetCard'
 
 function MyPets() {
@@ -33,7 +33,7 @@ function MyPets() {
         // console.log(result);
         dispatch(initPetAC(result.petsArr))
       })
-  }, [userState, modalActive])
+  }, [userState, modalActive, dispatch])
 
   const text = useRef()
   const history = useHistory()
@@ -79,7 +79,8 @@ function MyPets() {
             <div onClick={() => setModalActive(true)} className="pet-item-add">
               <p>Добавить питомца</p>
             </div>
-            <AddPet active={modalActive} setActive={setModalActive}>
+
+            <Modal active={modalActive} setActive={setModalActive}>
 
               <form ref={text} onSubmit={addAnimal} className="form-body">
                 <h2 className="form-title">Добавление питомца</h2>
@@ -134,7 +135,7 @@ function MyPets() {
                 <button className="form-buttom">Добавить питомца</button>
               </form>
               
-            </AddPet>
+            </Modal>
           </div>
         </div>
       </div>
