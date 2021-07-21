@@ -6,9 +6,9 @@ import {
   INIT_PET,
   LOGOUT_USERS,
   EDIT_PET,
-  EDIT_FEED
+  EDIT_FEED,
+  LIST_ANALYSES,
 } from '../actionTypes/actionTypes'
-
 
 export function initUsersAC(payload) {
   return { type: INIT_USERS, payload }
@@ -39,5 +39,9 @@ export function editPetAC(payload) {
 }
 
 export function editFeedAC(payload) {
-  return { type: EDIT_FEED, payload };
+  return { type: EDIT_FEED, payload }
+}
+
+export function listAnalysesAC(payload) {
+  return { type: LIST_ANALYSES, payload }
 }

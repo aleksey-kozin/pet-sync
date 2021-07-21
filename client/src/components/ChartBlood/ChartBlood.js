@@ -22,9 +22,9 @@ function ChartBlood({ analyses }) {
       color: '#74c476',
     },
     {
-      id: 'normal',
+      id: 'Отклонение от нормы',
       label: 'normal',
-      value: 100 - analyses.chart,
+      value: (100 - analyses.chart).toFixed(1),
       color: 'hsl(181, 70%, 50%)',
     },
   ]
