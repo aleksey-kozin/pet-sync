@@ -1,4 +1,4 @@
-import { INIT_ANALYSES } from '../actionTypes/actionTypes'
+import { INIT_ANALYSES, LIST_ANALYSES } from '../actionTypes/actionTypes'
 
 // const initialStateAuth = {
 //   user: {},
@@ -6,10 +6,15 @@ import { INIT_ANALYSES } from '../actionTypes/actionTypes'
 //   isLoading: false,
 // }
 
-const analysesReducer = (state = { analyses: [] }, action) => {
+const analysesReducer = (
+  state = { analyses: [], listAnalyses: [] },
+  action
+) => {
   switch (action.type) {
     case INIT_ANALYSES:
       return { ...state, analyses: action.payload }
+    case LIST_ANALYSES:
+      return { ...state, listAnalyses: action.payload }
 
     default:
       return state

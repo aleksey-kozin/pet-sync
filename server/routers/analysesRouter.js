@@ -1,41 +1,26 @@
 const router = require('express').Router()
-const AnalysesHearths = require('../db/models/analysesHeart.models.js')
+const AnalysesBioCat = require('../db/models/analysesBioCat.models.js')
 
-// router.get('/', async (req, res) => {
-//   const analyses = await AnalysesHearths.find()
-//   const avrAnalyses = {}
-//   analyses.map((el) => {
-//     const keys = Object.keys(el._doc)
-
-//     // console.log(keys);
-//     keys.forEach((key) => {
-//       // console.log('key', key)
-//       // console.log('val', el[key])
-//       if (avrAnalyses[key]) {
-//         avrAnalyses[key] += el[key]
-//       } else {
-//         avrAnalyses[key] = el[key]
-//       }
-//     })
-//   })
-
-//   avrAnalyses['length'] = analyses.length
-//   console.log(avrAnalyses)
-
-//   res.json(avrAnalyses)
-// })
+router.get('/list', async (req, res) => {
+  const analyses = await AnalysesBioCat.find().sort({ date: -1 })
+  res.json(analyses)
+})
 
 router.get('/', async (req, res) => {
-  const analyses = await AnalysesHearths.find().sort({ date: -1 })
+  const analyses = await AnalysesBioCat.find().sort({ date: -1 })
   const resultAnalyses = analyses[0]._doc
+  // console.log(resultAnalyses);
   let chartValue = 0
   const normal = {
     LDH: [320, 460],
-    GPT: [8, 52],
-    GOT: [9, 39],
+    ALT: [8, 52],
+    AST: [9, 39],
     ALB: [22, 32],
-    T_Pro: [43, 75],
-    T_Bil: [2, 5],
+    T_P: [43, 75],
+    T_B: [2, 5],
+    GLU: [3, 8],
+    T_Cho: [2, 4],
+    ALP: [12, 65],
   }
   let count = 0
   for (let key in normal) {
@@ -43,7 +28,7 @@ router.get('/', async (req, res) => {
       normal[key][0] <= resultAnalyses[key] &&
       normal[key][1] >= resultAnalyses[key]
     ) {
-      chartValue += 16.6
+      chartValue += 11.1
     }
   }
   console.log(chartValue)

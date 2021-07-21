@@ -17,6 +17,7 @@ import PetCard from '../PetCard/PetCard'
 import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 import AnalysisForm from '../AnalysisForm/AnalysisForm'
+import ChartLine from '../ChartLine/ChartLine'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path={"/"} exact component={Main} />
             {/* <Route path={'/testchart'} component={TestChart} /> */}
             <Route path={"/detailsanalyse"} component={DetailsBloodAnalyse} />
+            <Route path={"/chartline"} component={ChartLine} />
             <Route path={"/login"} component={FormLogin} />
             <Route path={"/signup"} component={FormSignUp} />
             <Route path={"/profile"} component={Profile} />
