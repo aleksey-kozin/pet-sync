@@ -6,6 +6,10 @@ import './PetPage.css'
 import ChartList from '../ChartList/ChartList'
 import { editPetAC } from '../../utils/redux/actionCreators/actionCreators'
 import { Link } from 'react-router-dom'
+import {useCallback} from 'react'
+import {useDropzone} from 'react-dropzone'
+import firebase from 'firebase/app'
+import 'firebase/storage'
 
 function PetPersonPage(props) {
   const { id } = useParams()
@@ -48,6 +52,48 @@ function PetPersonPage(props) {
         if (result.status) console.log('Питомец изменен')
       })
   }
+  const firebaseConfig = {
+    apiKey: "AIzaSyCxVb7MPS_-gKr-bUl9VccxfkpwS5EgxT0",
+    authDomain: "pet-sync-e6f45.firebaseapp.com",
+    projectId: "pet-sync-e6f45",
+    storageBucket: "pet-sync-e6f45.appspot.com",
+    messagingSenderId: "327180827350",
+    appId: "1:327180827350:web:d2b79d0c57824fb3582777"
+  };
+  // Initialize Firebase
+  if(!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig)}
+  const storage = firebase.storage()
+
+  const onDrop = useCallback(async (acceptedFiles) => {
+    let formdata = new FormData()
+    formdata.append('uploadedFiles', acceptedFiles)
+    // console.log(acceptedFiles)
+      const file = acceptedFiles[0]
+      const ref = await  storage.ref(`photos/${file.name}`)
+      await ref.put(file)
+      // console.log(345)
+      const res = await fetch(`https://firebasestorage.googleapis.com/v0/b/pet-sync-e6f45.appspot.com/o/photos%2F${file.name}`)
+      // console.log(321)
+        const result = await res.json()
+        // console.log(123)
+        // console.log(result)
+      let token = result.downloadTokens
+     const url = `https://firebasestorage.googleapis.com/v0/b/pet-sync-e6f45.appspot.com/o/photos%2F${file.name}?alt=media&token=${token}`
+      console.log(url)
+      // return url
+      const photo = await fetch(`http://localhost:4000/put/photo/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: url }),
+      })
+      const resultFetch = await photo.json
+      // console.log(result.status)
+  }, [storage])
+
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+
+
   return (
     <>
       <div className="container">
@@ -106,6 +152,14 @@ function PetPersonPage(props) {
               </form>
             </div>
           )}
+                  <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {
+        isDragActive ?
+          <p>Drop the files here ...</p> :
+          <p>Drag 'n' drop some files here, or click to select files</p>
+      }
+    </div>
 
           <div className="diet">
             <Link to={`/feed/${pet._id}`}>

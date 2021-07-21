@@ -13,8 +13,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/addPet', async (req, res) => {
-  const { name, spacies, sex, breed, birthdate, weight, owner } = req.body
+  const { name, spacies, sex, breed, birthdate, weight, owner, image } = req.body
   const newPet = new Pet({
+    image,
     name,
     spacies,
     sex,
@@ -75,6 +76,11 @@ router.delete('/delfeed/:id', async (req, res) => {
 router.put('/put/:petid', async (req, res) => {
   const {name,spacies,breed,sex, weight, birthdate} = req.body
   await Pet.findOneAndUpdate({_id: req.params.petid}, {name,spacies,breed,sex, weight, birthdate})
+  res.json({ status: true })
+})
+router.put('/put/photo/:petid', async (req, res) => {
+  const {name} = req.body
+  await Pet.findOneAndUpdate({_id: req.params.petid}, {image: name})
   res.json({ status: true })
 })
 
