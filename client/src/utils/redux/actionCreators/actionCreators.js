@@ -8,6 +8,7 @@ import {
   EDIT_PET,
   EDIT_FEED,
   LIST_ANALYSES,
+  EDIT_PET_IMG
 } from '../actionTypes/actionTypes'
 
 export function initUsersAC(payload) {
@@ -44,4 +45,8 @@ export function editFeedAC(payload) {
 
 export function listAnalysesAC(payload) {
   return { type: LIST_ANALYSES, payload }
+}
+
+export function editPetImgAC(payload) {
+  return { type: EDIT_PET_IMG, payload }
 }

@@ -1,6 +1,6 @@
 .pet-profile {
   max-width: 100%;
-  max-height: 400px;
+  max-height: 280px;
   background-color: #fff;
   border-radius: 25px;
   padding: 30px;
@@ -8,9 +8,20 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.pet-profile * {
-  margin-bottom: 10px;
-
+.pet-del-btn {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 45px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  outline: none;
 }
 
 .formater {
@@ -18,7 +29,12 @@
 }
 
 .pet-info {
+  min-width: 245px;
   margin-left: 40px;
+}
+
+.info-item {
+  padding: 7px 0
 }
 
 .diet {
@@ -28,7 +44,7 @@
 
 .pet-diet-base {
   display: inline-block;
-  min-width: 49%;
+  min-width: 500px;
   max-height: 400px;
   background-color: #fff;
   border-radius: 25px;
@@ -41,7 +57,7 @@
 }
 
 .pet-diet-exact {
-  min-width: 49%;
+  min-width: 500px;
   max-height: 400px;
   background-color: #fff;
   border-radius: 25px;
@@ -80,8 +96,25 @@
 
 }
 
+.image {
+  width: 220px;
+  height: 220px;
+}
+
+.pet-image {
+
+}
+
+.edit {
+  margin-left: 70px;
+
+}
+
+.del {
+  margin-left: 20px;
+}
+
 .plus {
-  /* transform: translate(220px, 250px); */
   position: relative;
   top: 250px;
   left: 220px;

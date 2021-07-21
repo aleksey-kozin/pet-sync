@@ -17,9 +17,6 @@ import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 import ProfileNav from '../Profile/ProfileNav'
 import './Analysis.css'
 
-
-  
-
 function Blood(props) {
   const [details, setDetails] = useState(false)
   const { id } = useParams()
@@ -41,7 +38,7 @@ function Blood(props) {
 
   const [state, setState] = useState(false)
   const text = useRef()
-  const petState = useSelector((state) => state.petsReducer.pet);
+  const petState = useSelector((state) => state.petsReducer.pet)
 
   const addBlood = (ev) => {
     ev.preventDefault()
@@ -58,7 +55,7 @@ function Blood(props) {
       GLU: text.current.GLU.value,
       T_Cho: text.current.T_Cho.value,
       ALP: text.current.ALP.value,
-    };
+    }
 
     fetch('http://localhost:4000/addblood', {
       method: 'POST',
@@ -68,9 +65,8 @@ function Blood(props) {
       .then((res) => res.json())
       .then((result) => {
         setState(false)
-      })      
+      })
   }
-
 
   return (
     <>
@@ -81,13 +77,18 @@ function Blood(props) {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: "40px" }}
+                  style={{ marginBottom: '40px' }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
                 />
               </Link>
               <h2>Анализ крови</h2>
+
+              <div onClick={() => setState(true)} className="pet-item-add">
+                <p>Добавить анализ</p>
+              </div>
+
               {/* <Link to={`/tests/blood/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 
               </Link> */}
@@ -96,9 +97,6 @@ function Blood(props) {
               <ChartList />
             </div>
 
-            <div onClick={() => setState(true)} className="pet-item-add">
-              <p>Добавить анализ</p>
-            </div>
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
@@ -179,8 +177,6 @@ function Blood(props) {
                 </button>
               </form>
             )}
-            
-            
 
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
@@ -194,14 +190,14 @@ function Blood(props) {
                 <ChartLineGLU />
                 <ChartLineTB />
                 <ChartLineTCho />
-                <ChartLineTP/> <ChartLineALP />
+                <ChartLineTP /> <ChartLineALP />
               </>
             ) : null}
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Blood

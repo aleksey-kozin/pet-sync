@@ -5,7 +5,7 @@ import { FiMenu } from 'react-icons/fi'
 import { VscClose } from 'react-icons/vsc'
 import './Nav.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { checkUsersAC } from '../../utils/redux/actionCreators/actionCreators'
+import { checkUsersAC, initPetAC } from '../../utils/redux/actionCreators/actionCreators'
 import AuthService from '../../services/AuthServices'
 
 function Nav() {
@@ -13,6 +13,13 @@ function Nav() {
   const userState = useSelector((state) => state.usersReducer)
   // console.log(userState)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    
+    return () => {
+      
+    }
+  }, [])
 
   useEffect(() => {
     ;(async () => {
@@ -37,6 +44,7 @@ function Nav() {
   }
   }
 
+
   return (
     <>
       {userState.isAuth && userState.user.isActivated ? (
@@ -54,7 +62,7 @@ function Nav() {
             <li>
               <NavLink
                 onClick={() => setIcon(false)}
-                to="/profile"
+                to="/mypets"
                 className="nav-links"
               >
                 Профиль

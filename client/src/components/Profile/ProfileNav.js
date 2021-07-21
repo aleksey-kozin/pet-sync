@@ -9,11 +9,11 @@ function ProfileNav(props) {
     <div className="profile-nav">
     <nav>
     <ul className="profile-menu">
-      <li>
+      {/* <li>
         <NavLink to="/profile" className="profile-links" activeClassName={"profile-links-selected"}>
           Мой профиль
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/mypets" className="profile-links" activeClassName={"profile-links-selected"}>
           Мои питомцы
