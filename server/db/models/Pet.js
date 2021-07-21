@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 
 const petSchema = new mongoose.Schema({
-  // image: { type: String, require: true },
+  image: { type: String, default: ''},
   name: { type: String, require: true },
   spacies: { type: String },
   sex: { type: String },

@@ -16,6 +16,7 @@ function PetCard() {
     event.preventDefault()
     //объект для загрузки в бд
     const newPet = {
+      image: 'asd',
       name: text.current.name.value,
       spacies: text.current.spacies.value,
       sex: text.current.sex.value,
