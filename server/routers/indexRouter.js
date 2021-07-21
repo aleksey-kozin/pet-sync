@@ -1,5 +1,11 @@
+const AnalysesBioCat = require('../db/models/analysesBioCat.models')
+const AnalysesBioDog = require("../db/models/analysesBioDog");
+const AnalysesGormonsDog = require('../db/models/analysesGormonsDog')
+const AnalysesGormonsCat = require("../db/models/analysesGormonsCat");
 const Feed = require('../db/models/feed.model')
-const Pet = require('../db/models/Pet')
+const Pet = require('../db/models/Pet');
+const AnalysesUrineCat = require('../db/models/analysesUrineCat');
+const AnalysesUrineDog = require('../db/models/analysesUrineDog copy');
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
@@ -77,5 +83,103 @@ router.put('/edit/:id', async (req, res) => {
   const editFeed = await Feed.findByIdAndUpdate({ _id: req.params.id }, { img, type, age, size, veterinaryDiet, brand, name })
   res.json({ status: true })
 })
+
+router.post("/addblood", (req, res) => {
+    const { spacies, owner, LDH, ALT, AST, ALB, T_Pro, T_Bil, GLU, T_Cho, ALP } =
+      req.body;
+  if (spacies === 'Кошка') {
+    const newBlood = new AnalysesBioCat({
+      owner,
+      LDH,
+      ALT,
+      AST,
+      ALB,
+      T_Pro,
+      T_Bil,
+      GLU,
+      T_Cho,
+      ALP,
+    });
+    newBlood.save();
+    res.json({ message: true });
+  } else {
+    const newBlood = new AnalysesBioDog({
+      owner,
+      LDH,
+      ALT,
+      AST,
+      ALB,
+      T_Pro,
+      T_Bil,
+      GLU,
+      T_Cho,
+      ALP,
+    });
+    newBlood.save();
+    res.json({ message: true });
+  }
+});
+
+router.post("/addhormonal", (req, res) => {
+  const { spacies, owner, ACT, ALD, INS, PTH, T4, COR, GAS } = req.body;
+  if (spacies === 'Кошка') {
+    const newBlood = new AnalysesGormonsCat({
+      spacies,
+      owner,
+      ACT,
+      ALD,
+      INS,
+      PTH,
+      T4,
+      COR,
+      GAS,
+    });
+    newBlood.save();
+    res.json({ message: true });
+  } else {
+    const newBlood = new AnalysesGormonsDog({
+      spacies,
+      owner,
+      ACT,
+      ALD,
+      INS,
+      PTH,
+      T4,
+      COR,
+      GAS,
+    });
+    newBlood.save();
+    res.json({ message: true });
+  }
+});
+
+router.post("/addpee", (req, res) => {
+  const { spacies, owner, AN16110, AN116, AN28110, AN15110, AN114 } = req.body;
+  if (spacies === "Кошка") {
+    const newBlood = new AnalysesUrineCat({
+      spacies,
+      owner,
+      AN16110,
+      AN116,
+      AN28110,
+      AN15110,
+      AN114,
+    });
+    newBlood.save();
+    res.json({ message: true });
+  } else {
+    const newBlood = new AnalysesUrineDog({
+      spacies,
+      owner,
+      AN16110,
+      AN116,
+      AN28110,
+      AN15110,
+      AN114,
+    });
+    newBlood.save();
+    res.json({ message: true });
+  }
+});
 
 module.exports = router

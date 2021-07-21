@@ -18,7 +18,7 @@ function MyPets() {
 
   const [modalActive, setModalActive] = useState(false)
 
-  //fetch в БД, получаем (пока) всех животных
+  //fetch в БД, получаем животных
   useEffect(() => {
     fetch('http://localhost:4000/findpet', {
       method: 'POST',
