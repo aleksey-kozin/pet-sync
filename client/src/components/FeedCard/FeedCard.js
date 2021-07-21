@@ -10,33 +10,46 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 345,
+    // padding: '20px',
+    margin: '10px'
+
   },
+  text: {
+    color: 'black',
+    textDecoration: 'none',
+  },
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
+    
+  }
 }));
 
 function FeedCard({ value }) {
   const classes = useStyles();
 
   return (
-    <div>
+    <>
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
             component="img"
             alt="Contemplative Reptile"
-            height="30%"
+    
             image={value.img}
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Link to={`/feed/${value._id}`}>
-              <Typography gutterBottom variant="h5" component="h2">
+            <Link className={classes.text} to={`/feed/about/${value._id}`}>
+              <Typography  gutterBottom variant="h5" component="h2">
                 {value.name}
               </Typography>
             </Link>
           </CardContent>
         </CardActionArea>
       </Card>
-    </div>
+    </>
   );
 }
 
