@@ -10,7 +10,7 @@ const ChartLineLDH = () => {
   const listAnalyses = useSelector(
     (state) => state.analysesReducer.listAnalyses
   )
-  console.log('listAnalyses', listAnalyses)
+  // console.log('listAnalyses', listAnalyses)
 
   const anal = listAnalyses
   const length = anal.length
@@ -18,7 +18,7 @@ const ChartLineLDH = () => {
   for (let i = 0; i < length; i++) {
     result.push({ x: anal[i].date.substring(0, 9), y: anal[i].LDH })
   }
-  console.log(result)
+  // console.log(result)
 
   // const dispatch = useDispatch()
   // console.log('sssss', listAnalyses)
@@ -30,8 +30,24 @@ const ChartLineLDH = () => {
       data: result,
     },
   ]
+  // const curveOptions = [
+  //   'linear',
+  //   'monotoneX',
+  //   'step',
+  //   'stepBefore',
+  //   'stepAfter',
+  // ]
 
-  console.log('data', data)
+  // const commonProperties = {
+  //   width: 600,
+  //   height: 300,
+  //   margin: { top: 20, right: 20, bottom: 60, left: 80 },
+  //   data,
+  //   animate: true,
+  //   enableSlices: 'x',
+  // }
+
+  // console.log('data', data)
   // useEffect(() => {
   //   fetch('http://localhost:4000/analyses/list')
   //     .then((res) => res.json())
@@ -69,9 +85,10 @@ const ChartLineLDH = () => {
   // console.log(listAnalyses[0].date.substring(0, 9))
 
   return (
-    <div className="App" style={{ height: 300, width: 600 }}>
+    <div className="App" style={{ height: 300 }}>
       {/* <h1>Line y axis time scale</h1> */}
       <ResponsiveLine
+        // {...commonProperties}
         data={data}
         margin={{ top: 50, right: 60, bottom: 50, left: 120 }}
         xScale={{
@@ -83,25 +100,18 @@ const ChartLineLDH = () => {
         }}
         // xFormat="time:%Y-%m-%d"
         yScale={{
+          // type: 'linear',
+          // stacked: ('stacked', false),
           type: 'linear',
-          stacked: ('stacked', false),
+          stacked: false,
+          min: 0,
+          max: 'auto',
           // min: 'auto',
           // max: 'auto',
         }}
         axisTop={null}
         axisRight={null}
         axisLeft={{
-          orient: 'left',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'count',
-          legendOffset: -40,
-          legendPosition: 'middle',
-          // legend: 'linear scale',
-          // legendOffset: 12,
-        }}
-        axisBottom={{
           orient: 'bottom',
           tickSize: 5,
           tickPadding: 5,
@@ -109,6 +119,31 @@ const ChartLineLDH = () => {
           legend: 'transportation',
           legendOffset: 36,
           legendPosition: 'middle',
+          // orient: 'left',
+          // tickSize: 5,
+          // tickPadding: 5,
+          // tickRotation: 0,
+          // legend: 'count',
+          // legendOffset: -40,
+          // legendPosition: 'middle',
+          // legend: 'linear scale',
+          // legendOffset: 12,
+        }}
+        axisBottom={{
+          orient: 'left',
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: 'count',
+          legendOffset: -40,
+          legendPosition: 'middle',
+          // orient: 'bottom',
+          // tickSize: 5,
+          // tickPadding: 5,
+          // tickRotation: 0,
+          // legend: 'transportation',
+          // legendOffset: 36,
+          // legendPosition: 'middle',
           // format: '%b %d',
           // tickValues: 'every 2 days',
           // legend: 'time scale',
@@ -129,6 +164,32 @@ const ChartLineLDH = () => {
         curve="cardinal"
         pointColor="white"
         useMesh={true}
+        legends={[
+          {
+            anchor: 'bottom-right',
+            direction: 'column',
+            justify: false,
+            translateX: 100,
+            translateY: 0,
+            itemsSpacing: 0,
+            itemDirection: 'left-to-right',
+            itemWidth: 80,
+            itemHeight: 20,
+            itemOpacity: 0.75,
+            symbolSize: 12,
+            symbolShape: 'circle',
+            symbolBorderColor: 'rgba(0, 0, 0, .5)',
+            effects: [
+              {
+                on: 'hover',
+                style: {
+                  itemBackground: 'rgba(0, 0, 0, .03)',
+                  itemOpacity: 1,
+                },
+              },
+            ],
+          },
+        ]}
       />
     </div>
   )

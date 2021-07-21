@@ -8,6 +8,9 @@ import {
   EDIT_PET,
   EDIT_FEED,
   LIST_ANALYSES,
+  INIT_ANALYSES_ID,
+  INIT_ANALYSES_PEE,
+  INIT_ANALYSES_PEE_LIST,
 } from '../actionTypes/actionTypes'
 
 export function initUsersAC(payload) {
@@ -44,4 +47,16 @@ export function editFeedAC(payload) {
 
 export function listAnalysesAC(payload) {
   return { type: LIST_ANALYSES, payload }
+}
+
+export function initAnalysesIdAC(payload) {
+  return { type: INIT_ANALYSES_ID, payload }
+}
+
+export function initAnalysesPeeAC(payload) {
+  return { type: INIT_ANALYSES_PEE, payload }
+}
+
+export function initAnalysesPeeListAC(payload) {
+  return { type: INIT_ANALYSES_PEE_LIST, payload }
 }

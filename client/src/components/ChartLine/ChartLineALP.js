@@ -22,7 +22,7 @@ const ChartLineALP = () => {
   ]
 
   return (
-    <div className="App" style={{ height: 300, width: 600 }}>
+    <div className="App" style={{ height: 300}}>
       {/* <h1>Line y axis time scale</h1> */}
       <ResponsiveLine
         data={data}

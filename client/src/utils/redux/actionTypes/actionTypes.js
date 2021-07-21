@@ -1,9 +1,12 @@
 export const INIT_USERS = 'INIT_USERS'
 export const LOGOUT_USERS = 'LOGOUT_USERS'
-export const INIT_FEED = "INIT_FEED";
+export const INIT_FEED = 'INIT_FEED'
 export const CHECK_USERS = 'CHECK_USERS'
 export const INIT_ANALYSES = 'INIT_ANALYSES'
 export const INIT_PET = 'INIT_PET'
 export const EDIT_PET = 'EDIT_PET'
 export const EDIT_FEED = 'EDIT_FEED'
 export const LIST_ANALYSES = 'LIST_ANALYSES'
+export const INIT_ANALYSES_ID = 'INIT_ANALYSES_ID'
+export const INIT_ANALYSES_PEE = 'INIT_ANALYSES_PEE'
+export const INIT_ANALYSES_PEE_LIST = 'INIT_ANALYSES_PEE_LIST'

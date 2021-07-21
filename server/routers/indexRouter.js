@@ -5,7 +5,7 @@ const AnalysesGormonsCat = require("../db/models/analysesGormonsCat");
 const Feed = require('../db/models/feed.model')
 const Pet = require('../db/models/Pet');
 const AnalysesUrineCat = require('../db/models/analysesUrineCat');
-const AnalysesUrineDog = require('../db/models/analysesUrineDog copy');
+const AnalysesUrineDog = require('../db/models/analysesUrineDog');
 const router = require('express').Router()
 
 router.get('/', (req, res) => {

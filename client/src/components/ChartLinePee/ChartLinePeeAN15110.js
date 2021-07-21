@@ -2,16 +2,17 @@ import React from 'react'
 import { ResponsiveLine } from '@nivo/line'
 import { useSelector } from 'react-redux'
 
-const ChartLineALB = () => {
+const ChartLinePeeAN15110= () => {
   const listAnalyses = useSelector(
-    (state) => state.analysesReducer.listAnalyses
+    (state) => state.analysesReducer.PeeListAnalyses
   )
-  
+  console.log(listAnalyses);
+
   const anal = listAnalyses
   const length = anal.length
   let result = []
   for (let i = 0; i < length; i++) {
-    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].ALB })
+    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].AN15110 })
   }
 
   let data = [
@@ -71,4 +72,4 @@ const ChartLineALB = () => {
   )
 }
 
-export default ChartLineALB
+export default ChartLinePeeAN15110

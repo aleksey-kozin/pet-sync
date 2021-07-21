@@ -1,58 +1,61 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ResponsiveRadar } from '@nivo/radar'
-import ChartLine from '../ChartLine/ChartLineLDH'
-import { listAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
-import { Link } from 'react-router-dom'
+// import ChartLine from '../ChartLine/ChartLineLDH'
+import {
+  initAnalysesPeeListAC,
+  listAnalysesAC,
+} from '../../utils/redux/actionCreators/actionCreators'
+// import { Link } from 'react-router-dom'
 
 function DetailsBloodAnalyse(props) {
-  const analyses = useSelector((state) => state.analysesReducer.analyses)
-  const listAnalyses = useSelector(
-    (state) => state.analysesReducer.listAnalyses
-  )
+  const analyses = useSelector((state) => state.analysesReducer.analysesPee)
+  // const listAnalyses = useSelector(
+  //   (state) => state.analysesReducer.listAnalyses
+  // )
   const dispatch = useDispatch()
   // console.log('sssss',analyses);
 
   // console.log('state', analyses)
 
-  // useEffect(() => {
-  //   fetch('http://localhost:4000/analyses/list')
-  //     .then((res) => res.json())
-  //     .then((data) => dispatch(listAnalysesAC(data)))
-  //   // .then((data) => console.log('data',data))
-  // }, [dispatch])
+  useEffect(() => {
+    fetch('http://localhost:4000/analyses/listpee')
+      .then((res) => res.json())
+      .then((data) => dispatch(initAnalysesPeeListAC(data)))
+    // .then((data) => console.log('data',data))
+  }, [dispatch])
 
   // console.log(analyses)
   let data = [
     {
-      taste: 'normalALB',
-      Max: 32,
-      Min: 22,
-      Fact: analyses.ALB,
+      taste: 'normalAN16110',
+      Max: 0,
+      Min: 0.5,
+      Fact: analyses.AN16110,
     },
     {
-      taste: 'normalAST',
-      Max: 39,
-      Min: 9,
-      Fact: analyses.AST,
+      taste: 'normalAN116',
+      Max: 1.01,
+      Min: 1.05,
+      Fact: analyses.AN116,
     },
     {
-      taste: 'normalALT',
-      Max: 52,
-      Min: 8,
-      Fact: analyses.ALT,
+      taste: 'normalAN28110',
+      Max: 0,
+      Min: 0.5,
+      Fact: analyses.AN28110,
     },
     {
-      taste: 'normalT_Pro',
-      Max: 75,
-      Min: 43,
-      Fact: analyses.T_Pro,
+      taste: 'normalAN15110',
+      Max: 0.21,
+      Min: 0.57,
+      Fact: analyses.AN15110,
     },
     {
-      taste: 'normalALP',
-      Max: 65,
-      Min: 12,
-      Fact: analyses.ALP,
+      taste: 'normalAN114',
+      Max: 0,
+      Min: 20,
+      Fact: analyses.AN114,
     },
   ]
 
