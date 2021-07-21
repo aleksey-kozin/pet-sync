@@ -4,7 +4,6 @@ import Nav from '../Nav/Nav'
 import Profile from '../Profile/Profile'
 import MyPets from '../MyPets/MyPets'
 import PetPersonPage from '../PetPersonPage/PetPersonPage'
-// import TestChart from '../ChartList/ChartList'
 import FormLogin from '../Forms/FormLogin'
 import FormSignUp from '../Forms/FormSignUp'
 import { Provider } from 'react-redux'
@@ -13,12 +12,7 @@ import Feed from '../Feed/Feed'
 import FeedAbout from '../FeedAbout/FeedAbout'
 import AddFeed from '../AddFeed/AddFeed'
 import Appointment from '../Appointment/Appointment'
-import PetCard from '../PetCard/PetCard'
-import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
-import ChartLine from '../ChartLine/ChartLine'
-import AnalysisForm from '../AnalysisForm/AnalysisForm'
-import ChartLine from '../ChartLine/ChartLineLDH'
 import Blood from '../Analysis/Blood'
 import Pee from '../Analysis/Pee'
 import Hormonal from '../Analysis/Hormonal'
@@ -31,12 +25,9 @@ function App() {
       <Provider store={store}>
         <Router>
           <Nav />
-          {/* <TestChart/> */}
           <Switch>
             <Route path={"/"} exact component={Main} />
-            {/* <Route path={'/testchart'} component={TestChart} /> */}
             <Route path={"/detailsanalyse"} component={DetailsBloodAnalyse} />
-            <Route path={"/chartline"} component={ChartLine} />
             <Route path={"/login"} component={FormLogin} />
             <Route path={"/signup"} component={FormSignUp} />
             <Route path={"/profile"} component={Profile} />
@@ -50,7 +41,6 @@ function App() {
             <Route path={"/tests/research/:id"} component={Hormonal} />
             <Route path={"/addfeed"} component={AddFeed} />
             <Route path={"/feed/:id"} component={Feed} />
-            {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
           </Switch>
         </Router>
       </Provider>

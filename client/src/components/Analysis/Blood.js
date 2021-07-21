@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { listAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
@@ -19,38 +18,6 @@ import ProfileNav from '../Profile/ProfileNav'
 import './Analysis.css'
 
 
-function Blood() {
-  const { id } = useParams()
-  const [state, setState] = useState(false)
-  const text = useRef()
-  const petState = useSelector((state) => state.petsReducer.pet);
-
-  const addBlood = (ev) => {
-    ev.preventDefault()
-    const index = petState.findIndex((el) => el._id === id)
-    const newBlood = {
-      spacies: petState[index].spacies,
-      owner: id,
-      LDH: text.current.LDH.value,
-      ALT: text.current.ALT.value,
-      AST: text.current.AST.value,
-      ALB: text.current.ALB.value,
-      T_Pro: text.current.T_Pro.value,
-      T_Bil: text.current.T_Bil.value,
-      GLU: text.current.GLU.value,
-      T_Cho: text.current.T_Cho.value,
-      ALP: text.current.ALP.value,
-    };
-    fetch('http://localhost:4000/addblood', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newBlood),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        setState(false)
-      })      
-  }
   
 
 function Blood(props) {
@@ -71,6 +38,38 @@ function Blood(props) {
       .then((data) => dispatch(listAnalysesAC(data)))
     // .then((data) => console.log('data',data))
   }, [dispatch])
+
+  const [state, setState] = useState(false)
+  const text = useRef()
+  const petState = useSelector((state) => state.petsReducer.pet);
+
+  const addBlood = (ev) => {
+    ev.preventDefault()
+    const index = petState.findIndex((el) => el._id === id)
+    const newBlood = {
+      spacies: petState[index].spacies,
+      owner: id,
+      LDH: text.current.LDH.value,
+      ALT: text.current.ALT.value,
+      AST: text.current.AST.value,
+      ALB: text.current.ALB.value,
+      T_Pro: text.current.T_Pro.value,
+      T_Bil: text.current.T_Bil.value,
+      GLU: text.current.GLU.value,
+      T_Cho: text.current.T_Cho.value,
+      ALP: text.current.ALP.value,
+    };
+
+    fetch('http://localhost:4000/addblood', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newBlood),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setState(false)
+      })      
+  }
 
 
   return (
