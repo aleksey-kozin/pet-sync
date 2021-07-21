@@ -25,9 +25,10 @@ function Pee() {
 
   const [details, setDetails] = useState(false)
   // console.log(petState, index)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/findpee', {
+    fetch('http://localhost:4000/analyses/analysespee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,12 +40,10 @@ function Pee() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.result)
-        // dispatch(initAnalysesIdAC(result.petsArr))
+        // console.log(result.result)
+        dispatch(initAnalysesPeeAC(result))
       })
   }, [])
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/listpee', {
@@ -166,23 +165,23 @@ function Pee() {
               <div className="tests">
                 <DetailsUrineAnalyse />
                 <div className="tests">
-                  <h3>ЛДГ (лактатдегидрогеназа) </h3>
+                  <h3>Глюкоза/креатинин соотношение в моче </h3>
                   <ChartLinePeeAN16110 />{' '}
                 </div>
                 <div className="tests">
-                  <h3> Щелочная фосфатаза </h3>
+                  <h3>Соотношение белок / креатинин в моче </h3>
                   <ChartLinePeeAN28110 />
                 </div>
                 <div className="tests">
-                  <h3>Аланинаминотрансфераза (АЛТ) </h3>
+                  <h3>Соотношение кортизол / креатинин в моче </h3>
                   <ChartLinePeeAN15110 />
                 </div>
                 <div className="tests">
-                  <h3>АСТ (аспартатаминотрансфераза) </h3>
+                  <h3>Соотношение ГГТ / креатинин в моче </h3>
                   <ChartLinePeeAN116 />
                 </div>
                 <div className="tests">
-                  <h3>Глюкоза </h3>
+                  <h3>Фракционная экскреция калия и натрия с мочой </h3>
                   <ChartLinePeeAN114 />
                 </div>
               </div>

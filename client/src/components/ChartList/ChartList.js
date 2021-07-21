@@ -11,16 +11,16 @@ function ChartList(props) {
 
    console.log('dddddd', petState)
 
-  useEffect(() => {
-    fetch('http://localhost:4000/analyses', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({id:petState[0]._id, spacies:petState[0].spacies}),
-    })
-      .then((res) => res.json())
-      .then((data) => dispatch(initAnalysesAC(data)))
-    // .then((data) => console.log('data',data))
-  }, [dispatch])
+  // useEffect(() => {
+  //   fetch('http://localhost:4000/analyses', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({id:petState[0]._id, spacies:petState[0].spacies}),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => dispatch(initAnalysesAC(data)))
+  //   // .then((data) => console.log('data',data))
+  // }, [dispatch])
 
   // console.log();
 

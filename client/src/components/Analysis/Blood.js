@@ -26,11 +26,12 @@ function Blood(props) {
   const { id } = useParams()
   const petState = useSelector((state) => state.petsReducer.pet)
   const index = petState.findIndex((el) => el._id === id)
+  const dispatch = useDispatch()
 
   // console.log(petState, index)
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/findblood', {
+    fetch('http://localhost:4000/analyses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -41,13 +42,8 @@ function Blood(props) {
       }),
     })
       .then((res) => res.json())
-      .then((result) => {
-        // console.log(result.result);
-        dispatch(initAnalysesIdAC(result.petsArr))
-      })
-  }, [])
-
-  const dispatch = useDispatch()
+      .then((data) => dispatch(initAnalysesAC(data)))
+  }, [dispatch])
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/list', {

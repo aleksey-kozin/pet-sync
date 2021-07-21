@@ -2,9 +2,8 @@ import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
 import { patternDotsDef } from '@nivo/core'
 
-function ChartBlood({ analyses }) {
+function ChartPee({ analyses }) {
   // console.log('!!!!!', analyses)
-  
 
   let data = [
     {
@@ -84,4 +83,4 @@ function ChartBlood({ analyses }) {
   )
 }
 
-export default ChartBlood
+export default ChartPee

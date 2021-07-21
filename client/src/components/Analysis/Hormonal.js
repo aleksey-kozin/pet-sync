@@ -1,38 +1,78 @@
-import React, { useRef, useState } from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import ProfileNav from '../Profile/ProfileNav'
 
 function Hormonal() {
   const { id } = useParams()
-    const [state, setState] = useState(false);
-    const text = useRef();
-    const petState = useSelector  ((state) => state.petsReducer.pet);
+  const [state, setState] = useState(false)
+  const text = useRef()
+  const petState = useSelector((state) => state.petsReducer.pet)
 
-    const addHormonal = (ev) => {
-      ev.preventDefault();
-      const index = petState.findIndex((el) => el._id === id);
-      const newHormonal = {
+  const index = petState.findIndex((el) => el._id === id)
+
+  const [details, setDetails] = useState(false)
+ 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    fetch('http://localhost:4000/analyses/analysesmonitor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: petState[index]._id,
         spacies: petState[index].spacies,
-        owner: id,
-        ACT: text.current.ACT.value,
-        ALD: text.current.ALD.value,
-        INS: text.current.INS.value,
-        PTH: text.current.PTH.value,
-        T4: text.current.T4.value,
-        COR: text.current.COR.value,
-        GAS: text.current.GAS.value,
-      };
-      fetch("http://localhost:4000/addhormonal", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newHormonal),
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result.result)
+        dispatch(initAnalysesPeeAC(result))
       })
-        .then((res) => res.json())
-        .then((result) => {
-          setState(false);
-        });
-    };
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:4000/analyses/listmonitor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: petState[index]._id,
+        spacies: petState[index].spacies,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(initAnalysesPeeListAC(data)))
+    // .then((data) => console.log('data',data))
+  }, [dispatch])
+
+  const addHormonal = (ev) => {
+    ev.preventDefault()
+    const index = petState.findIndex((el) => el._id === id)
+    const newHormonal = {
+      spacies: petState[index].spacies,
+      owner: id,
+      ACT: text.current.ACT.value,
+      ALD: text.current.ALD.value,
+      INS: text.current.INS.value,
+      PTH: text.current.PTH.value,
+      T4: text.current.T4.value,
+      COR: text.current.COR.value,
+      GAS: text.current.GAS.value,
+    }
+    fetch('http://localhost:4000/addhormonal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newHormonal),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setState(false)
+      })
+  }
 
   return (
     <>
@@ -43,7 +83,7 @@ function Hormonal() {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: "40px" }}
+                  style={{ marginBottom: '40px' }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
@@ -122,7 +162,7 @@ function Hormonal() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Hormonal
