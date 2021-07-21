@@ -27,6 +27,7 @@
 }
 
 .pet-diet-base {
+  display: inline-block;
   min-width: 49%;
   max-height: 400px;
   background-color: #fff;
@@ -35,6 +36,8 @@
   margin: 0 10px 50px 0;
   margin-right: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  text-decoration: none;
+  color: #000;
 }
 
 .pet-diet-exact {

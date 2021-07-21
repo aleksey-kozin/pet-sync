@@ -43,12 +43,12 @@ function App() {
             <Route path={"/mypets"} component={MyPets} />
             <Route path={"/petcard"} component={AddPet} />
             <Route path={"/appointment"} component={Appointment} />
-            <Route path={"/feed/:id"} component={FeedAbout} />
+            <Route path={"/feed/about/:id"} component={FeedAbout} />
             <Route path={"/tests/blood/:id"} component={Blood} />
             <Route path={"/tests/pee/:id"} component={Pee} />
             <Route path={"/tests/research/:id"} component={Hormonal} />
             <Route path={"/addfeed"} component={AddFeed} />
-            <Route path={"/feed"} component={Feed} />
+            <Route path={"/feed/:id"} component={Feed} />
             {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
             <Route path={"/addanalysis/:id"} component={AnalysisForm} />
           </Switch>

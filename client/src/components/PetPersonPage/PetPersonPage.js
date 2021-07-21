@@ -108,10 +108,12 @@ function PetPersonPage(props) {
           )}
 
           <div className="diet">
+            <Link to={`/feed/${pet._id}`}>
             <div className="pet-diet-base">
               <h2>Компонент диеты для животного</h2>
               <p>Базовая диета</p>
             </div>
+            </Link>
             <div className="pet-diet-exact">
               <h2>Компонент диеты для животного</h2>
               <p>Точная диета</p>

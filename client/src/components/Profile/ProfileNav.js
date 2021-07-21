@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 function ProfileNav(props) {
   return (
+    <div className="profile-nav">
     <nav>
     <ul className="profile-menu">
       <li>
@@ -25,6 +26,7 @@ function ProfileNav(props) {
       </li>
     </ul>
   </nav>
+  </div>
   );
 }
 
