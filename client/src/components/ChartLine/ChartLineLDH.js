@@ -162,7 +162,7 @@ const ChartLineLDH = () => {
         lineWidth={4}
         pointSize={10}
         curve="cardinal"
-        pointColor="white"
+        // pointColor="white"
         useMesh={true}
         legends={[
           {

@@ -1,7 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
+import {
+  initAnalysesMonitorAC,
+  initAnalysesMonitorListAC,
+} from '../../utils/redux/actionCreators/actionCreators'
 import ProfileNav from '../Profile/ProfileNav'
+import DetailsMonitorAnalyse from '../DetailsMonitorAnalyse/DetailsMonitorAnalyse'
+import ChartListHormonal from '../ChartList/ChartListHormonal'
+import ChartLineMonitorGAS from '../ChartLineMonitor/ChartLineMonitorGAS'
+import ChartLineMonitorACT from '../ChartLineMonitor/ChartLineMonitorACT'
+import ChartLineMonitorALD from '../ChartLineMonitor/ChartLineMonitorALD'
+import ChartLineMonitorINS from '../ChartLineMonitor/ChartLineMonitorINS'
+import ChartLineMonitorPTH from '../ChartLineMonitor/ChartLineMonitorGAS'
+import ChartLineMonitorCOR from '../ChartLineMonitor/ChartLineMonitorCOR'
+import ChartLineMonitorT4 from '../ChartLineMonitor/ChartLineMonitorT4'
 
 function Hormonal() {
   const { id } = useParams()
@@ -12,7 +25,7 @@ function Hormonal() {
   const index = petState.findIndex((el) => el._id === id)
 
   const [details, setDetails] = useState(false)
- 
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -28,8 +41,8 @@ function Hormonal() {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result.result)
-        dispatch(initAnalysesPeeAC(result))
+        console.log('!!!!', result)
+        dispatch(initAnalysesMonitorAC(result))
       })
   }, [])
 
@@ -45,7 +58,7 @@ function Hormonal() {
       }),
     })
       .then((res) => res.json())
-      .then((data) => dispatch(initAnalysesPeeListAC(data)))
+      .then((data) => dispatch(initAnalysesMonitorListAC(data)))
     // .then((data) => console.log('data',data))
   }, [dispatch])
 
@@ -91,6 +104,10 @@ function Hormonal() {
               </Link>
               <h2>Гормональное исследование</h2>
             </div>
+            <div style={{ marginBottom: '50px' }}>
+              <ChartListHormonal />
+            </div>
+
             <div onClick={() => setState(true)} className="pet-item-add">
               <p>Добавить анализ</p>
             </div>
@@ -158,9 +175,48 @@ function Hormonal() {
                 </button>
               </form>
             )}
+            <button onClick={() => setDetails(!details)}>
+              Подробный анализ &rarr;
+            </button>
           </div>
+          {details ? (
+            <>
+              <div className="tests">
+                <DetailsMonitorAnalyse />
+                <div className="tests">
+                  <h3>АКТГ (адренокортикотропный гормон) </h3>
+                  <ChartLineMonitorACT />{' '}
+                </div>
+                <div className="tests">
+                  <h3>Альдостерон </h3>
+                  <ChartLineMonitorALD />
+                </div>
+                <div className="tests">
+                  <h3>Инсулин </h3>
+                  <ChartLineMonitorINS />
+                </div>
+                <div className="tests">
+                  <h3>Паратиреоидный гормон (ПТГ) </h3>
+                  <ChartLineMonitorPTH />
+                </div>
+                <div className="tests">
+                  <h3>Т4 общий (тироксин) </h3>
+                  <ChartLineMonitorT4 />
+                </div>
+                <div className="tests">
+                  <h3>Кортизол </h3>
+                  <ChartLineMonitorCOR />
+                </div>
+                <div className="tests">
+                  <h3>Гастрин </h3>
+                  <ChartLineMonitorGAS />
+                </div>
+              </div>
+            </>
+          ) : null}
         </div>
       </div>
+      {/* </div> */}
     </>
   )
 }

@@ -1,6 +1,8 @@
 import {
   INIT_ANALYSES,
   INIT_ANALYSES_ID,
+  INIT_ANALYSES_MONITOR,
+  INIT_ANALYSES_MONITOR_LIST,
   INIT_ANALYSES_PEE,
   INIT_ANALYSES_PEE_LIST,
   LIST_ANALYSES,
@@ -19,6 +21,8 @@ const analysesReducer = (
     analysesID: [],
     analysesPee: [],
     PeeListAnalyses: [],
+    analysesMonitor: [],
+    monitorListAnalyses: [],
   },
   action
 ) => {
@@ -33,6 +37,11 @@ const analysesReducer = (
       return { ...state, analysesPee: action.payload }
     case INIT_ANALYSES_PEE_LIST:
       return { ...state, PeeListAnalyses: action.payload }
+    case INIT_ANALYSES_MONITOR:
+      console.log('QQQQQQ',action.payload);
+      return { ...state, analysesMonitor: action.payload }
+    case INIT_ANALYSES_MONITOR_LIST:
+      return { ...state, monitorListAnalyses: action.payload }
 
     default:
       return state
