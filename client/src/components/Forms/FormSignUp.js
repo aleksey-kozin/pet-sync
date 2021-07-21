@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './FormStyle.css'
-import { FcGoogle } from 'react-icons/fc'
 import { useDispatch } from 'react-redux'
 import AuthService from '../../services/AuthServices'
 import { initUsersAC } from '../../utils/redux/actionCreators/actionCreators'
+import { GoogleLogin } from 'react-google-login'
+
+
 
 function FormSignUp() {
+  const clientId = '679324257872-7jktj71veuce36c6f6gd35d5quh0utof.apps.googleusercontent.com'
   const dispatch = useDispatch()
 
   const handlerSubmit = async (event) => {
@@ -21,6 +24,14 @@ function FormSignUp() {
     } catch (error) {
       console.log(error.response?.data?.message)
     }
+  }
+  // если гугл авторизация успешна отдает в консоль объект с гугл данными
+  const onLoginSuccess = (res) => {
+    console.log("login success", res.profileObj)
+  }
+  //если гугл авторизация провалена выдает ошибку
+  const onFailSuccess = (res) => {
+    console.log('login failed', res)
   }
   return (
     <>
@@ -45,12 +56,14 @@ function FormSignUp() {
               />
             </div>
             <button className="form-buttom">Зарегистрироваться</button>
-            <div className="form-links">
-              <p>Регистрация через</p>
-              <div className="google-link">
-                <FcGoogle />
-              </div>
-            </div>
+            <GoogleLogin
+              className="form-links"
+              clientId={clientId}
+              buttonText="Зарегистрироваться с помощью Google"
+              onSuccess={onLoginSuccess}
+              onFailure={onFailSuccess}
+              cookiePolicy={'single_host_origin'}
+            />            
             <hr class="hr-line" />
             <div className="form-login">
               <p>Уже есть аккаунт?</p>
