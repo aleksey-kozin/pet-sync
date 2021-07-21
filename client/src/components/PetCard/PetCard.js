@@ -2,31 +2,15 @@ import React, { useRef } from 'react'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import '../Forms/FormStyle.css'
 
-//стили material-ui
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-    input: {
-      display: 'none',
-    },
-  },
-}))
 
 function PetCard() {
   const userState = useSelector((state) => state.usersReducer)
-  const classes = useStyles()
   const text = useRef()
   const history = useHistory()
-  console.log(userState.user.id)
   //событие по кнопке
   const addAnimal = (event) => {
     event.preventDefault()
@@ -56,64 +40,21 @@ function PetCard() {
 
   return (
     <div>
-      <form ref={text} className={classes.root} noValidate autoComplete="off">
-        <div>
-          <div className={classes.root}>
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="contained-button-file"
-              multiple
-              type="file"
-            />
-            <label htmlFor="contained-button-file">
-              <Button variant="contained" color="primary" component="span">
-                Загрузить фото
-              </Button>
-            </label>
-          </div>
-          <TextField
-            required
-            name="name"
-            id="outlined-required"
-            label="Кличка"
-            variant="outlined"
-          />
-          <TextField
-            name="spacies"
-            id="outlined-required"
-            label="Вид"
-            variant="outlined"
-          />
-          <TextField
-            name="breed"
-            id="outlined-required"
-            label="Порода"
-            variant="outlined"
-          />
-          <TextField
-            name="sex"
-            id="outlined-required"
-            label="Пол"
-            variant="outlined"
-          />
-          <TextField
-            name="birthdate"
-            id="outlined-required"
-            label="Дата рождения"
-            variant="outlined"
-          />
-          <TextField
-            name="weight"
-            id="outlined-required"
-            label="Вес"
-            variant="outlined"
-          />
-        </div>
-        <Button onClick={addAnimal} type="submit" variant="contained">
+      {/* <form ref={text} className="form-body">
+        <input required name="name" placeholder="Кличка" />
+        <input name="spacies" placeholder="Вид" />
+        <input name="breed" placeholder="Порода" />
+        <input name="sex" placeholder="Пол" />
+        <input name="birthdate" placeholder="Дата рождения" />
+        <input name="weight" placeholder="Вес" />
+
+        <button onClick={addAnimal} type="submit">
           Добавить питомца
-        </Button>
-      </form>
+        </button>
+      </form> */}
+      {/* <div className="form"> */}
+          
+        {/* </div> */}
     </div>
   )
 }

@@ -105,7 +105,7 @@ function PetPersonPage(props) {
                 </button>
               </form>
             </div>
-          )}          
+          )}
 
           <div className="diet">
             <div className="pet-diet-base">
@@ -119,17 +119,36 @@ function PetPersonPage(props) {
           </div>
 
           <div className="pet-test">
+          <Link to={`/tests/blood/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
             <div className="test-item">
-              <h2 className="test-title">Название теста</h2>
+              <h2 className="test-title">Анализ крови</h2>
               <p className="test-desc">Описание теста</p>
               <img className="img" src="/test.jpeg" alt="" width="260px" />
+              <img className="plus" src="/plus.svg" alt="" width="50px" />
             </div>
-            <Link to={`/addanalysis/${id}`}>
-            <div className="pet-item-add">
-              <p>Добавить анализ</p>
+            </Link>
+            <Link to={`/tests/pee/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <div className="test-item">
+              <h2 className="test-title">Анализ мочи</h2>
+              <p className="test-desc">Описание теста</p>
+              <img className="img" src="/test.jpeg" alt="" width="260px" />
+              <img className="plus" src="/plus.svg" alt="" width="50px" />
+            </div>
+            </Link>
+            <Link to={`/tests/research/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <div className="test-item">
+              <h2 className="test-title">Анализ на витамины</h2>
+              <p className="test-desc">Описание теста</p>
+              <img className="img" src="/test.jpeg" alt="" width="260px" />
+              <img className="plus" src="/plus.svg" alt="" width="50px" />
             </div>
             </Link>
           </div>
+          {/* <Link to={`/addanalysis/${id}`}>
+            <div className="pet-item-add">
+              <p>Добавить анализ</p>
+            </div>
+            </Link> */}
           <ChartList />
         </div>
       </div>
