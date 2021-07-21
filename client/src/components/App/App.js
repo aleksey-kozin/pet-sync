@@ -16,7 +16,6 @@ import Appointment from '../Appointment/Appointment'
 import PetCard from '../PetCard/PetCard'
 import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
-import AnalysisForm from '../AnalysisForm/AnalysisForm'
 import ChartLine from '../ChartLine/ChartLine'
 import Blood from '../Analysis/Blood'
 import Pee from '../Analysis/Pee'
@@ -50,7 +49,6 @@ function App() {
             <Route path={"/addfeed"} component={AddFeed} />
             <Route path={"/feed"} component={Feed} />
             {/* <Route path={"/mypets/:id"} component={ChartList} /> */}
-            <Route path={"/addanalysis/:id"} component={AnalysisForm} />
           </Switch>
         </Router>
       </Provider>

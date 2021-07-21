@@ -12,7 +12,7 @@ const analysesUrineDog = new Schema({
   AN116: { type: Number },
   AN28110: { type: Number },
   AN15110: { type: Number },
-  TAN114: { type: Number },
+  AN114: { type: Number },
 })
 
 module.exports = model('AnalysesUrineDog', analysesUrineDog)

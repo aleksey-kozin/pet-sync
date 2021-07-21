@@ -15,4 +15,4 @@ const analysesUrineCat = new Schema({
   AN114: { type: Number },
 })
 
-module.exports = model('AnalysesUrineDog', analysesUrineCat)
+module.exports = model('AnalysesUrineCat', analysesUrineCat)
