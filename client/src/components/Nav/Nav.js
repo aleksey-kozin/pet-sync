@@ -13,14 +13,12 @@ function Nav() {
   const userState = useSelector((state) => state.usersReducer)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    return () => {}
-  }, [])
 
   useEffect(() => {
     ;(async () => {
       if (localStorage.getItem('token')) {
         const response = await AuthService.checkAuth()
+        console.log(response)
         dispatch(checkUsersAC(response.data.user))
       }
     })()
@@ -38,7 +36,7 @@ function Nav() {
 
   return (
     <>
-      {(userState.isAuth && userState.user.isActivated) || undefined ? (
+      {userState.isAuth && userState.user.isActivated ? (
         <nav className="navbar-item">
           <NavLink to="/" className="navbar-logo">
             <img src="/logomain.png" width="130px" alt="logo" />

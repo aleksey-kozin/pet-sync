@@ -17,6 +17,7 @@ class UserController {
         httpOnly: true,
       }) //  httpOnly: true - cookie cannot be changed from the browser
       return res.json(userData)
+      console.log('userData',userData)
     } catch (error) {
       next(error)
     }
@@ -50,7 +51,9 @@ class UserController {
     try {
       const activationLink = req.params.link
       await userService.activate(activationLink)
-      return res.redirect('https://pet-sync.herokuapp.com/')
+      console.log('activationLink',activationLink)
+      
+      return res.redirect('/')
     } catch (e) {
       next(e)
     }
@@ -63,6 +66,8 @@ class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       })
+      console.log('userData',userData)
+      
       return res.json(userData)
     } catch (e) {
       next(e)
