@@ -16,7 +16,7 @@ import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 import Blood from '../Analysis/Blood'
 import Pee from '../Analysis/Pee'
 import Hormonal from '../Analysis/Hormonal'
-import AddPet from '../AddPet/AddPet'
+import AddPet from '../Modal/Modal'
 
 
 function App() {

@@ -5,7 +5,7 @@ const AnalysesGormonsCat = require("../db/models/analysesGormonsCat");
 const Feed = require('../db/models/feed.model')
 const Pet = require('../db/models/Pet');
 const AnalysesUrineCat = require('../db/models/analysesUrineCat');
-const AnalysesUrineDog = require('../db/models/analysesUrineDog copy');
+const AnalysesUrineDog = require('../db/models/analysesUrineDog');
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
@@ -79,9 +79,9 @@ router.put('/put/:petid', async (req, res) => {
   res.json({ status: true })
 })
 router.put('/put/photo/:petid', async (req, res) => {
-  const {name} = req.body
+  const {name} = req.body  
   await Pet.findOneAndUpdate({_id: req.params.petid}, {image: name})
-  res.json({ status: true })
+  res.json({ status: true, name })
 })
 
 router.put('/edit/:id', async (req, res) => {

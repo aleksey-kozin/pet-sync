@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import './FormStyle.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkUsersAC, initUsersAC} from '../../utils/redux/actionCreators/actionCreators'
+import { FcGoogle } from 'react-icons/fc'
 import AuthService from '../../services/AuthServices'
 import {GoogleLogin} from 'react-google-login'
 
@@ -19,7 +20,7 @@ function FormSignUp() {
         dispatch(checkUsersAC(response.data.user))
       }
     })()
-  }, [])
+  }, [dispatch])
 
   const handlerSubmit = async (event) => {
     try {
@@ -29,10 +30,9 @@ function FormSignUp() {
       const password = event.target.password.value
 
       const response = await AuthService.login(email, password)
-      console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
-      history.push('/profile')
+      history.push('/mypets')
     } catch (error) {
       console.log(error.response?.data?.message)
     }
@@ -48,16 +48,7 @@ function FormSignUp() {
 
   return (
     <>
-      <h1>
-        {userState.isAuth
-          ? `Пользователь авторизован ${userState.user.email}`
-          : 'АВТОРИЗУЙТЕСЬ'}
-      </h1>
-      <h1>
-        {userState.user.isActivated
-          ? 'Аккаунт подтвержден по почте'
-          : 'ПОДТВЕРДИТЕ АККАУНТ!!!!'}
-      </h1>
+      
       <div className="wrapper">
         <div className="form">
           <form onSubmit={handlerSubmit} className="form-body">

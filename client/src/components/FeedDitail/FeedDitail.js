@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import {editFeedAC} from '../../utils/redux/actionCreators/actionCreators'
+import React, { useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom'
+import { editFeedAC } from '../../utils/redux/actionCreators/actionCreators'
 
 function FeedDitail({ value }) {
   const feedArray = useSelector((state) => state.feedReducer.feed)
@@ -11,7 +11,7 @@ function FeedDitail({ value }) {
   const [state, setState] = useState(true)
   const text = useRef()
 
-  const findFeed = feedArray.find((item) => item._id === id);
+  const findFeed = feedArray.find((item) => item._id === id)
 
   const editFeed = (ev) => {
     ev.preventDefault()
@@ -24,33 +24,35 @@ function FeedDitail({ value }) {
       veterinaryDiet: text.current.veterinaryDiet.value,
       brand: text.current.brand.value,
       name: text.current.name.value,
-    };
-    dispatch(editFeedAC(editFeed));
+    }
+    dispatch(editFeedAC(editFeed))
     fetch(`http://localhost:4000/edit/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editFeed),
     })
       .then((res) => res.json())
       .then((result) => {
-        alert("Изменения успешно сохранены");
+        alert('Изменения успешно сохранены')
       })
-      .then(setState(true));
+      .then(setState(true))
   }
 
   const delFeed = (ev) => {
-    ev.preventDefault();
+    ev.preventDefault()
     fetch(`http://localhost:4000/delfeed/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     })
       .then((res) => res.json())
       .then((result) => {
         if (result.status) {
           alert('Корм успешно удален из базы')
-        } else { alert('Что-то пошло не так') }
+        } else {
+          alert('Что-то пошло не так')
+        }
       })
-    .then(() => history.push('/feed'))
-  };
+      .then(() => history.push('/feed'))
+  }
 
   return (
     <div>
@@ -59,18 +61,18 @@ function FeedDitail({ value }) {
           <div>
             <label>
               <h5>
-                {" "}
-                Брэнд: <input name="brand" defaultValue={value.brand} />{" "}
+                {' '}
+                Брэнд: <input name="brand" defaultValue={value.brand} />{' '}
               </h5>
             </label>
             <label>
-              {" "}
+              {' '}
               <p>
                 Наименование: <input name="name" defaultValue={value.name} />
               </p>
             </label>
             <label>
-              {" "}
+              {' '}
               <p>
                 Для кого: <input name="type" defaultValue={value.type} />
               </p>
@@ -87,7 +89,7 @@ function FeedDitail({ value }) {
             </label>
             <label>
               <p>
-                Особые потребности:{" "}
+                Особые потребности:{' '}
                 <input
                   name="veterinaryDiet"
                   defaultValue={value.veterinaryDiet}
@@ -100,7 +102,7 @@ function FeedDitail({ value }) {
           </button>
           <button
             onClick={() => {
-              setState(true);
+              setState(true)
             }}
             type="button"
           >
@@ -109,7 +111,7 @@ function FeedDitail({ value }) {
         </form>
       ) : (
         <div>
-          <img src={value.img} />
+          <img src={value.img} alt="" />
           <div>
             <h5>Брэнд: {value.brand}</h5>
             <p>Наименование: {value.name}</p>
@@ -120,7 +122,7 @@ function FeedDitail({ value }) {
           </div>
           <button
             onClick={() => {
-              setState(false);
+              setState(false)
             }}
             type="button"
           >
@@ -132,7 +134,7 @@ function FeedDitail({ value }) {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default FeedDitail;
+export default FeedDitail

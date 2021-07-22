@@ -7,7 +7,6 @@ import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import { TextField } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { initFeedAC } from '../../utils/redux/actionCreators/actionCreators'
 import './Feed.css'
@@ -30,7 +29,7 @@ function Feed() {
     fetch('http://localhost:4000/feed')
       .then((res) => res.json())
       .then((result) => dispatch(initFeedAC(result.feedArr)))
-  }, [])
+  }, [dispatch])
   const classes = useStyles()
 
   const typePets = [{ typeLabel: 'Собаки' }, { typeLabel: 'Кошки' }]
@@ -58,7 +57,6 @@ function Feed() {
   const filteredUnits =
     type.length || age.length || size.length || veterinaryDiet.length
       ? feedArray.filter((feed) => {
-          // console.log("filtering", feed);
           return (
             (!type.length || type.includes(feed.type)) &&
             (!age.length || age.includes(feed.age)) &&
@@ -75,7 +73,6 @@ function Feed() {
         <div className="main-wrapper1">
           <ProfileNav />
           <div className="feed">
-            {/* <TextField fullWidth /> */}
             <Link to={`/mypets/${id}`}>
               <img
                 style={{ marginBottom: '40px' }}

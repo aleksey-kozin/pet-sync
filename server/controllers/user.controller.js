@@ -10,7 +10,6 @@ class UserController {
         return next(ApiError.BadRequest('Ошибка при валидации', errors.array()))
       }
       const { email, password } = req.body
-      console.log(email)
       const userData = await userService.registration(email, password)
 
       res.cookie('refreshToken', userData.refreshToken, {
@@ -39,7 +38,6 @@ class UserController {
   async logout(req, res, next) {
     try {
       const { refreshToken } = req.cookies
-      console.log(refreshToken);
       const token = await userService.logout(refreshToken)
       res.clearCookie('refreshToken')
       return res.json(token)

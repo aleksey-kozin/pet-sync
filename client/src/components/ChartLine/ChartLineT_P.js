@@ -22,15 +22,13 @@ const ChartLineT_P = () => {
   ]
 
   return (
-    <div className="App" style={{ height: 300, width: 600 }}>
-      {/* <h1>Line y axis time scale</h1> */}
+    <div className="App" style={{ height: 300 }}>
       <ResponsiveLine
         data={data}
         margin={{ top: 50, right: 60, bottom: 50, left: 120 }}
         xScale={{
           type: 'point',
         }}
-        // xFormat="time:%Y-%m-%d"
         yScale={{
           type: 'linear',
           stacked: ('stacked', false),
@@ -64,7 +62,6 @@ const ChartLineT_P = () => {
         lineWidth={4}
         pointSize={10}
         curve="cardinal"
-        pointColor="white"
         useMesh={true}
       />
     </div>

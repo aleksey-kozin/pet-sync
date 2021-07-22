@@ -1,13 +1,24 @@
-import { INIT_ANALYSES, LIST_ANALYSES } from '../actionTypes/actionTypes'
+import {
+  INIT_ANALYSES,
+  INIT_ANALYSES_ID,
+  INIT_ANALYSES_MONITOR,
+  INIT_ANALYSES_MONITOR_LIST,
+  INIT_ANALYSES_PEE,
+  INIT_ANALYSES_PEE_LIST,
+  LIST_ANALYSES,
+} from '../actionTypes/actionTypes'
 
-// const initialStateAuth = {
-//   user: {},
-//   isAuth: false,
-//   isLoading: false,
-// }
 
 const analysesReducer = (
-  state = { analyses: [], listAnalyses: [] },
+  state = {
+    analyses: [],
+    listAnalyses: [],
+    analysesID: [],
+    analysesPee: [],
+    PeeListAnalyses: [],
+    analysesMonitor: [],
+    monitorListAnalyses: [],
+  },
   action
 ) => {
   switch (action.type) {
@@ -15,6 +26,17 @@ const analysesReducer = (
       return { ...state, analyses: action.payload }
     case LIST_ANALYSES:
       return { ...state, listAnalyses: action.payload }
+    case INIT_ANALYSES_ID:
+      return { ...state, analysesID: action.payload }
+    case INIT_ANALYSES_PEE:
+      return { ...state, analysesPee: action.payload }
+    case INIT_ANALYSES_PEE_LIST:
+      return { ...state, PeeListAnalyses: action.payload }
+    case INIT_ANALYSES_MONITOR:
+      console.log('QQQQQQ',action.payload);
+      return { ...state, analysesMonitor: action.payload }
+    case INIT_ANALYSES_MONITOR_LIST:
+      return { ...state, monitorListAnalyses: action.payload }
 
     default:
       return state

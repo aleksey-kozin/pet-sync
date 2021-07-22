@@ -1,7 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { listAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
+import {
+  initAnalysesAC,
+  initAnalysesIdAC,
+  listAnalysesAC,
+} from '../../utils/redux/actionCreators/actionCreators'
 import ChartLineALB from '../ChartLine/ChartLineALB'
 import ChartLineLDH from '../ChartLine/ChartLineLDH'
 import ChartLineALP from '../ChartLine/ChartLineALP'
@@ -17,31 +21,47 @@ import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 import ProfileNav from '../Profile/ProfileNav'
 import './Analysis.css'
 
-
-  
-
 function Blood(props) {
   const [details, setDetails] = useState(false)
+  const [ldh, setLdh] = useState(false)
   const { id } = useParams()
 
-  // const listAnalyses = useSelector(
-  //   (state) => state.analysesReducer.listAnalyses
-  // )
+  const petState = useSelector((state) => state.petsReducer.pet)
+  const index = petState.findIndex((el) => el._id === id)
   const dispatch = useDispatch()
-  // console.log('sssss',analyses);
-
-  // console.log('state', analyses)
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/list')
+    fetch('http://localhost:4000/analyses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: petState[index]._id,
+        spacies: petState[index].spacies,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(initAnalysesAC(data)))
+  }, [dispatch])
+
+  useEffect(() => {
+    fetch('http://localhost:4000/analyses/list', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: petState[index]._id,
+        spacies: petState[index].spacies,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
-    // .then((data) => console.log('data',data))
   }, [dispatch])
 
   const [state, setState] = useState(false)
   const text = useRef()
-  const petState = useSelector((state) => state.petsReducer.pet);
 
   const addBlood = (ev) => {
     ev.preventDefault()
@@ -58,7 +78,7 @@ function Blood(props) {
       GLU: text.current.GLU.value,
       T_Cho: text.current.T_Cho.value,
       ALP: text.current.ALP.value,
-    };
+    }
 
     fetch('http://localhost:4000/addblood', {
       method: 'POST',
@@ -68,9 +88,8 @@ function Blood(props) {
       .then((res) => res.json())
       .then((result) => {
         setState(false)
-      })      
+      })
   }
-
 
   return (
     <>
@@ -81,24 +100,23 @@ function Blood(props) {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: "40px" }}
+                  style={{ marginBottom: '40px' }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
                 />
               </Link>
               <h2>Анализ крови</h2>
-              {/* <Link to={`/tests/blood/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                
-              </Link> */}
+
+              <div onClick={() => setState(true)} className="pet-item-add">
+                <p>Добавить анализ</p>
+              </div>
+
             </div>
             <div style={{ marginBottom: '50px' }}>
               <ChartList />
             </div>
 
-            <div onClick={() => setState(true)} className="pet-item-add">
-              <p>Добавить анализ</p>
-            </div>
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
@@ -179,29 +197,75 @@ function Blood(props) {
                 </button>
               </form>
             )}
-            
-            
 
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
             </button>
-            {details ? (
-              <>
-                <DetailsBloodAnalyse /> <ChartLineLDH /> <ChartLineALB />
-                <ChartLineALP />
-                <ChartLineALT />
-                <ChartLineAST />
-                <ChartLineGLU />
-                <ChartLineTB />
-                <ChartLineTCho />
-                <ChartLineTP/> <ChartLineALP />
-              </>
-            ) : null}
+
           </div>
+
+          {details ? (
+            <>
+              <div className="tests">
+                <DetailsBloodAnalyse />
+                <div className="tests">
+                  <h3>ЛДГ (лактатдегидрогеназа) </h3>
+                  <ChartLineLDH />
+                  <button onClick={() => setLdh(!ldh)}>Пояснения &rarr;</button>
+                  {ldh ? (
+                    <ul className="list5b">
+                      <h4>Повышение уровня:</h4>
+                      <li>Состояния или заболевания, приводящие к гемолизу</li>
+                      <li>Повреждения скелетной мускулатуры</li>
+                      <li>Гепатоцелюллярные повреждения</li>
+                      <li>Инфаркт миокарда</li>
+                      <li>Неопластические процессы</li>
+                      <li>Острый панкреатит</li>
+                      <li>Нефрит</li>
+                      <li>Лептоспироз</li>
+                      <li>Инфекционный перитонит кошек</li>
+                    </ul>
+                  ) : null}
+                </div>
+                <div className="tests">
+                  <h3>Альбумин </h3>
+                  <ChartLineALB />
+                </div>
+                <div className="tests">
+                  <h3> Щелочная фосфатаза </h3>
+                  <ChartLineALP />
+                </div>
+                <div className="tests">
+                  <h3>Аланинаминотрансфераза (АЛТ) </h3>
+                  <ChartLineALT />
+                </div>
+                <div className="tests">
+                  <h3>АСТ (аспартатаминотрансфераза) </h3>
+                  <ChartLineAST />
+                </div>
+                <div className="tests">
+                  <h3>Глюкоза </h3>
+                  <ChartLineGLU />
+                </div>
+                <div className="tests">
+                  <h3>Билирубин общий </h3>
+                  <ChartLineTB />
+                </div>
+                <div className="tests">
+                  <h3>Холестерин </h3>
+                  <ChartLineTCho />
+                </div>
+                <div className="tests">
+                  <h3>Общий белок </h3>
+                  <ChartLineTP />
+                </div>
+              </div>
+            </>
+          ) : null}
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Blood
