@@ -72,14 +72,14 @@ function FormSignUp() {
               />
             </div>
             <button className="form-buttom">Войти</button>
-            <GoogleLogin
+            {/* <GoogleLogin
               className="form-links"
               clientId={clientId}
               buttonText="Войти с помощью Google"
               onSuccess={onLoginSuccess}
               onFailure={onFailSuccess}
               cookiePolicy={'single_host_origin'}
-            />
+            /> */}
             <hr className="hr-line" />
             <div className="form-login">
               <p>Еще нет аккаунта?</p>
@@ -91,6 +91,9 @@ function FormSignUp() {
             </div>
           </form>
         </div>
+        <div className="bg">
+        <img className="bgimg" src="/dogscatsbg.png" alt="" />
+      </div>
       </div>
     </>
   )
