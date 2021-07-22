@@ -10,12 +10,12 @@
   padding: 0 20px;
 }
 
-.offer-title {
-}
+
 
 .img-offer {
   position: relative;
   transform: translate(70px, 10px);
+  width: 410px;
 }
 
 .main-wrapper1 {
@@ -81,5 +81,13 @@
   .main-item1 {
     min-width: 100%;
     margin: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .img-offer {
+
+    width: 300px;
   }
 }

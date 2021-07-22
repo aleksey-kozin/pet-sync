@@ -81,6 +81,7 @@ function Feed() {
                 width="40px"
               />
             </Link>
+            <h2 style={{ marginBottom: '40px'}}>Подбор базовой диеты</h2>
             <div style={{ marginBottom: "40px" }}>
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend" style={{ fontSize: "18px" }}>

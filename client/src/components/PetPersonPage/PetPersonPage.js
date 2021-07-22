@@ -248,10 +248,12 @@ function PetPersonPage(props) {
                 <p>Базовая диета</p>
               </div>
             </Link>
+            <Link to={`/feeds/${pet._id}`}>
             <div className="pet-diet-exact">
               <h2>Точная диета для {pet.name ? pet.name : "животного"}</h2>
               <p>Точная диета</p>
             </div>
+            </Link>
           </div>
 
           <div className="pet-test">
@@ -261,7 +263,7 @@ function PetPersonPage(props) {
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ крови</h2>
-                <p className="test-desc">Описание теста</p>
+                <p className="test-desc"></p>
                 <img className="img" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
               </div>
@@ -272,7 +274,7 @@ function PetPersonPage(props) {
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ мочи</h2>
-                <p className="test-desc">Описание теста</p>
+                <p className="test-desc"></p>
                 <img className="img" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
               </div>
@@ -283,7 +285,7 @@ function PetPersonPage(props) {
             >
               <div className="test-item">
                 <h2 className="test-title">Гормоны</h2>
-                <p className="test-desc">Описание теста</p>
+                <p className="test-desc"></p>
                 <img className="img" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
               </div>
