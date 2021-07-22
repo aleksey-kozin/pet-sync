@@ -50,7 +50,7 @@ class UserController {
     try {
       const activationLink = req.params.link
       await userService.activate(activationLink)
-      return res.redirect('/')
+      return res.redirect('https://pet-sync.herokuapp.com/')
     } catch (e) {
       next(e)
     }

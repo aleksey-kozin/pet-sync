@@ -23,7 +23,7 @@ class UserService {
     })
     await mailService.sendActivationMail(
       email,
-      `/api/activate/${activationLink}`
+      `https://pet-sync.herokuapp.com/api/activate/${activationLink}`
     )
     const userDto = new UserDto(user) // id, email, isActivated
     const tokens = tokenService.generateTokens({ ...userDto })
