@@ -25,11 +25,10 @@ function Blood(props) {
   const [details, setDetails] = useState(false)
   const [ldh, setLdh] = useState(false)
   const { id } = useParams()
+
   const petState = useSelector((state) => state.petsReducer.pet)
   const index = petState.findIndex((el) => el._id === id)
   const dispatch = useDispatch()
-
-  // console.log(petState, index)
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses', {
@@ -59,12 +58,10 @@ function Blood(props) {
     })
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
-    // .then((data) => console.log('data',data))
   }, [dispatch])
 
   const [state, setState] = useState(false)
   const text = useRef()
-  // const petState = useSelector((state) => state.petsReducer.pet);
 
   const addBlood = (ev) => {
     ev.preventDefault()
@@ -110,17 +107,16 @@ function Blood(props) {
                 />
               </Link>
               <h2>Анализ крови</h2>
-              {/* <Link to={`/tests/blood/${pet._id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                
-              </Link> */}
+
+              <div onClick={() => setState(true)} className="pet-item-add">
+                <p>Добавить анализ</p>
+              </div>
+
             </div>
             <div style={{ marginBottom: '50px' }}>
               <ChartList />
             </div>
 
-            <div onClick={() => setState(true)} className="pet-item-add">
-              <p>Добавить анализ</p>
-            </div>
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
@@ -205,6 +201,7 @@ function Blood(props) {
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
             </button>
+
           </div>
 
           {details ? (

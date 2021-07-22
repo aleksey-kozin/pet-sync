@@ -11,7 +11,6 @@ const analysesGormonsDog = require('../db/models/analysesGormonsDog.js')
 
 router.post('/list', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log(id,spacies);
   if (spacies === 'Кошка') {
     const analyses = await AnalysesBioCat.find({ owner: id }).sort({ date: 1 })
     res.json(analyses)
@@ -23,7 +22,6 @@ router.post('/list', async (req, res) => {
 
 router.post('/listpee', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log(id,spacies);
   if (spacies === 'Кошка') {
     const analyses = await AnalysesUrineCat.find({ owner: id }).sort({
       date: 1,
@@ -39,7 +37,6 @@ router.post('/listpee', async (req, res) => {
 
 router.post('/listmonitor', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log(id,spacies);
   if (spacies === 'Кошка') {
     const analyses = await analysesGormonsCat.find({ owner: id }).sort({
       date: 1,
@@ -55,14 +52,12 @@ router.post('/listmonitor', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log('id', id, spacies)
   if (spacies === 'Кошка') {
     const analyses = await AnalysesBioCat.find({ owner: id }).sort({ date: 1 })
     if (!analyses.length) {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
-    // console.log(resultAnalyses);
     let chartValue = 0
     const normal = {
       LDH: [320, 460],
@@ -84,18 +79,17 @@ router.post('/', async (req, res) => {
         chartValue += 11.1
       }
     }
-    // console.log(chartValue)
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
     res.json(finalAnalyse)
   } else {
     const analyses = await AnalysesBioDog.find({ owner: id }).sort({ date: 1 })
-    // console.log(analyses)
+
     if (!analyses.length) {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
-    // console.log('analyses',resultAnalyses);
+ 
     let chartValue = 0
     const normal = {
       LDH: [220, 450],
@@ -117,23 +111,23 @@ router.post('/', async (req, res) => {
         chartValue += 11.1
       }
     }
-    // console.log(chartValue)
+
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
-    // console.log(finalAnalyse)
+
     res.json(finalAnalyse)
   }
 })
 
 router.post('/findblood', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log(id, spacies);
+
   if (spacies === 'Кошка') {
     const peeCat = await AnalysesBioCat.find({ owner: id })
     res.json({ result: peeCat })
   } else {
     const peeDog = await AnalysesBioDog.find({ owner: id })
-    // console.log(peeDog);
+
 
     res.json({ result: peeDog })
   }
@@ -147,7 +141,6 @@ router.post('/findpee', async (req, res) => {
     res.json({ result: peeCat })
   } else {
     const peeDog = await AnalysesUrineDog.find({ owner: id })
-    // console.log(peeDog);
 
     res.json({ result: peeDog })
   }
@@ -155,7 +148,7 @@ router.post('/findpee', async (req, res) => {
 
 router.post('/analysespee', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log('id', id, spacies)
+
   if (spacies === 'Кошка') {
     const analyses = await AnalysesUrineCat.find({ owner: id }).sort({
       date: 1,
@@ -182,7 +175,7 @@ router.post('/analysespee', async (req, res) => {
         chartValue += 20
       }
     }
-    // console.log(chartValue)
+
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
     res.json(finalAnalyse)
@@ -194,8 +187,7 @@ router.post('/analysespee', async (req, res) => {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
-    // console.log(resultAnalyses)
-    // console.log(resultAnalyses);
+
     let chartValue = 0
     const normal = {
       AN16110: [0, 0.5],
@@ -213,7 +205,6 @@ router.post('/analysespee', async (req, res) => {
         chartValue += 20
       }
     }
-    // console.log(chartValue)
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
     res.json(finalAnalyse)
@@ -251,7 +242,6 @@ router.post('/analysesmonitor', async (req, res) => {
         chartValue += 14.3
       }
     }
-    // console.log(chartValue)
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
     res.json(finalAnalyse)
@@ -284,10 +274,8 @@ router.post('/analysesmonitor', async (req, res) => {
         chartValue += 14.3
       }
     }
-    // console.log(chartValue)
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
-    // console.log(finalAnalyse)
     res.json(finalAnalyse)
   }
 })

@@ -16,7 +16,6 @@ const usersReducer = (state = initialStateAuth, action) => {
       return { ...state, user: action.payload, isAuth: true }
 
     case CHECK_USERS:
-      // console.log(action.payload);
       return { ...state, user: action.payload, isAuth: true, isLoading: true }
 
     case LOGOUT_USERS:

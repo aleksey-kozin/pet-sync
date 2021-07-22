@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Pet.css'
 
 function Pet({ value }) {
-
   return (
     <>
-      <Link to={`/mypets/${value._id}`} style={{ textDecoration: 'none', color: 'black' }}>
+      <Link
+        to={`/mypets/${value._id}`}
+        style={{ textDecoration: 'none', color: 'black' }}
+      >
         <div className="pet-item">
           <h2 className="pet-title">{value.name}</h2>
           <p className="pet-desc">{value.breed}</p>

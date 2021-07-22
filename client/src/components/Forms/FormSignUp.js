@@ -15,7 +15,6 @@ function FormSignUp() {
       const email = event.target.email.value
       const password = event.target.password.value
       const response = await AuthService.registration(email, password)
-      console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
     } catch (error) {
@@ -51,7 +50,7 @@ function FormSignUp() {
                 <FcGoogle />
               </div>
             </div>
-            <hr class="hr-line" />
+            <hr className="hr-line" />
             <div className="form-login">
               <p>Уже есть аккаунт?</p>
               <Link to="/login">

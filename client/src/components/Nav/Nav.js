@@ -11,69 +11,53 @@ import AuthService from '../../services/AuthServices'
 function Nav() {
   const [icon, setIcon] = useState(false)
   const userState = useSelector((state) => state.usersReducer)
-  // console.log(userState)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    return () => {}
+  }, [])
 
   useEffect(() => {
     ;(async () => {
       if (localStorage.getItem('token')) {
         const response = await AuthService.checkAuth()
-        // console.log(response)
         dispatch(checkUsersAC(response.data.user))
       }
     })()
-  }, [])
+  }, [dispatch])
 
   const handlerLogout = async (event) => {
     try {
-      const response = await AuthService.logout();
-      console.log(response);
-      localStorage.removeItem('token');
-      // this.setAuth(false);
-      // this.setUser({} as IUser);
+      await AuthService.logout()
+      localStorage.removeItem('token')
       dispatch(checkUsersAC({}))
-  } catch (e) {
-      console.log(e.response?.data?.message);
-  }
+    } catch (e) {
+      console.log(e.response?.data?.message)
+    }
   }
 
   return (
     <>
       {userState.isAuth && userState.user.isActivated ? (
         <nav className="navbar-item">
-          <NavLink to="/" className="navbar-logo"><img src="/logomain.png" width="140px" alt="logo" /></NavLink>
+          <NavLink to="/" className="navbar-logo">
+            <img src="/logomain.png" width="130px" alt="logo" />
+          </NavLink>
           <div onClick={() => setIcon(!icon)} className="menu-icon">
             {icon ? <VscClose /> : <FiMenu />}
           </div>
           <ul className={icon ? 'nav-menu active' : 'nav-menu'}>
-            {/* <li>
-              <NavLink onClick={() => setIcon(false)} to="/" className="nav-links" activeStyle={{backgroundColor: 'white'}}>
-                Главная
-              </NavLink>
-            </li> */}
             <li>
               <NavLink
                 onClick={() => setIcon(false)}
-                to="/profile"
+                to="/mypets"
                 className="nav-links"
               >
                 Профиль
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                onClick={() => setIcon(false)}
-                to="/signup"
-                className="nav-links"
-              >
-                Добавить питомца
-              </NavLink>
-            </li> */}
             <li>
-              <Link
-                onClick={() => handlerLogout()}
-                className="nav-links"
-              >
+              <Link to="" onClick={() => handlerLogout()} className="nav-links">
                 Выйти
               </Link>
             </li>
@@ -81,17 +65,13 @@ function Nav() {
         </nav>
       ) : (
         <nav className="navbar-item">
-          <NavLink to="/" className="navbar-logo"><img src="/logo.png" width="180px" alt="logo" /></NavLink>
+          <NavLink to="/" className="navbar-logo">
+            <img src="/logomain.png" width="130px" alt="logo" />
+          </NavLink>
           <div onClick={() => setIcon(!icon)} className="menu-icon">
             {icon ? <VscClose /> : <FiMenu />}
           </div>
           <ul className={icon ? 'nav-menu active' : 'nav-menu'}>
-            {/* <li>
-              <NavLink onClick={() => setIcon(false)} to="/" className="nav-links">
-                Главная
-              </NavLink>
-            </li> */}
-
             <li>
               <NavLink
                 onClick={() => setIcon(false)}
