@@ -70,8 +70,8 @@ export function initAnalysesMonitorAC(payload) {
 
 export function initAnalysesMonitorListAC(payload) {
   return { type: INIT_ANALYSES_MONITOR_LIST, payload }
+}
 
 export function editPetImgAC(payload) {
   return { type: EDIT_PET_IMG, payload }
-
 }

@@ -75,15 +75,17 @@ function Feed() {
           <div className="feed">
             <Link to={`/mypets/${id}`}>
               <img
-                style={{ marginBottom: '40px' }}
+                style={{ marginBottom: "40px" }}
                 src="/left-arrow.svg"
                 alt=""
                 width="40px"
               />
             </Link>
-            <div style={{ marginBottom: '40px' }}>
+            <div style={{ marginBottom: "40px" }}>
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Животное</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                  <b>Животное</b>
+                </FormLabel>
                 <FormGroup>
                   {typePets.map((animal, i) => (
                     <FormControlLabel
@@ -107,7 +109,9 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Возраст</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                  <b>Возраст</b>
+                </FormLabel>
                 <FormGroup>
                   {agePets.map((age, i) => (
                     <FormControlLabel
@@ -131,7 +135,9 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Размер</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                  <b>Размер</b>
+                </FormLabel>
                 <FormGroup>
                   {sizePets.map((size, i) => (
                     <FormControlLabel
@@ -155,7 +161,9 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Особые потребности</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                  <b>Особые потребности</b>
+                </FormLabel>
                 <FormGroup>
                   {veterinaryDietPets.map((diet, i) => (
                     <FormControlLabel
@@ -186,7 +194,7 @@ function Feed() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Feed
