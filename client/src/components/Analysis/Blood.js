@@ -111,7 +111,6 @@ function Blood(props) {
               <div onClick={() => setState(true)} className="pet-item-add">
                 <p>Добавить анализ</p>
               </div>
-
             </div>
             <div style={{ marginBottom: '50px' }}>
               <ChartList />
@@ -201,7 +200,6 @@ function Blood(props) {
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
             </button>
-
           </div>
 
           {details ? (
@@ -213,18 +211,26 @@ function Blood(props) {
                   <ChartLineLDH />
                   <button onClick={() => setLdh(!ldh)}>Пояснения &rarr;</button>
                   {ldh ? (
-                    <ul className="list5b">
-                      <h4>Повышение уровня:</h4>
-                      <li>Состояния или заболевания, приводящие к гемолизу</li>
-                      <li>Повреждения скелетной мускулатуры</li>
-                      <li>Гепатоцелюллярные повреждения</li>
-                      <li>Инфаркт миокарда</li>
-                      <li>Неопластические процессы</li>
-                      <li>Острый панкреатит</li>
-                      <li>Нефрит</li>
-                      <li>Лептоспироз</li>
-                      <li>Инфекционный перитонит кошек</li>
-                    </ul>
+                    <>
+                      <ul className="list5b">
+                        <h4>Повышение уровня:</h4>
+                        <li>
+                          Состояния или заболевания, приводящие к гемолизу
+                        </li>
+                        <li>Повреждения скелетной мускулатуры</li>
+                        <li>Гепатоцелюллярные повреждения</li>
+                        <li>Инфаркт миокарда</li>
+                        <li>Неопластические процессы</li>
+                        <li>Острый панкреатит</li>
+                        <li>Нефрит</li>
+                        <li>Лептоспироз</li>
+                        <li>Инфекционный перитонит кошек</li>
+                      </ul>
+                      <ul className="list5b">
+                        <h4>Понижение уровня:</h4>
+                        <li>Не имеет клинической значимости</li>
+                      </ul>
+                    </>
                   ) : null}
                 </div>
                 <div className="tests">

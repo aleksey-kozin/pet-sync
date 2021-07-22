@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { checkUsersAC, initUsersAC} from '../../utils/redux/actionCreators/actionCreators'
 import { FcGoogle } from 'react-icons/fc'
 import AuthService from '../../services/AuthServices'
+import cogoToast from 'cogo-toast';
 import {GoogleLogin} from 'react-google-login'
 
 function FormSignUp() {
@@ -34,7 +35,8 @@ function FormSignUp() {
       dispatch(initUsersAC(response.data.user))
       history.push('/mypets')
     } catch (error) {
-      console.log(error.response?.data?.message)
+      cogoToast.warn(error.response?.data?.message, { position: 'bottom-center'});
+      // console.log(error.response?.data?.message)
     }
   }
   // если гугл авторизация успешна отдает в консоль объект с гугл данными

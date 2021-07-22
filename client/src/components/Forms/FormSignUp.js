@@ -4,9 +4,8 @@ import './FormStyle.css'
 import { useDispatch } from 'react-redux'
 import AuthService from '../../services/AuthServices'
 import { initUsersAC } from '../../utils/redux/actionCreators/actionCreators'
+import cogoToast from 'cogo-toast'
 import { GoogleLogin } from 'react-google-login'
-
-
 
 function FormSignUp() {
   const clientId = '679324257872-7jktj71veuce36c6f6gd35d5quh0utof.apps.googleusercontent.com'
@@ -21,7 +20,9 @@ function FormSignUp() {
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
     } catch (error) {
-      console.log(error.response?.data?.message)
+      cogoToast.warn(error.response?.data?.message, {
+        position: 'bottom-center'})
+      // console.log(error.response?.data?.message)
     }
   }
   // если гугл авторизация успешна отдает в консоль объект с гугл данными
