@@ -11,7 +11,7 @@ function Main() {
             <h1>Трекер здоровья питомца</h1>
             <h2>Сделаем жизнь вашего животного лучше</h2>
           </div>
-          <img className="img-offer" src="/offerbg.png" alt="" width="410px" />
+          <img className="img-offer" src="/offerbg.png" alt="offer" />
         </div>
         <Slider />
         <div className="main-wrapper1">
