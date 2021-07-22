@@ -154,3 +154,62 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .formater {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pet-profile {
+    max-height: 100%;
+  }
+  
+  .profile-menu {
+    justify-content: center;
+    margin: 0
+    
+  }
+  .profile-links-selected {
+
+  }
+  
+  .profile.links {
+    font-size: 18px;
+  }
+
+  .diet {
+    flex-direction: column;
+  }
+
+  .pet-diet-base {
+    min-width: 100%;
+    margin: 0 0 50px 0;
+  }
+
+  .pet-diet-exact {
+    min-width: 100%;
+    margin: 0 0 50px 0;
+  }
+
+  .pet-test {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .test-item {
+    margin-bottom: 50px;
+  }
+
+  .edit {
+    transform: translate(-114px, 40px);
+  }
+
+  .del {
+    transform: translate(65px, -13px);
+  }
+
+  .pet-info {
+    margin: 0;
+  }
+}
+

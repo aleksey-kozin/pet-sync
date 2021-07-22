@@ -20,6 +20,7 @@ import ChartList from '../ChartList/ChartList'
 import DetailsBloodAnalyse from '../DetailsBloodAnalyse/DetailsBloodAnalyse'
 import ProfileNav from '../Profile/ProfileNav'
 import './Analysis.css'
+import Modal from '../Modal/Modal'
 
 function Blood(props) {
   const [details, setDetails] = useState(false)
@@ -33,6 +34,7 @@ function Blood(props) {
   const [TCho, setTCho] = useState(false);
   const [TP, setTP] = useState(false);
 
+  const [modalActive, setModalActive] = useState(false)
 
   const { id } = useParams()
 
@@ -53,7 +55,7 @@ function Blood(props) {
     })
       .then((res) => res.json())
       .then((data) => dispatch(initAnalysesAC(data)))
-  }, [dispatch])
+  }, [dispatch, modalActive])
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/list', {
@@ -68,9 +70,8 @@ function Blood(props) {
     })
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
-  }, [dispatch])
+  }, [dispatch, details])
 
-  const [state, setState] = useState(false)
   const text = useRef()
 
   const addBlood = (ev) => {
@@ -98,9 +99,12 @@ function Blood(props) {
     })
       .then((res) => res.json())
       .then((result) => {
-        setState(false)
+        setModalActive(false)
+        
       })
   }
+
+  
 
   return (
     <>
@@ -119,102 +123,102 @@ function Blood(props) {
               </Link>
               <h2>Анализ крови</h2>
 
-              <div onClick={() => setState(true)} className="pet-item-add">
-                <p>Добавить анализ</p>
-              </div>
+              
+                <button className="analis-btn" onClick={() => setModalActive(true)} >Добавить анализ</button>
+              
             </div>
             <div style={{ marginBottom: "50px" }}>
               <ChartList />
             </div>
 
-            {state && (
-              <form className="form-body" ref={text}>
-                <h2 className="form-title">Добавление анализа</h2>
-                <div className="form-item">
+            <Modal active={modalActive} setActive={setModalActive}>
+              <form onSubmit={addBlood} className="form-body1" ref={text}>
+                <h2 className="form-title1">Добавление анализа</h2>
+                <div className="form-item1">
                   <input
                     name="date"
                     type="date"
                     placeholder="date"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="LDH"
                     type="number"
                     placeholder="LDH"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="ALT"
                     type="number"
                     placeholder="ALT"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="AST"
                     type="number"
                     placeholder="AST"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="ALB"
                     type="number"
                     placeholder="ALB"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="T_Pro"
                     type="number"
                     placeholder="T_Pro"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="T_Bil"
                     type="number"
                     placeholder="T_Bil"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="GLU"
                     type="number"
                     placeholder="GLU"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="T_Cho"
                     type="number"
                     placeholder="T_Cho"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <div className="form-item">
+                <div className="form-item1">
                   <input
                     name="ALP"
                     type="number"
                     placeholder="ALP"
-                    className="form-input"
+                    className="form-input1"
                   />
                 </div>
-                <button onClick={addBlood} className="form-buttom">
+                <button  className="form-buttom1">
                   Добавить анализ
                 </button>
               </form>
-            )}
+              </Modal>
 
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
@@ -223,8 +227,9 @@ function Blood(props) {
 
           {details ? (
             <>
-              <div className="tests">
+                <div className="tests">
                 <DetailsBloodAnalyse />
+                </div>
                 <div className="tests">
                   <h3>ЛДГ (лактатдегидрогеназа) </h3>
                   <ul>
@@ -675,7 +680,7 @@ function Blood(props) {
                     </ul>
                   ) : null}
                 </div>
-              </div>
+              
             </>
           ) : null}
         </div>

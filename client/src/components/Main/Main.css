@@ -86,8 +86,27 @@
 
 @media screen and (max-width: 768px) {
 
-  .img-offer {
-
-    width: 300px;
+  .offer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
   }
+
+  .img-offer {
+    transform: translate(0, 0);
+    width: 250px;
+  }
+
+  .offer-title {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .subtitle {
+    margin-bottom: 20px;
+  }
+
+
+
 }

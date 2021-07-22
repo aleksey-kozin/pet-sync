@@ -116,9 +116,7 @@ function Hormonal() {
               <ChartListHormonal />
             </div>
 
-            <div onClick={() => setState(true)} className="pet-item-add">
-              <p>Добавить анализ</p>
-            </div>
+            <button className="analis-btn" onClick={() => setState(true)} >Добавить анализ</button>
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
@@ -199,6 +197,7 @@ function Hormonal() {
             <>
               <div className="tests">
                 <DetailsMonitorAnalyse />
+                </div>
                 <div className="tests">
                   <h3>АКТГ (адренокортикотропный гормон) </h3>
                   <ul>
@@ -460,7 +459,7 @@ function Hormonal() {
                     </ul>
                   ) : null}
                 </div>
-              </div>
+              
             </>
           ) : null}
         </div>
