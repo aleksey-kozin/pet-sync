@@ -23,6 +23,7 @@ import './Analysis.css'
 
 function Blood(props) {
   const [details, setDetails] = useState(false)
+  const [ldh, setLdh] = useState(false)
   const { id } = useParams()
   const petState = useSelector((state) => state.petsReducer.pet)
   const index = petState.findIndex((el) => el._id === id)
@@ -212,7 +213,22 @@ function Blood(props) {
                 <DetailsBloodAnalyse />
                 <div className="tests">
                   <h3>ЛДГ (лактатдегидрогеназа) </h3>
-                  <ChartLineLDH />{' '}
+                  <ChartLineLDH />
+                  <button onClick={() => setLdh(!ldh)}>Пояснения &rarr;</button>
+                  {ldh ? (
+                    <ul className="list5b">
+                      <h4>Повышение уровня:</h4>
+                      <li>Состояния или заболевания, приводящие к гемолизу</li>
+                      <li>Повреждения скелетной мускулатуры</li>
+                      <li>Гепатоцелюллярные повреждения</li>
+                      <li>Инфаркт миокарда</li>
+                      <li>Неопластические процессы</li>
+                      <li>Острый панкреатит</li>
+                      <li>Нефрит</li>
+                      <li>Лептоспироз</li>
+                      <li>Инфекционный перитонит кошек</li>
+                    </ul>
+                  ) : null}
                 </div>
                 <div className="tests">
                   <h3>Альбумин </h3>
