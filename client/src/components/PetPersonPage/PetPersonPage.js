@@ -22,7 +22,6 @@ function PetPersonPage(props) {
   const dispatch = useDispatch()
 
   const pet = petState.find((el) => el._id === id)
-  console.log('state',petState)
   
   const [petImg, setPetImg] = useState(pet.image !== '')
 
@@ -151,12 +150,12 @@ function PetPersonPage(props) {
               </div>
 
               <div className="pet-info">
-                <h2 className="info-item">Кличка: {pet.name}</h2>
-                <p className="info-item">Вид: {pet.spacies} </p>
-                <p className="info-item">Порода: {pet.breed}</p>
-                <p className="info-item">Пол: {pet.sex} </p>
-                <p className="info-item">Вес: {pet.weight}</p>
-                <p className="info-item">Дата рождения: {pet.birthdate}</p>
+                <h2 className="info-item">Кличка: {pet.name && pet.name}</h2>
+                <p className="info-item">Вид: {pet.spacies && pet.spacies} </p>
+                <p className="info-item">Порода: {pet.breed && pet.breed}</p>
+                <p className="info-item">Пол: {pet.sex && pet.sex} </p>
+                <p className="info-item">Вес: {pet.weight && pet.weight}</p>
+                <p className="info-item">Дата рождения: {pet.birthdate && pet.birthdate.substring(0,10)}</p>
               </div>
               <div className="edit">
                 <img
@@ -175,6 +174,12 @@ function PetPersonPage(props) {
                   width="50px"
                   title="Удалить питомца"
                 />
+              </div>
+              <div className="edit-mb">
+              <button onClick={() => setModalActive(true)} className="form-buttom-mb">Изменить информацию</button>
+              </div>
+              <div className="del-mb">
+              <button onClick={handleDelete} className="form-buttom-mb">Удалить питомца</button>
               </div>
             </div>
           </div>

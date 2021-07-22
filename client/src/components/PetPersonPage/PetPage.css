@@ -115,22 +115,98 @@
 
 .edit {
   margin-left: 70px;
+  cursor: pointer;
+  transition: animation 0.15s linear;
+}
 
+.edit:hover {
+  animation: 1200ms ease 0s normal none 1 running shake;
 }
 
 .del {
-  margin-left: 20px;
+  margin-left: 40px;
+  cursor: pointer;
+  transition: animation 0.15s linear;
+}
+
+.del:hover {
+  animation: 1200ms ease 0s normal none 1 running shake;
 }
 
 .plus {
   position: relative;
   top: 250px;
   left: 220px;
+  
 }
 
 .plus:hover {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: 1200ms ease 0s normal none 1 running shake;
+  /* -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; */
+  /* animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; */
+}
+
+@keyframes shake {
+  0% {
+      transform: rotateZ(0deg);
+  }
+  10% {
+      transform: rotateZ(-8deg);
+  }
+  20% {
+      transform: rotateZ(7deg);
+  }
+  30% {
+      transform: rotateZ(-6deg);
+  }
+  40% {
+      transform: rotateZ(7.5deg);
+  }
+  50% {
+      transform: rotateZ(-6deg);
+  }
+  60% {
+      transform: rotateZ(5deg);
+  }
+  70% {
+      transform: rotateZ(-4.28571deg);
+  }
+  80% {
+      transform: rotateZ(3.75deg);
+  }
+  90% {
+      transform: rotateZ(-3.33333deg);
+  }
+  100% {
+      transform: rotateZ(0deg);
+  }
+  }
+
+
+
+.edit-mb {
+  display: none;
+}
+
+.del-mb {
+  display: none;
+}
+
+.form-buttom-mb {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 45px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  outline: none;
 }
 
 @-webkit-keyframes scale-up-center {
@@ -157,7 +233,6 @@
 @media screen and (max-width: 768px) {
   .formater {
     flex-direction: column;
-    align-items: center;
   }
 
   .pet-profile {
@@ -169,9 +244,11 @@
     margin: 0
     
   }
-  .profile-links-selected {
 
+  .image {
+    margin: 0 auto;
   }
+
   
   .profile.links {
     font-size: 18px;
@@ -193,7 +270,6 @@
 
   .pet-test {
     flex-direction: column;
-    align-items: center;
   }
 
   .test-item {
@@ -202,10 +278,20 @@
 
   .edit {
     transform: translate(-114px, 40px);
+    display: none;
   }
 
   .del {
     transform: translate(65px, -13px);
+    display: none;
+  }
+
+  .edit-mb {
+    display: inline-block;
+  }
+  
+  .del-mb {
+    display: inline-block;
   }
 
   .pet-info {

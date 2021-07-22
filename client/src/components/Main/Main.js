@@ -48,6 +48,9 @@ function Main() {
           </div>
         </div>
       </div>
+      <div className="bg">
+        <img className="bgimg" src="/dogscatsbg.png" alt="" />
+      </div>
     </>
   )
 }
