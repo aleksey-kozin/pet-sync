@@ -8,6 +8,7 @@ import {
   initUsersAC,
 } from '../../utils/redux/actionCreators/actionCreators'
 import AuthService from '../../services/AuthServices'
+import cogoToast from 'cogo-toast';
 
 function FormSignUp() {
   const dispatch = useDispatch()
@@ -34,7 +35,8 @@ function FormSignUp() {
       dispatch(initUsersAC(response.data.user))
       history.push('/mypets')
     } catch (error) {
-      console.log(error.response?.data?.message)
+      cogoToast.warn(error.response?.data?.message, { position: 'bottom-center'});
+      // console.log(error.response?.data?.message)
     }
   }
   return (

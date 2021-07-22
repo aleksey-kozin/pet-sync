@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { useDispatch } from 'react-redux'
 import AuthService from '../../services/AuthServices'
 import { initUsersAC } from '../../utils/redux/actionCreators/actionCreators'
+import cogoToast from 'cogo-toast'
 
 function FormSignUp() {
   const dispatch = useDispatch()
@@ -18,7 +19,9 @@ function FormSignUp() {
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
     } catch (error) {
-      console.log(error.response?.data?.message)
+      cogoToast.warn(error.response?.data?.message, {
+        position: 'bottom-center'})
+      // console.log(error.response?.data?.message)
     }
   }
   return (
