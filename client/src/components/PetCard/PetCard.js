@@ -6,7 +6,6 @@ import { Link, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import '../Forms/FormStyle.css'
 
-
 function PetCard() {
   const userState = useSelector((state) => state.usersReducer)
   const text = useRef()
@@ -27,7 +26,7 @@ function PetCard() {
     }
 
     //fetch к бд
-    fetch('http://localhost:4000/addPet', {
+    fetch('/addPet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPet),
@@ -54,8 +53,8 @@ function PetCard() {
         </button>
       </form> */}
       {/* <div className="form"> */}
-          
-        {/* </div> */}
+
+      {/* </div> */}
     </div>
   )
 }

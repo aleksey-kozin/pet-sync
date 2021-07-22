@@ -12,6 +12,7 @@ const analysesRouter = require('./routers/analysesRouter.js')
 
 const app = express()
 
+app.use(express.static(path.resolve('../client/build')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -21,6 +22,10 @@ app.use(
     origin: process.env.CLIENT_URL,
   })
 )
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'))
+})
 
 app.use('/api', routerAuth)
 app.use('/', indexRouter)

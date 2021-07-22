@@ -28,7 +28,7 @@ function Pee() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/analysespee', {
+    fetch('/analyses/analysespee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ function Pee() {
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/listpee', {
+    fetch('/analyses/listpee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ function Pee() {
       AN15110: text.current.AN15110.value,
       AN114: text.current.AN114.value,
     }
-    fetch('http://localhost:4000/addpee', {
+    fetch('/addpee', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPee),

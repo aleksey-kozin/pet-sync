@@ -29,7 +29,7 @@ function Hormonal() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/analysesmonitor', {
+    fetch('/analyses/analysesmonitor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function Hormonal() {
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/listmonitor', {
+    fetch('/analyses/listmonitor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ function Hormonal() {
       COR: text.current.COR.value,
       GAS: text.current.GAS.value,
     }
-    fetch('http://localhost:4000/addhormonal', {
+    fetch('/addhormonal', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newHormonal),

@@ -19,7 +19,7 @@ function DetailsBloodAnalyse(props) {
   // console.log('state', analyses)
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/listpee')
+    fetch('/analyses/listpee')
       .then((res) => res.json())
       .then((data) => dispatch(initAnalysesPeeListAC(data)))
     // .then((data) => console.log('data',data))

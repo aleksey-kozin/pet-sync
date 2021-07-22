@@ -31,7 +31,7 @@ function Blood(props) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses', {
+    fetch('/analyses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ function Blood(props) {
   }, [dispatch])
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/list', {
+    fetch('/analyses/list', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function Blood(props) {
       ALP: text.current.ALP.value,
     }
 
-    fetch('http://localhost:4000/addblood', {
+    fetch('/addblood', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newBlood),
@@ -111,7 +111,6 @@ function Blood(props) {
               <div onClick={() => setState(true)} className="pet-item-add">
                 <p>Добавить анализ</p>
               </div>
-
             </div>
             <div style={{ marginBottom: '50px' }}>
               <ChartList />
@@ -201,7 +200,6 @@ function Blood(props) {
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
             </button>
-
           </div>
 
           {details ? (

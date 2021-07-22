@@ -8,7 +8,7 @@ function DetailsBloodAnalyse(props) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/list')
+    fetch('/analyses/list')
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
   }, [dispatch])

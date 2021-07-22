@@ -26,7 +26,7 @@ function Feed() {
   const feedArray = useSelector((state) => state.feedReducer.feed)
   const dispatch = useDispatch()
   useEffect(() => {
-    fetch('http://localhost:4000/feed')
+    fetch('/feed')
       .then((res) => res.json())
       .then((result) => dispatch(initFeedAC(result.feedArr)))
   }, [dispatch])

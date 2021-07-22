@@ -26,7 +26,7 @@ function FeedDitail({ value }) {
       name: text.current.name.value,
     }
     dispatch(editFeedAC(editFeed))
-    fetch(`http://localhost:4000/edit/${id}`, {
+    fetch(`/edit/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editFeed),
@@ -40,7 +40,7 @@ function FeedDitail({ value }) {
 
   const delFeed = (ev) => {
     ev.preventDefault()
-    fetch(`http://localhost:4000/delfeed/${id}`, {
+    fetch(`/delfeed/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

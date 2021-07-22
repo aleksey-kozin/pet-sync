@@ -34,7 +34,7 @@ function PetPersonPage(props) {
 
 
   const handleDelete = () => {
-    fetch(`http://localhost:4000/delete/${id}`, {
+    fetch(`/delete/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ function PetPersonPage(props) {
     const birthdate = text.current.birthdate.value
     dispatch(editPetAC({ name, spacies, breed, sex, weight, birthdate, id }))
     
-    fetch(`http://localhost:4000/put/${id}`, {
+    fetch(`/put/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, spacies, breed, sex, weight, birthdate }),
@@ -92,7 +92,7 @@ function PetPersonPage(props) {
       const result = await res.json()
       let token = result.downloadTokens
       const url = `https://firebasestorage.googleapis.com/v0/b/pet-sync-e6f45.appspot.com/o/photos%2F${file.name}?alt=media&token=${token}`
-      const photo = await fetch(`http://localhost:4000/put/photo/${id}`, {
+      const photo = await fetch(`/put/photo/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: url }),

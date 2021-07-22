@@ -12,10 +12,10 @@ function ChartList(props) {
   const analyses = useSelector((state) => state.analysesReducer.analysesPee)
   const petState = useSelector((state) => state.petsReducer.pet)
 
-   console.log('dddddd', analyses)
+  console.log('dddddd', analyses)
 
   // useEffect(() => {
-  //   fetch('http://localhost:4000/analyses/analysespee', {
+  //   fetch('/analyses/analysespee', {
   //     method: 'POST',
   //     headers: { 'Content-Type': 'application/json' },
   //     body: JSON.stringify({id:petState[0]._id, spacies:petState[0].spacies}),

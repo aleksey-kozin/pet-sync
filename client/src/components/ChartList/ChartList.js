@@ -9,20 +9,15 @@ function ChartList(props) {
   const petState = useSelector((state) => state.petsReducer.pet)
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses')
+    fetch('/analyses')
       .then((res) => res.json())
       .then((data) => dispatch(initAnalysesAC(data)))
   }, [dispatch])
 
-
   return (
     <div style={{ height: 400 }}>
       <h3>Общий анализ крови</h3>
-      {
-        <ChartBlood
-          analyses={analyses}
-        />
-      }
+      {<ChartBlood analyses={analyses} />}
     </div>
   )
 }

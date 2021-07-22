@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 
 function AddFeed() {
   const text = useRef()
@@ -14,16 +14,16 @@ function AddFeed() {
       veterinaryDiet: text.current.veterinaryDiet.value,
       brand: text.current.brand.value,
       name: text.current.name.value,
-    };
-    fetch("http://localhost:4000/addfeed", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    }
+    fetch('/addfeed', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newFeed),
     })
       .then((res) => res.json())
       .then((result) => alert(result.message))
-      .then(() => history.push("/feed"));
-  };
+      .then(() => history.push('/feed'))
+  }
   return (
     <form ref={text}>
       <label>
@@ -75,7 +75,7 @@ function AddFeed() {
       <br />
       <button onClick={addFeed}>Сохранить</button>
     </form>
-  );
+  )
 }
 
-export default AddFeed;
+export default AddFeed

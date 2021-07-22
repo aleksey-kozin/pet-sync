@@ -17,7 +17,7 @@ function MyPets() {
 
   //fetch в БД, получаем животных
   useEffect(() => {
-    fetch('http://localhost:4000/findpet', {
+    fetch('/findpet', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function MyPets() {
     }
 
     //fetch к бд
-    fetch('http://localhost:4000/addPet', {
+    fetch('/addPet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPet),
