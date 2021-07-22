@@ -75,6 +75,7 @@ function Hormonal() {
     const newHormonal = {
       spacies: petState[index].spacies,
       owner: id,
+      date: text.current.date.value,
       ACT: text.current.ACT.value,
       ALD: text.current.ALD.value,
       INS: text.current.INS.value,
@@ -82,7 +83,7 @@ function Hormonal() {
       T4: text.current.T4.value,
       COR: text.current.COR.value,
       GAS: text.current.GAS.value,
-    }
+    };
     fetch('http://localhost:4000/addhormonal', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -121,6 +122,14 @@ function Hormonal() {
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
+                <div className="form-item">
+                  <input
+                    name="date"
+                    type="date"
+                    placeholder="date"
+                    className="form-input"
+                  />
+                </div>
                 <div className="form-item">
                   <input
                     name="ACT"

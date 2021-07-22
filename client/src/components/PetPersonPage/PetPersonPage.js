@@ -177,7 +177,6 @@ function PetPersonPage(props) {
                 />
               </div>
             </div>
-
           </div>
           <Modal active={modalActive} setActive={setModalActive}>
             <form ref={text} className="form-body">
@@ -245,12 +244,12 @@ function PetPersonPage(props) {
           <div className="diet">
             <Link to={`/feed/${pet._id}`}>
               <div className="pet-diet-base">
-                <h2>Базовая диета для {pet.name ? pet.name : 'животного'}</h2>
+                <h2>Базовая диета для {pet.name ? pet.name : "животного"}</h2>
                 <p>Базовая диета</p>
               </div>
             </Link>
             <div className="pet-diet-exact">
-              <h2>Точная диета для {pet.name ? pet.name : 'животного'}</h2>
+              <h2>Точная диета для {pet.name ? pet.name : "животного"}</h2>
               <p>Точная диета</p>
             </div>
           </div>
@@ -258,7 +257,7 @@ function PetPersonPage(props) {
           <div className="pet-test">
             <Link
               to={`/tests/blood/${pet._id}`}
-              style={{ textDecoration: 'none', color: 'black' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ крови</h2>
@@ -269,7 +268,7 @@ function PetPersonPage(props) {
             </Link>
             <Link
               to={`/tests/pee/${pet._id}`}
-              style={{ textDecoration: 'none', color: 'black' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ мочи</h2>
@@ -280,10 +279,10 @@ function PetPersonPage(props) {
             </Link>
             <Link
               to={`/tests/research/${pet._id}`}
-              style={{ textDecoration: 'none', color: 'black' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
               <div className="test-item">
-                <h2 className="test-title">Анализ на витамины</h2>
+                <h2 className="test-title">Гормоны</h2>
                 <p className="test-desc">Описание теста</p>
                 <img className="img" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
@@ -299,7 +298,7 @@ function PetPersonPage(props) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default PetPersonPage

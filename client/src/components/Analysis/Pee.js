@@ -71,12 +71,13 @@ function Pee() {
     const newPee = {
       spacies: petState[index].spacies,
       owner: id,
+      date: text.current.date.value,
       AN16110: text.current.AN16110.value,
       AN116: text.current.AN116.value,
       AN28110: text.current.AN28110.value,
       AN15110: text.current.AN15110.value,
       AN114: text.current.AN114.value,
-    }
+    };
     fetch('http://localhost:4000/addpee', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -116,6 +117,14 @@ function Pee() {
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
+                <div className="form-item">
+                  <input
+                    name="date"
+                    type="date"
+                    placeholder="date"
+                    className="form-input"
+                  />
+                </div>
                 <div className="form-item">
                   <input
                     name="AN16110"

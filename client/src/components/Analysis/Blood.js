@@ -79,6 +79,7 @@ function Blood(props) {
     const newBlood = {
       spacies: petState[index].spacies,
       owner: id,
+      date: text.current.date.value,
       LDH: text.current.LDH.value,
       ALT: text.current.ALT.value,
       AST: text.current.AST.value,
@@ -89,7 +90,7 @@ function Blood(props) {
       T_Cho: text.current.T_Cho.value,
       ALP: text.current.ALP.value,
     }
-
+    
     fetch('http://localhost:4000/addblood', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -129,6 +130,14 @@ function Blood(props) {
             {state && (
               <form className="form-body" ref={text}>
                 <h2 className="form-title">Добавление анализа</h2>
+                <div className="form-item">
+                  <input
+                    name="date"
+                    type="date"
+                    placeholder="date"
+                    className="form-input"
+                  />
+                </div>
                 <div className="form-item">
                   <input
                     name="LDH"
