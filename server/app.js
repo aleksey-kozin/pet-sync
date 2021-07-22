@@ -20,13 +20,14 @@ app.use(
   cors()
 )
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve('../client/build/index.html'))
-})
 
 app.use('/api', routerAuth)
 app.use('/', indexRouter)
 app.use('/analyses', analysesRouter)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'))
+})
 
 app.use(errorMiddleware)
 
