@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './FormStyle.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { checkUsersAC, initUsersAC} from '../../utils/redux/actionCreators/actionCreators'
 import { FcGoogle } from 'react-icons/fc'
-import { useDispatch } from 'react-redux'
-import {
-  checkUsersAC,
-  initUsersAC,
-} from '../../utils/redux/actionCreators/actionCreators'
 import AuthService from '../../services/AuthServices'
+import cogoToast from 'cogo-toast';
+import {GoogleLogin} from 'react-google-login'
 
 function FormSignUp() {
+  const clientId = '679324257872-7jktj71veuce36c6f6gd35d5quh0utof.apps.googleusercontent.com'
+  const userState = useSelector((state) => state.usersReducer)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -34,9 +35,19 @@ function FormSignUp() {
       dispatch(initUsersAC(response.data.user))
       history.push('/mypets')
     } catch (error) {
-      console.log(error.response?.data?.message)
+      cogoToast.warn(error.response?.data?.message, { position: 'bottom-center'});
+      // console.log(error.response?.data?.message)
     }
   }
+  // если гугл авторизация успешна отдает в консоль объект с гугл данными
+  const onLoginSuccess = (res) => {
+    console.log("login success", res.profileObj)
+  }
+  //если гугл авторизация провалена выдает ошибку
+  const onFailSuccess = (res) => {
+    console.log('login failed', res)
+  }
+
   return (
     <>
       
@@ -61,12 +72,14 @@ function FormSignUp() {
               />
             </div>
             <button className="form-buttom">Войти</button>
-            <div className="form-links">
-              <p>Войти через</p>
-              <div className="google-link">
-                <FcGoogle />
-              </div>
-            </div>
+            <GoogleLogin
+              className="form-links"
+              clientId={clientId}
+              buttonText="Войти с помощью Google"
+              onSuccess={onLoginSuccess}
+              onFailure={onFailSuccess}
+              cookiePolicy={'single_host_origin'}
+            />
             <hr className="hr-line" />
             <div className="form-login">
               <p>Еще нет аккаунта?</p>

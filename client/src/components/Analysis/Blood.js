@@ -239,6 +239,7 @@ function Blood(props) {
                   <ChartLineLDH />
                   <button onClick={() => setLdh(!ldh)}>Пояснения &rarr;</button>
                   {ldh ? (
+
                     <ul className="list5b">
                       <h4>Повышение уровня:</h4>
                       <li>Состояния или заболевания, приводящие к гемолизу</li>
@@ -253,6 +254,7 @@ function Blood(props) {
                       <h4>Понижение уровня:</h4>
                       <li>Не имеет клинической значимости</li>
                     </ul>
+
                   ) : null}
                 </div>
                 <div className="tests">
