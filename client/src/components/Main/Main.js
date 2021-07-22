@@ -8,7 +8,7 @@ function Main() {
       <div className="container">
         <div className="offer">
           <div className="offer-title">
-            <h1>Трекер здоровья питомца</h1>
+            <h1 className="subtitle">Трекер здоровья питомца</h1>
             <h2>Сделаем жизнь вашего животного лучше</h2>
           </div>
           <img className="img-offer" src="/offerbg.png" alt="offer" />

@@ -110,9 +110,7 @@ function Pee() {
               <ChartListPee />
             </div>
 
-            <div onClick={() => setState(true)} className="pet-item-add">
-              <p>Добавить анализ</p>
-            </div>
+            <button className="analis-btn" onClick={() => setState(true)} >Добавить анализ</button>
 
             {state && (
               <form className="form-body" ref={text}>
@@ -178,6 +176,7 @@ function Pee() {
             <>
               <div className="tests">
                 <DetailsUrineAnalyse />
+                </div>
                 <div className="tests">
                   <h3>Глюкоза/креатинин соотношение в моче </h3>
                   <ul>
@@ -312,7 +311,7 @@ function Pee() {
                     </ul>
                   ) : null}
                 </div>
-              </div>
+              
             </>
           ) : null}
         </div>
