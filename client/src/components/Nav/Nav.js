@@ -38,7 +38,7 @@ function Nav() {
 
   return (
     <>
-      {userState.isAuth && userState.user.isActivated ? (
+      {(userState.isAuth && userState.user.isActivated) || undefined ? (
         <nav className="navbar-item">
           <NavLink to="/" className="navbar-logo">
             <img src="/logomain.png" width="130px" alt="logo" />
