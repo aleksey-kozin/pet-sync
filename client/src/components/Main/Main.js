@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Slider from '../Slider/Slider'
-import TestChart from '../ChartList/ChartList'
 import './Main.css'
 
 function Main() {
@@ -9,16 +8,14 @@ function Main() {
       <div className="container">
         <div className="offer">
           <div className="offer-title">
-          <h1>Трекер здоровья питомца</h1>
-          <h2>Сделаем жизнь вашего животного лучше</h2>
+            <h1>Трекер здоровья питомца</h1>
+            <h2>Сделаем жизнь вашего животного лучше</h2>
           </div>
           <img className="img-offer" src="/offerbg.png" alt="" width="410px" />
         </div>
         <Slider />
         <div className="main-wrapper1">
-          {/* <div className="block-title1">
-          <h2>Правильное питание очень важно</h2>
-        </div> */}
+
           <div className="main1">
             <div className="main-item1">
               <h2 className="main-title">Базовая диета</h2>

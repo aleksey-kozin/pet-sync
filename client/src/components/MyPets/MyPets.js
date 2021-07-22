@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import Pet from '../Pet/Pet'
 import ProfileNav from '../Profile/ProfileNav'
 import '../Pet/Pet.css'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { initPetAC } from '../../utils/redux/actionCreators/actionCreators'
-import AddPet from '../AddPet/AddPet'
-import PetCard from '../PetCard/PetCard'
+import Modal from '../Modal/Modal'
 
 function MyPets() {
-  const [petArr, setPetsArr] = useState()
   const userState = useSelector((state) => state.usersReducer)
-  console.log(userState)
 
   const petState = useSelector((state) => state.petsReducer.pet)
   const dispatch = useDispatch()
@@ -28,12 +25,10 @@ function MyPets() {
       body: JSON.stringify({ id: userState.user.id }),
     })
       .then((res) => res.json())
-      // .then((result) => console.log(result.petsArr))
       .then((result) => {
-        // console.log(result);
         dispatch(initPetAC(result.petsArr))
       })
-  }, [userState, modalActive])
+  }, [userState, modalActive, dispatch])
 
   const text = useRef()
   const history = useHistory()
@@ -62,9 +57,9 @@ function MyPets() {
       .then((result) => {
         setModalActive(false)
       })
-      //редирект на MyPets
-      
-      history.push('/mypets')
+    //редирект на MyPets
+
+    history.push('/mypets')
   }
 
   return (
@@ -79,8 +74,8 @@ function MyPets() {
             <div onClick={() => setModalActive(true)} className="pet-item-add">
               <p>Добавить питомца</p>
             </div>
-            <AddPet active={modalActive} setActive={setModalActive}>
 
+            <Modal active={modalActive} setActive={setModalActive}>
               <form ref={text} onSubmit={addAnimal} className="form-body">
                 <h2 className="form-title">Добавление питомца</h2>
                 <div className="form-item">
@@ -133,8 +128,7 @@ function MyPets() {
                 </div>
                 <button className="form-buttom">Добавить питомца</button>
               </form>
-              
-            </AddPet>
+            </Modal>
           </div>
         </div>
       </div>

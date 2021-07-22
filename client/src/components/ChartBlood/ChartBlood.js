@@ -3,8 +3,6 @@ import { ResponsivePie } from '@nivo/pie'
 import { patternDotsDef } from '@nivo/core'
 
 function ChartBlood({ analyses }) {
-  // console.log('!!!!!', analyses)
-  
 
   let data = [
     {
@@ -42,8 +40,6 @@ function ChartBlood({ analyses }) {
         activeOuterRadiusOffset={8}
         activeInnerRadiusOffset={30}
         colors={{ scheme: 'nivo' }}
-        // borderWidth={1}
-        // borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}

@@ -8,11 +8,6 @@ import {
   LIST_ANALYSES,
 } from '../actionTypes/actionTypes'
 
-// const initialStateAuth = {
-//   user: {},
-//   isAuth: false,
-//   isLoading: false,
-// }
 
 const analysesReducer = (
   state = {

@@ -13,6 +13,7 @@ import {
   INIT_ANALYSES_PEE_LIST,
   INIT_ANALYSES_MONITOR,
   INIT_ANALYSES_MONITOR_LIST,
+  EDIT_PET_IMG
 } from '../actionTypes/actionTypes'
 
 export function initUsersAC(payload) {
@@ -69,4 +70,8 @@ export function initAnalysesMonitorAC(payload) {
 
 export function initAnalysesMonitorListAC(payload) {
   return { type: INIT_ANALYSES_MONITOR_LIST, payload }
+
+export function editPetImgAC(payload) {
+  return { type: EDIT_PET_IMG, payload }
+
 }
