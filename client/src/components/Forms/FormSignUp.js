@@ -22,7 +22,6 @@ function FormSignUp() {
     } catch (error) {
       cogoToast.warn(error.response?.data?.message, {
         position: 'bottom-center'})
-      // console.log(error.response?.data?.message)
     }
   }
   // если гугл авторизация успешна отдает в консоль объект с гугл данными

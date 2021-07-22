@@ -134,7 +134,7 @@ router.post('/findblood', async (req, res) => {
 
 router.post('/findpee', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log(id, spacies);
+ 
   if (spacies === 'Кошка') {
     const peeCat = await AnalysesUrineCat.find({ owner: id })
     res.json({ result: peeCat })
@@ -212,7 +212,6 @@ router.post('/analysespee', async (req, res) => {
 
 router.post('/analysesmonitor', async (req, res) => {
   const { id, spacies } = req.body
-  console.log('id', id, spacies)
   if (spacies === 'Кошка') {
     const analyses = await AnalysesGormonsCat.find({ owner: id }).sort({
       date: -1,
@@ -252,8 +251,6 @@ router.post('/analysesmonitor', async (req, res) => {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
-    console.log(resultAnalyses)
-    console.log(resultAnalyses)
     let chartValue = 0
     const normal = {
       ACT: [10, 80],

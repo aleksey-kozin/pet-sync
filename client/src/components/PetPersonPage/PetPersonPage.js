@@ -22,7 +22,7 @@ function PetPersonPage(props) {
   const dispatch = useDispatch()
 
   const pet = petState.find((el) => el._id === id)
-  console.log('state',petState)
+
   
   const [petImg, setPetImg] = useState(pet.image !== '')
 

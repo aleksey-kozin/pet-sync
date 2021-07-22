@@ -33,8 +33,7 @@ const analysesReducer = (
     case INIT_ANALYSES_PEE_LIST:
       return { ...state, PeeListAnalyses: action.payload }
     case INIT_ANALYSES_MONITOR:
-      console.log('QQQQQQ',action.payload);
-      return { ...state, analysesMonitor: action.payload }
+        return { ...state, analysesMonitor: action.payload }
     case INIT_ANALYSES_MONITOR_LIST:
       return { ...state, monitorListAnalyses: action.payload }
 

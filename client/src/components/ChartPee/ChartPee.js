@@ -3,7 +3,6 @@ import { ResponsivePie } from '@nivo/pie'
 import { patternDotsDef } from '@nivo/core'
 
 function ChartPee({ analyses }) {
-  // console.log('!!!!!', analyses)
 
   let data = [
     {
