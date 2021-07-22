@@ -22,7 +22,7 @@ const ChartLineT_Cho = () => {
   ]
 
   return (
-    <div className="App" style={{ height: 300, width: 600 }}>
+    <div className="App" style={{ height: 300 }}>
       <ResponsiveLine
         data={data}
         margin={{ top: 50, right: 60, bottom: 50, left: 120 }}

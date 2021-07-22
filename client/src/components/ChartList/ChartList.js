@@ -6,6 +6,7 @@ import ChartBlood from '../ChartBlood/ChartBlood'
 function ChartList(props) {
   const dispatch = useDispatch()
   const analyses = useSelector((state) => state.analysesReducer.analyses)
+  const petState = useSelector((state) => state.petsReducer.pet)
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses')

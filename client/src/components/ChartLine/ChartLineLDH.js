@@ -25,35 +25,40 @@ const ChartLineLDH = () => {
 
 
   return (
-    <div className="App" style={{ height: 300, width: 600 }}>
+    <div className="App" style={{ height: 300 }}>
       <ResponsiveLine
+        // {...commonProperties}
         data={data}
         margin={{ top: 50, right: 60, bottom: 50, left: 120 }}
         xScale={{
           type: 'point',
         }}
         yScale={{
+          // type: 'linear',
+          // stacked: ('stacked', false),
           type: 'linear',
-          stacked: ('stacked', false),
+          stacked: false,
+          min: 0,
+          max: 'auto',
         }}
         axisTop={null}
         axisRight={null}
         axisLeft={{
-          orient: 'left',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'count',
-          legendOffset: -40,
-          legendPosition: 'middle',
-        }}
-        axisBottom={{
           orient: 'bottom',
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
           legend: 'transportation',
           legendOffset: 36,
+          legendPosition: 'middle',
+        }}
+        axisBottom={{
+          orient: 'left',
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: 'count',
+          legendOffset: -40,
           legendPosition: 'middle',
         }}
 
@@ -69,6 +74,32 @@ const ChartLineLDH = () => {
         pointSize={10}
         curve="cardinal"
         useMesh={true}
+        legends={[
+          {
+            anchor: 'bottom-right',
+            direction: 'column',
+            justify: false,
+            translateX: 100,
+            translateY: 0,
+            itemsSpacing: 0,
+            itemDirection: 'left-to-right',
+            itemWidth: 80,
+            itemHeight: 20,
+            itemOpacity: 0.75,
+            symbolSize: 12,
+            symbolShape: 'circle',
+            symbolBorderColor: 'rgba(0, 0, 0, .5)',
+            effects: [
+              {
+                on: 'hover',
+                style: {
+                  itemBackground: 'rgba(0, 0, 0, .03)',
+                  itemOpacity: 1,
+                },
+              },
+            ],
+          },
+        ]}
       />
     </div>
   )

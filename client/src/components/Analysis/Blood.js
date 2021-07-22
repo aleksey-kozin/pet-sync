@@ -1,7 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { listAnalysesAC } from '../../utils/redux/actionCreators/actionCreators'
+import {
+  initAnalysesAC,
+  initAnalysesIdAC,
+  listAnalysesAC,
+} from '../../utils/redux/actionCreators/actionCreators'
 import ChartLineALB from '../ChartLine/ChartLineALB'
 import ChartLineLDH from '../ChartLine/ChartLineLDH'
 import ChartLineALP from '../ChartLine/ChartLineALP'
@@ -21,17 +25,42 @@ function Blood(props) {
   const [details, setDetails] = useState(false)
   const { id } = useParams()
 
+  const petState = useSelector((state) => state.petsReducer.pet)
+  const index = petState.findIndex((el) => el._id === id)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/list')
+    fetch('http://localhost:4000/analyses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: petState[index]._id,
+        spacies: petState[index].spacies,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(initAnalysesAC(data)))
+  }, [dispatch])
+
+  useEffect(() => {
+    fetch('http://localhost:4000/analyses/list', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: petState[index]._id,
+        spacies: petState[index].spacies,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
   }, [dispatch])
 
   const [state, setState] = useState(false)
   const text = useRef()
-  const petState = useSelector((state) => state.petsReducer.pet)
 
   const addBlood = (ev) => {
     ev.preventDefault()
@@ -171,19 +200,52 @@ function Blood(props) {
             <button onClick={() => setDetails(!details)}>
               Подробный анализ &rarr;
             </button>
-            {details ? (
-              <>
-                <DetailsBloodAnalyse /> <ChartLineLDH /> <ChartLineALB />
-                <ChartLineALP />
-                <ChartLineALT />
-                <ChartLineAST />
-                <ChartLineGLU />
-                <ChartLineTB />
-                <ChartLineTCho />
-                <ChartLineTP /> <ChartLineALP />
-              </>
-            ) : null}
+
           </div>
+
+          {details ? (
+            <>
+              <div className="tests">
+                <DetailsBloodAnalyse />
+                <div className="tests">
+                  <h3>ЛДГ (лактатдегидрогеназа) </h3>
+                  <ChartLineLDH />{' '}
+                </div>
+                <div className="tests">
+                  <h3>Альбумин </h3>
+                  <ChartLineALB />
+                </div>
+                <div className="tests">
+                  <h3> Щелочная фосфатаза </h3>
+                  <ChartLineALP />
+                </div>
+                <div className="tests">
+                  <h3>Аланинаминотрансфераза (АЛТ) </h3>
+                  <ChartLineALT />
+                </div>
+                <div className="tests">
+                  <h3>АСТ (аспартатаминотрансфераза) </h3>
+                  <ChartLineAST />
+                </div>
+                <div className="tests">
+                  <h3>Глюкоза </h3>
+                  <ChartLineGLU />
+                </div>
+                <div className="tests">
+                  <h3>Билирубин общий </h3>
+                  <ChartLineTB />
+                </div>
+                <div className="tests">
+                  <h3>Холестерин </h3>
+                  <ChartLineTCho />
+                </div>
+                <div className="tests">
+                  <h3>Общий белок </h3>
+                  <ChartLineTP />
+                </div>
+              </div>
+            </>
+          ) : null}
         </div>
       </div>
     </>

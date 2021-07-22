@@ -8,6 +8,11 @@ import {
   EDIT_PET,
   EDIT_FEED,
   LIST_ANALYSES,
+  INIT_ANALYSES_ID,
+  INIT_ANALYSES_PEE,
+  INIT_ANALYSES_PEE_LIST,
+  INIT_ANALYSES_MONITOR,
+  INIT_ANALYSES_MONITOR_LIST,
   EDIT_PET_IMG
 } from '../actionTypes/actionTypes'
 
@@ -47,6 +52,26 @@ export function listAnalysesAC(payload) {
   return { type: LIST_ANALYSES, payload }
 }
 
+export function initAnalysesIdAC(payload) {
+  return { type: INIT_ANALYSES_ID, payload }
+}
+
+export function initAnalysesPeeAC(payload) {
+  return { type: INIT_ANALYSES_PEE, payload }
+}
+
+export function initAnalysesPeeListAC(payload) {
+  return { type: INIT_ANALYSES_PEE_LIST, payload }
+}
+
+export function initAnalysesMonitorAC(payload) {
+  return { type: INIT_ANALYSES_MONITOR, payload }
+}
+
+export function initAnalysesMonitorListAC(payload) {
+  return { type: INIT_ANALYSES_MONITOR_LIST, payload }
+
 export function editPetImgAC(payload) {
   return { type: EDIT_PET_IMG, payload }
+
 }
