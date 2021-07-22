@@ -24,7 +24,7 @@ function PetPersonPage(props) {
   const pet = petState.find((el) => el._id === id)
   console.log('state',petState)
   
-  const [petImg, setPetImg] = useState(pet.image !== '')
+  const [petImg, setPetImg] = useState(pet.image !== '/kotenok.jpeg')
 
   const [loading, setLoading] = useState(false)
 

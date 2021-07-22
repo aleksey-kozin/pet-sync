@@ -67,12 +67,17 @@ function Feed() {
         })
       : feedArray
 
+      const userState = useSelector((state) => state.usersReducer)
+      let admin = userState.user.email === 'akost2001@gmail.com'
+
   return (
     <>
       <div className="container">
         <div className="main-wrapper1">
           <ProfileNav />
           <div className="feed">
+            {!admin 
+            ?
             <Link to={`/mypets/${id}`}>
               <img
                 style={{ marginBottom: '40px' }}
@@ -80,7 +85,15 @@ function Feed() {
                 alt=""
                 width="40px"
               />
+            </Link> : <Link to={`/mypets`}>
+              <img
+                style={{ marginBottom: '40px' }}
+                src="/left-arrow.svg"
+                alt=""
+                width="40px"
+              />
             </Link>
+            }
             <div style={{ marginBottom: '40px' }}>
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend">Животное</FormLabel>

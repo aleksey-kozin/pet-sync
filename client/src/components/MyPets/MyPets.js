@@ -17,6 +17,14 @@ function MyPets() {
 
   //fetch в БД, получаем животных
   useEffect(() => {
+    if(userState.user.email === "akost2001@gmail.com"){
+      // alert(123)
+      fetch('http://localhost:4000/admin/findpet')
+        .then((res) => res.json())
+        .then((result) => {
+          dispatch(initPetAC(result.petsArr))
+        })
+    }else{
     fetch('http://localhost:4000/findpet', {
       method: 'POST',
       headers: {
@@ -28,6 +36,7 @@ function MyPets() {
       .then((result) => {
         dispatch(initPetAC(result.petsArr))
       })
+    }  
   }, [userState, modalActive, dispatch])
 
   const text = useRef()

@@ -1,9 +1,16 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, Link } from 'react-router-dom'
 import { editFeedAC } from '../../utils/redux/actionCreators/actionCreators'
+import ProfileNav from '../Profile/ProfileNav'
+import './FeedDetail.css'
 
 function FeedDitail({ value }) {
+
+  const userState = useSelector((state) => state.usersReducer)
+  let admin = userState.user.email === 'akost2001@gmail.com'
+
+
   const feedArray = useSelector((state) => state.feedReducer.feed)
   const dispatch = useDispatch()
   const { id } = useParams()
@@ -51,15 +58,26 @@ function FeedDitail({ value }) {
           alert('Что-то пошло не так')
         }
       })
-      .then(() => history.push('/feed'))
+      .then(() => history.push('/feeds'))
   }
 
   return (
-    <div>
+    <div className="container">
+      <ProfileNav/>
+      <Link to={`/feeds`}>
+              <img
+                style={{marginTop: '40px'}}
+                src="/left-arrow.svg"
+                alt=""
+                width="40px"
+              />
+      </Link>
       {state === false ? (
         <form ref={text}>
-          <div>
+          <div className="one-feed-card">
             <label>
+            <img src={value.img} alt="" />
+
               <h5>
                 {' '}
                 Брэнд: <input name="brand" defaultValue={value.brand} />{' '}
@@ -68,7 +86,7 @@ function FeedDitail({ value }) {
             <label>
               {' '}
               <p>
-                Наименование: <input name="name" defaultValue={value.name} />
+                Наименование: <input name="name" defaultValue={value.name.toLowerCase()} />
               </p>
             </label>
             <label>
@@ -96,7 +114,6 @@ function FeedDitail({ value }) {
                 />
               </p>
             </label>
-          </div>
           <button onClick={editFeed} type="button">
             Сохранить
           </button>
@@ -106,21 +123,24 @@ function FeedDitail({ value }) {
             }}
             type="button"
           >
-            Передумал
+            Отмена
           </button>
+          </div>
+
         </form>
       ) : (
-        <div>
+        <div className="one-feed-card">
           <img src={value.img} alt="" />
-          <div>
+          <div >
             <h5>Брэнд: {value.brand}</h5>
-            <p>Наименование: {value.name}</p>
+            <p>Наименование: {value.name.toLowerCase()}</p>
             <p>Для кого: {value.type}</p>
             <p>Возраст: {value.age}</p>
             <p>Размер: {value.size}</p>
             <p>Особые потребности: {value.veterinaryDiet}</p>
           </div>
-          <button
+          {admin
+            ? <><button
             onClick={() => {
               setState(false)
             }}
@@ -130,7 +150,9 @@ function FeedDitail({ value }) {
           </button>
           <button onClick={delFeed} type="button">
             Удалить
-          </button>
+          </button></> : null
+          }
+         
         </div>
       )}
     </div>
