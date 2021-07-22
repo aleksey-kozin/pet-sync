@@ -15,7 +15,7 @@ function Nav() {
 
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       if (localStorage.getItem('token')) {
         const response = await AuthService.checkAuth()
         console.log(response)
