@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const API_URL = `/api`
+export const API_URL = `https://pet-sync.herokuapp.com/api`
 
 const instance = axios.create({
   withCredentials: true,

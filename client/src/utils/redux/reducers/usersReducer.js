@@ -8,7 +8,6 @@ const initialStateAuth = {
   user: {},
   isAuth: false,
   isLoading: false,
-  isActivated: false
 }
 
 const usersReducer = (state = initialStateAuth, action) => {
