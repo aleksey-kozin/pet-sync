@@ -100,59 +100,64 @@ function AddFeed() {
                 width="40px"
               />
             </Link>
-             <form ref={text}>
-
-   <label>
-     Животное
-     <select name="type">
-       <option>Собаки</option>
-       <option>Кошки</option>
-     </select>
-   </label>
-   <br />
-   <label>
-     Возраст
-     <select name="age">
-       <option>1 - 12 мес</option>
-       <option>от 1 года до 7 лет</option>
-       <option>от 7 лет</option>
-     </select>
-   </label>
-   <br />
-   <label>
-     Размер
-     <select name="size">
-       <option></option>
-       <option>Маленькая</option>
-       <option>Средняя</option>
-       <option>Крупная</option>
-     </select>
-   </label>
-   <br />
-   <label>
-     Особые потребности
-     <select name="veterinaryDiet">
-       <option></option>
-       <option>Чувствительное пищеварение</option>
-       <option>Стерилизованное или кастрированное животное</option>
-       <option>Контроль над весом</option>
-     </select>
-   </label>
-   <br />
-   <label>
-     Производитель
-     <input name="brand" />
-   </label>
-   <br />
-   <label>
-     Наименование
-     <input name="name" />
-   </label>
-   <br />
-   <button onClick={addFeed}>Сохранить</button>
 
 
- </form>  
+            <div className="form-body">
+            <form style={{width: '400px'}} ref={text}>
+
+<label>
+  Животное
+  <select className="form-input" name="type">
+    <option>Собаки</option>
+    <option>Кошки</option>
+  </select>
+</label>
+<br />
+<label>
+  Возраст
+  <select className="form-input" name="age">
+    <option>1 - 12 мес</option>
+    <option>от 1 года до 7 лет</option>
+    <option>от 7 лет</option>
+  </select>
+</label>
+<br />
+<label>
+  Размер
+  <select className="form-input" name="size">
+    <option></option>
+    <option>Маленькая</option>
+    <option>Средняя</option>
+    <option>Крупная</option>
+  </select>
+</label>
+<br />
+<label>
+  Особые потребности
+  <select className="form-input" name="veterinaryDiet">
+    <option></option>
+    <option>Чувствительное пищеварение</option>
+    <option>Стерилизованное или кастрированное животное</option>
+    <option>Контроль над весом</option>
+  </select>
+</label>
+<br />
+<label>
+  Производитель
+  <input className="form-input" name="brand" />
+</label>
+<br />
+<label>
+  Наименование
+  <input className="form-input" name="name" />
+</label>
+<br />
+<button className="form-buttom" onClick={addFeed}>Сохранить</button>
+
+
+</form>  
+            </div>
+   
       </div>
     </div>
     </div>
