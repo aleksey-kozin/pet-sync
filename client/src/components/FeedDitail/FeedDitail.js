@@ -4,6 +4,7 @@ import { useHistory, useParams, Link } from 'react-router-dom'
 import { editFeedAC } from '../../utils/redux/actionCreators/actionCreators'
 import ProfileNav from '../Profile/ProfileNav'
 import './FeedDetail.css'
+import '../AddFeed/AddFeed.css'
 
 function FeedDitail({ value }) {
 
@@ -52,11 +53,11 @@ function FeedDitail({ value }) {
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result.status) {
-          alert('Корм успешно удален из базы')
-        } else {
-          alert('Что-то пошло не так')
-        }
+        // if (result.status) {
+        //   alert('Корм успешно удален из базы')
+        // } else {
+        //   alert('Что-то пошло не так')
+        // }
       })
       .then(() => history.push('/feeds'))
   }
@@ -73,6 +74,7 @@ function FeedDitail({ value }) {
               />
       </Link>
       {state === false ? (
+        <div className="">
         <form ref={text}>
           <div className="one-feed-card">
             <label>
@@ -80,29 +82,29 @@ function FeedDitail({ value }) {
 
               <h5>
                 {' '}
-                Брэнд: <input name="brand" defaultValue={value.brand} />{' '}
+                Брэнд: <input className="form-input" name="brand" defaultValue={value.brand} />{' '}
               </h5>
             </label>
             <label>
               {' '}
               <p>
-                Наименование: <input name="name" defaultValue={value.name.toLowerCase()} />
+                Наименование: <input className="form-input" name="name" defaultValue={value.name.toLowerCase()} />
               </p>
             </label>
             <label>
               {' '}
               <p>
-                Для кого: <input name="type" defaultValue={value.type} />
+                Для кого: <input className="form-input" name="type" defaultValue={value.type} />
               </p>
             </label>
             <label>
               <p>
-                Возраст: <input name="age" defaultValue={value.age} />
+                Возраст: <input className="form-input" name="age" defaultValue={value.age} />
               </p>
             </label>
             <label>
               <p>
-                Размер: <input name="size" defaultValue={value.size} />
+                Размер: <input className="form-input" name="size" defaultValue={value.size} />
               </p>
             </label>
             <label>
@@ -126,8 +128,10 @@ function FeedDitail({ value }) {
             Отмена
           </button>
           </div>
+          
 
         </form>
+        </div>
       ) : (
         <div className="one-feed-card">
           <img src={value.img} alt="" />
