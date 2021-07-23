@@ -23,7 +23,7 @@ function PetPersonPage(props) {
 
   const pet = petState.find((el) => el._id === id)
   
-  const [petImg, setPetImg] = useState(pet.image !== '')
+  const [petImg, setPetImg] = useState(pet.image !== '/kotenok.jpeg')
 
   const [loading, setLoading] = useState(false)
 
@@ -249,14 +249,14 @@ function PetPersonPage(props) {
           <div className="diet">
             <Link to={`/feed/${pet._id}`}>
               <div className="pet-diet-base">
-                <h2>Базовая диета для {pet.name ? pet.name : "животного"}</h2>
-                <p>Базовая диета</p>
+                <h2 style={{marginBottom: '10px'}}>Базовая диета для {pet.name ? pet.name : "животного"}</h2>
+                <p>Подбор корма для правильного рациона</p>
               </div>
             </Link>
             <Link to={`/feeds/${pet._id}`}>
             <div className="pet-diet-exact">
-              <h2>Точная диета для {pet.name ? pet.name : "животного"}</h2>
-              <p>Точная диета</p>
+              <h2 style={{marginBottom: '10px'}}>Точная диета для {pet.name ? pet.name : "животного"}</h2>
+              <p>Диета вашего питомца после общения с врачем</p>
             </div>
             </Link>
           </div>
@@ -269,7 +269,7 @@ function PetPersonPage(props) {
               <div className="test-item">
                 <h2 className="test-title">Анализ крови</h2>
                 <p className="test-desc"></p>
-                <img className="img" src="/test.jpeg" alt="" width="260px" />
+                <img className="imga" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
               </div>
             </Link>
@@ -280,7 +280,7 @@ function PetPersonPage(props) {
               <div className="test-item">
                 <h2 className="test-title">Анализ мочи</h2>
                 <p className="test-desc"></p>
-                <img className="img" src="/test.jpeg" alt="" width="260px" />
+                <img className="imga" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
               </div>
             </Link>
@@ -289,9 +289,9 @@ function PetPersonPage(props) {
               style={{ textDecoration: "none", color: "black" }}
             >
               <div className="test-item">
-                <h2 className="test-title">Гормоны</h2>
+                <h2 className="test-title">Анализ на гормоны</h2>
                 <p className="test-desc"></p>
-                <img className="img" src="/test.jpeg" alt="" width="260px" />
+                <img className="imga" src="/test.jpeg" alt="" width="260px" />
                 <img className="plus" src="/plus.svg" alt="" width="50px" />
               </div>
             </Link>

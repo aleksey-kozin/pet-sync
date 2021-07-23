@@ -63,5 +63,5 @@
 .img {
   position: absolute;
   transform: translateX(10px);
-  transform: translateY(50px);
+  /* transform: translateY(50px); */
 }

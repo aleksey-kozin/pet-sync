@@ -209,6 +209,12 @@
   outline: none;
 }
 
+.imga {
+  position: absolute;
+  transform: translateX(10px);
+  transform: translateY(50px);
+}
+
 @-webkit-keyframes scale-up-center {
   0% {
     -webkit-transform: scale(0.5);

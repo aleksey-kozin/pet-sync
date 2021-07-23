@@ -41,7 +41,7 @@ function Nav() {
       {userState.isAuth && userState.user.isActivated ? (
         <nav className="navbar-item">
           <NavLink to="/" className="navbar-logo">
-            <img src="/logomain.png" width="130px" alt="logo" />
+            <img src="/logotip.png" width="220px" alt="logo" />
           </NavLink>
           <div onClick={() => setIcon(!icon)} className="menu-icon">
             {icon ? <VscClose /> : <FiMenu />}
@@ -66,7 +66,7 @@ function Nav() {
       ) : (
         <nav className="navbar-item">
           <NavLink to="/" className="navbar-logo">
-            <img src="/logomain.png" width="130px" alt="logo" />
+            <img src="/logotip.png" width="220px" alt="logo" />
           </NavLink>
           <div onClick={() => setIcon(!icon)} className="menu-icon">
             {icon ? <VscClose /> : <FiMenu />}

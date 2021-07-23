@@ -14,9 +14,9 @@ function Slider() {
           <img className="img1" src="/dogbg.png" alt="" width="180px" />
         </div>
         <div className="main-item">
-          <h2 className="main-title">Удобные напоминаия</h2>
+          <h2 className="main-title">Мониторинг здоровья</h2>
           <p className="main-desc">
-            Напоминание о вакцинации и дегельминтизации
+            Поможем вовремя обнаружить сигналы
           </p>
           <img className="img2" src="/kotenok.jpeg" alt="" width="270px" />
         </div>
