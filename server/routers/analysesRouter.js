@@ -89,7 +89,6 @@ router.post('/', async (req, res) => {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
-    console.log(resultAnalyses)
 
     let chartValue = 0
     const normal = {
@@ -97,38 +96,19 @@ router.post('/', async (req, res) => {
       ALT: [8, 57],
       AST: [9, 49],
       ALB: [22, 39],
-      T_Pro: [50, 100],
-      T_Bil: [1, 10],
-      GLU: [3, 6],
-      T_Cho: [3, 7],
+      T_P: [50, 100],
+      T_B: [1, 10],
+      GLU: [3, 8],
+      T_Cho: [3, 6],
       ALP: [10, 100],
     }
     let count = 0
     for (let key in normal) {
-      // console.log('normal[key][0]',normal[key][0])
-      // console.log('resultAnalyses[key]',resultAnalyses[key])
-      // console.log('normal[key][1]',normal[key][1])
-      // console.log('chartValue',chartValue)
-
-      // console.log('chartValue',chartValue)
-      console.log(
-        'normal[key][0] <= resultAnalyses[key]',
-        normal[key][0] <= resultAnalyses[key],
-        normal[key][0],
-        resultAnalyses[key]
-      )
-      console.log(
-        'normal[key][1] >= resultAnalyses[key]',
-        normal[key][1] >= resultAnalyses[key],
-        normal[key][1],
-        resultAnalyses[key]
-      )
       if (
         normal[key][0] <= resultAnalyses[key] &&
         normal[key][1] >= resultAnalyses[key]
-        ) {
-          chartValue += 11.1
-          console.log('chartValue',chartValue);
+      ) {
+        chartValue += 11.1
       }
     }
 
@@ -154,7 +134,7 @@ router.post('/findblood', async (req, res) => {
 
 router.post('/findpee', async (req, res) => {
   const { id, spacies } = req.body
-
+ 
   if (spacies === 'Кошка') {
     const peeCat = await AnalysesUrineCat.find({ owner: id })
     res.json({ result: peeCat })
@@ -223,6 +203,12 @@ router.post('/analysespee', async (req, res) => {
       ) {
         chartValue += 20
       }
+       console.log('normal[key][0] <= resultAnalyses[key]',normal[key][0])
+      console.log('normal[key][1] >= resultAnalyses[key]',resultAnalyses[key])
+      // console.log('normal[key][1]',normal[key][1])
+      console.log('chartValue',chartValue)
+
+      console.log('chartValue',chartValue)
     }
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue

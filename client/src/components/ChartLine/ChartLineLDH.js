@@ -16,10 +16,14 @@ const ChartLineLDH = () => {
   }
 
 
+  const resultData = result.sort(function (a, b) {
+    return   new Date(a.x) - new Date(b.x)    ;
+  })
+
   let data = [
     {
       id: 'hours',
-      data: result,
+      data: resultData,
     },
   ]
 
