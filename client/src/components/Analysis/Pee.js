@@ -28,6 +28,8 @@ function Pee() {
   const { id } = useParams()
   const [state, setState] = useState(false)
 
+  const analyses = useSelector((state) => state.analysesReducer.analysesPee)
+
   const text = useRef()
   const petState = useSelector((state) => state.petsReducer.pet)
 
@@ -35,6 +37,16 @@ function Pee() {
 
   const [details, setDetails] = useState(false)
   const dispatch = useDispatch()
+
+  console.log('analyses', analyses)
+
+  const normal = {
+    AN16110: [0, 0.5],
+    AN116: [1.01, 1.04],
+    AN28110: [0, 0.5],
+    AN15110: [0.21, 0.57],
+    AN114: [0, 20],
+  }
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/analysespee', {
@@ -190,7 +202,10 @@ function Pee() {
             </Modal>
 
             {show ? (
-              <button onClick={() => setDetails(!details)}>
+              <button
+                className="analis-btn"
+                onClick={() => setDetails(!details)}
+              >
                 Подробный анализ &rarr;
               </button>
             ) : null}
@@ -201,7 +216,16 @@ function Pee() {
                 <DetailsUrineAnalyse />
               </div>
               <div className="tests">
-                <h3>Глюкоза/креатинин соотношение в моче </h3>
+                {normal.AN16110[0] <= analyses.AN16110 &&
+                normal.AN16110[1] >= analyses.AN16110 ? (
+                  <h3 style={{ color: 'green' }}>
+                    Глюкоза/креатинин соотношение в моче{' '}
+                  </h3>
+                ) : (
+                  <h3 style={{ color: 'Gold' }}>
+                    Глюкоза/креатинин соотношение в моче{' '}
+                  </h3>
+                )}
                 <ul>
                   <p>Референсные значения:</p>
                   <li style={{ listStyleType: 'none' }}>
@@ -212,16 +236,35 @@ function Pee() {
                   </li>
                 </ul>
                 <ChartLinePeeAN16110 />{' '}
+                <button
+                  className="analis-btn"
+                  onClick={() => setAN28110(!AN28110)}
+                >
+                  Пояснения &rarr;
+                </button>
               </div>
               <div className="tests">
-                <h3>Соотношение белок / креатинин в моче </h3>
+                {normal.AN116[0] <= analyses.AN116 &&
+                normal.AN116[1] >= analyses.AN116 ? (
+                  <h3 style={{ color: 'green' }}>
+                    Соотношение белок / креатинин в моче
+                  </h3>
+                ) : (
+                  <h3 style={{ color: 'Gold' }}>
+                    Соотношение белок / креатинин в моче
+                  </h3>
+                )}
+
                 <ul>
                   <p>Референсные значения:</p>
                   <li style={{ listStyleType: 'none' }}>{`Собаки: \< 0,5`}</li>
                   <li style={{ listStyleType: 'none' }}>{`Кошки: \< 0,4`}</li>
                 </ul>
                 <ChartLinePeeAN28110 />
-                <button onClick={() => setAN28110(!AN28110)}>
+                <button
+                  className="analis-btn"
+                  onClick={() => setAN28110(!AN28110)}
+                >
                   Пояснения &rarr;
                 </button>
                 {AN28110 ? (
@@ -245,7 +288,17 @@ function Pee() {
                 ) : null}
               </div>
               <div className="tests">
-                <h3>Соотношение кортизол / креатинин в моче </h3>
+                {normal.AN28110[0] <= analyses.AN28110 &&
+                normal.AN28110[1] >= analyses.AN28110 ? (
+                  <h3 style={{ color: 'green' }}>
+                    Соотношение кортизол / креатинин в моче
+                  </h3>
+                ) : (
+                  <h3 style={{ color: 'Gold' }}>
+                    Соотношение кортизол / креатинин в моче
+                  </h3>
+                )}
+
                 <ul>
                   <p>Референсные значения:</p>
                   <li style={{ listStyleType: 'none' }}>
@@ -256,7 +309,10 @@ function Pee() {
                   >{`Кошки: \< 36х10-6`}</li>
                 </ul>
                 <ChartLinePeeAN15110 />
-                <button onClick={() => setAN15110(!AN15110)}>
+                <button
+                  className="analis-btn"
+                  onClick={() => setAN15110(!AN15110)}
+                >
                   Пояснения &rarr;
                 </button>
                 {AN15110 ? (
@@ -275,14 +331,23 @@ function Pee() {
                 ) : null}
               </div>
               <div className="tests">
-                <h3>Соотношение ГГТ / креатинин в моче </h3>
+                {normal.AN15110[0] <= analyses.AN15110 &&
+                normal.AN15110[1] >= analyses.AN15110 ? (
+                  <h3 style={{ color: 'green' }}>
+                    Соотношение ГГТ / креатинин в моче
+                  </h3>
+                ) : (
+                  <h3 style={{ color: 'Gold' }}>
+                    Соотношение ГГТ / креатинин в моче
+                  </h3>
+                )}
                 <ul>
                   <p>Референсные значения:</p>
                   <li style={{ listStyleType: 'none' }}>Собаки: 0,21-0,57</li>
                   <li style={{ listStyleType: 'none' }}>Кошки: 0,03-0,56</li>
                 </ul>
                 <ChartLinePeeAN116 />
-                <button onClick={() => setAN116(!AN116)}>
+                <button className="analis-btn" onClick={() => setAN116(!AN116)}>
                   Пояснения &rarr;
                 </button>
                 {AN116 ? (
@@ -297,7 +362,17 @@ function Pee() {
                 ) : null}
               </div>
               <div className="tests">
-                <h3>Фракционная экскреция калия и натрия с мочой </h3>
+                {normal.AN114[0] <= analyses.AN114 &&
+                normal.AN114[1] >= analyses.AN114 ? (
+                  <h3 style={{ color: 'green' }}>
+                    Фракционная экскреция калия и натрия с мочой
+                  </h3>
+                ) : (
+                  <h3 style={{ color: 'Gold' }}>
+                    Фракционная экскреция калия и натрия с мочой
+                  </h3>
+                )}
+
                 <ul>
                   <p>Референсные значения:</p>
                   <li style={{ listStyleType: 'none' }}>
@@ -308,7 +383,7 @@ function Pee() {
                   >{`Кошки: \< 1% (Na+); 5-25% (К+)`}</li>
                 </ul>
                 <ChartLinePeeAN114 />
-                <button onClick={() => setAN114(!AN114)}>
+                <button className="analis-btn" onClick={() => setAN114(!AN114)}>
                   Пояснения &rarr;
                 </button>
                 {AN114 ? (

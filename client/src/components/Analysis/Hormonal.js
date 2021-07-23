@@ -34,10 +34,20 @@ function Hormonal() {
   const petState = useSelector((state) => state.petsReducer.pet)
 
   const index = petState.findIndex((el) => el._id === id)
-
+  const analyses = useSelector((state) => state.analysesReducer.analysesMonitor)
   const [details, setDetails] = useState(false)
 
   const dispatch = useDispatch()
+
+  const normal = {
+    ACT: [10, 80],
+    ALD: [2, 96],
+    INS: [5, 20],
+    PTH: [19, 123],
+    T4: [15, 67],
+    COR: [28, 170],
+    GAS: [0, 100],
+  }
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/analysesmonitor', {
