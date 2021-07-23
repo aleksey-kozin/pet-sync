@@ -20,6 +20,7 @@ function Pee() {
   const [AN15110, setAN15110] = useState(false)
   const [AN116, setAN116] = useState(false)
   const [AN114, setAN114] = useState(false)
+  const [AN16110, setAN16110] = useState(false);
 
   const [modalActive, setModalActive] = useState(false)
 
@@ -117,7 +118,7 @@ function Pee() {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: '40px' }}
+                  style={{ marginBottom: "40px" }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
@@ -133,7 +134,7 @@ function Pee() {
             </div>
 
             {show ? (
-              <div style={{ marginBottom: '50px' }}>
+              <div style={{ marginBottom: "50px" }}>
                 <ChartListPee />
               </div>
             ) : null}
@@ -228,13 +229,14 @@ function Pee() {
                 )}
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: в норме до 0‐0,16
+                  <li style={{ listStyleType: "none" }}>
+                    Собаки: в норме до 0‐0,5
                   </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: в норме до 0-0,517
+                  <li style={{ listStyleType: "none" }}>
+                    Кошки: в норме до 0-0,16
                   </li>
                 </ul>
+
                 <ChartLinePeeAN16110 />{' '}
                 <button
                   className="analis-btn"
@@ -242,6 +244,41 @@ function Pee() {
                 >
                   Пояснения &rarr;
                 </button>
+
+
+                {AN16110 ? (
+                  <ul className="list5b">
+                    <h4>
+                      Результаты исследования содержат информацию исключительно
+                      для врачей. Диагноз ставится на основании комплексной
+                      оценки различных показателей, дополнительных сведений и
+                      зависит от методов диагностики.
+                    </h4>
+                    <li>
+                      Превышение нормальных значений соотношения
+                      глюкоза/креатинин может говорить о патологической
+                      глюкозурии. Глюкозурия наблюдается при сахарном диабете,
+                      гиперадренокортицизме, акромегалии и феохромацитоме.
+                      Также, она может развиться при транзиторной гипергликемии,
+                      превышающей почечный порог, которая возможна при сильном
+                      стрессе у животного, а также при остром панкреатите.
+                      Нарушение функции канальцев почек может привести к
+                      глюкозурии без гипергликемии.
+                    </li>
+                    <li>
+                      Возможны физиологические причины глюкозурии: молодые щенки
+                      (до 8 недель) могут иметь умеренную глюкозурию из-за
+                      незрелости канальцев. Повреждение почечных канальцев может
+                      быть связано с лекарствами (аминогликозиды), гипоксией,
+                      инфекции Clostridium perfringens, проксимальным почечным
+                      канальцевым ацидозом, который может быть вторичным по
+                      отношению к токсичности меди. Глюкозурия может развиваться
+                      при наследственных заболеваниях почек, таких как первичная
+                      почечная глюкозурия, синдром Фанкони.
+                    </li>
+                  </ul>
+                ) : null}
+
               </div>
               <div className="tests">
                 {normal.AN116[0] <= analyses.AN116 &&
@@ -257,8 +294,8 @@ function Pee() {
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>{`Собаки: \< 0,5`}</li>
-                  <li style={{ listStyleType: 'none' }}>{`Кошки: \< 0,4`}</li>
+                  <li style={{ listStyleType: "none" }}>{`Собаки: \< 0,5`}</li>
+                  <li style={{ listStyleType: "none" }}>{`Кошки: \< 0,4`}</li>
                 </ul>
                 <ChartLinePeeAN28110 />
                 <button
@@ -301,12 +338,8 @@ function Pee() {
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    {`Собаки: \< 17х10-6`}
-                  </li>
-                  <li
-                    style={{ listStyleType: 'none' }}
-                  >{`Кошки: \< 36х10-6`}</li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 0,21-0,57</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 0,03-0,57</li>
                 </ul>
                 <ChartLinePeeAN15110 />
                 <button
@@ -343,8 +376,8 @@ function Pee() {
                 )}
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>Собаки: 0,21-0,57</li>
-                  <li style={{ listStyleType: 'none' }}>Кошки: 0,03-0,56</li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 1,01-1,04</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 1,02-1,05</li>
                 </ul>
                 <ChartLinePeeAN116 />
                 <button className="analis-btn" onClick={() => setAN116(!AN116)}>
@@ -375,12 +408,8 @@ function Pee() {
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    {`Собаки: \< 1% (Na+); \< 20% (К+)`}
-                  </li>
-                  <li
-                    style={{ listStyleType: 'none' }}
-                  >{`Кошки: \< 1% (Na+); 5-25% (К+)`}</li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 0-20</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 5-20</li>
                 </ul>
                 <ChartLinePeeAN114 />
                 <button className="analis-btn" onClick={() => setAN114(!AN114)}>
@@ -409,7 +438,7 @@ function Pee() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Pee
