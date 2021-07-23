@@ -8,7 +8,8 @@ import cogoToast from 'cogo-toast'
 import { GoogleLogin } from 'react-google-login'
 
 function FormSignUp() {
-  const clientId = '679324257872-7jktj71veuce36c6f6gd35d5quh0utof.apps.googleusercontent.com'
+  const clientId =
+    '679324257872-7jktj71veuce36c6f6gd35d5quh0utof.apps.googleusercontent.com'
   const dispatch = useDispatch()
 
   const handlerSubmit = async (event) => {
@@ -19,14 +20,18 @@ function FormSignUp() {
       const response = await AuthService.registration(email, password)
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
+      cogoToast.info('Вам на почту пришла ссылка на активацию', {
+        position: 'bottom-center',
+      })
     } catch (error) {
       cogoToast.warn(error.response?.data?.message, {
-        position: 'bottom-center'})
+        position: 'bottom-center',
+      })
     }
   }
   // если гугл авторизация успешна отдает в консоль объект с гугл данными
   const onLoginSuccess = (res) => {
-    console.log("login success", res.profileObj)
+    console.log('login success', res.profileObj)
   }
   //если гугл авторизация провалена выдает ошибку
   const onFailSuccess = (res) => {
@@ -75,8 +80,8 @@ function FormSignUp() {
           </form>
         </div>
         <div className="bg">
-        <img className="bgimg" src="/dogscatsbg.png" alt="" />
-      </div>
+          <img className="bgimg" src="/dogscatsbg.png" alt="" />
+        </div>
       </div>
     </>
   )

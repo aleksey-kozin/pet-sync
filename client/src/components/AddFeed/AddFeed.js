@@ -100,7 +100,7 @@ function AddFeed() {
                 width="40px"
               />
             </Link>
-             <form ref={text}>
+   <form ref={text} className="form-body">
 
    <label>
      Животное
