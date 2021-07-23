@@ -12,7 +12,7 @@ function Pet({ value }) {
         <div className="pet-item">
           <h2 className="pet-title">{value.name}</h2>
           <p className="pet-desc">{value.spacies}</p>
-          <img className="img" src="/kotenok.jpeg" alt="" width="260px" />
+          <img className="img" src={value.image} alt="" width="260px" />
         </div>
       </Link>
     </>
