@@ -11,7 +11,7 @@ const ChartLineMonitorCOR = () => {
   const length = anal.length
   let result = []
   for (let i = 0; i < length; i++) {
-    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].COR })
+    result.push({ x: anal[i].date.substring(0, 10), y: anal[i].COR })
   }
 
   let data = [

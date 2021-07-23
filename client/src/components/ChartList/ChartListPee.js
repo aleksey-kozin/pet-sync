@@ -12,31 +12,29 @@ function ChartList(props) {
   const analyses = useSelector((state) => state.analysesReducer.analysesPee)
   const petState = useSelector((state) => state.petsReducer.pet)
 
-   console.log('dddddd', analyses)
+  let parametr = 0
 
-  // useEffect(() => {
-  //   fetch('http://localhost:4000/analyses/analysespee', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({id:petState[0]._id, spacies:petState[0].spacies}),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => dispatch(initAnalysesPeeAC(data)))
-  //   // .then((data) => console.log('data',data))
-  // }, [dispatch])
+  console.log(analyses.chart);
 
-  // console.log('!!!!',analyses);
+  if (analyses.chart / 10 === 10) {
+    parametr = 5
+  } else {
+    parametr = Math.round(analyses.chart / 10)
+  }
+  console.log(parametr);
 
   return (
     <div style={{ height: 400 }}>
       <h3>Анализ мочи</h3>
-      {/* {analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length} */}
-      {
-        <ChartPee
-          analyses={analyses}
-          // el={analyses.reduce((avr, el) => avr + el.one, 0) / analyses.length}
-        />
-      }
+      {parametr < 10 ? (
+        <h3 style={{ color: 'Gold' }}>
+          {5 - (parametr/2)} из 5 параметров не в норме
+        </h3>
+      ) : (
+        <h3 style={{ color: 'green' }}>5 из 5 параметров в норме</h3>
+      )}
+      {<ChartPee analyses={analyses} />}
+
       <Link to="/detailsanalyse">{/* <h3>Подробный анализ</h3> */}</Link>
     </div>
   )

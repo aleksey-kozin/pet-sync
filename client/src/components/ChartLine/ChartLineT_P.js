@@ -11,13 +11,17 @@ const ChartLineT_P = () => {
   const length = anal.length
   let result = []
   for (let i = 0; i < length; i++) {
-    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].T_Pro })
+    result.push({ x: anal[i].date.substring(0, 10), y: anal[i].T_Pro })
   }
+
+  const resultData = result.sort(function (a, b) {
+    return   new Date(a.x) - new Date(b.x)    ;
+  })
 
   let data = [
     {
       id: 'hours',
-      data: result,
+      data: resultData,
     },
   ]
 
@@ -51,16 +55,21 @@ const ChartLineT_P = () => {
           legendOffset: 36,
           legendPosition: 'middle',
         }}
+     // pointBorderWidth={5}
+        // pointBorderColor={{
+        //   from: 'color',
+        //   modifiers: [['darker', 1.5]],
+        // }}
+        // pointColor={{ theme: 'background' }}
+        // lineWidth={4}
+        // pointSize={10}
         colors={{ scheme: 'dark2' }}
-        pointBorderWidth={5}
-        pointBorderColor={{
-          from: 'color',
-          modifiers: [['darker', 1.5]],
-        }}
-        pointColor={{ theme: 'background' }}
         enableArea={true}
-        lineWidth={4}
         pointSize={10}
+        pointColor={{ theme: 'background' }}
+        pointBorderWidth={2}
+        pointBorderColor={{ from: 'serieColor' }}
+        pointLabelYOffset={-12}
         curve="cardinal"
         useMesh={true}
       />

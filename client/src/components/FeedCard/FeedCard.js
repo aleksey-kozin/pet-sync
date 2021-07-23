@@ -41,15 +41,22 @@ function FeedCard({ value }) {
           />
           <CardContent>
             <Link className={classes.text} to={`/feed/about/${value._id}`}>
-              <Typography gutterBottom variant="h5" component="h2">
+
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                style={{ fontSize: "16px",  textAlign:"center"}}
+              >
                 {value.name.toLowerCase()}
+
               </Typography>
             </Link>
           </CardContent>
         </CardActionArea>
       </Card>
     </>
-  )
+  );
 }
 
 export default FeedCard

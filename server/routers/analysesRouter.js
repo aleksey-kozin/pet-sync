@@ -12,10 +12,10 @@ const analysesGormonsDog = require('../db/models/analysesGormonsDog.js')
 router.post('/list', async (req, res) => {
   const { id, spacies } = req.body
   if (spacies === 'Кошка') {
-    const analyses = await AnalysesBioCat.find({ owner: id }).sort({ date: 1 })
+    const analyses = await AnalysesBioCat.find({ owner: id }).sort({ date: -1 })
     res.json(analyses)
   } else {
-    const analyses = await AnalysesBioDog.find({ owner: id }).sort({ date: 1 })
+    const analyses = await AnalysesBioDog.find({ owner: id }).sort({ date: -1 })
     res.json(analyses)
   }
 })
@@ -24,13 +24,13 @@ router.post('/listpee', async (req, res) => {
   const { id, spacies } = req.body
   if (spacies === 'Кошка') {
     const analyses = await AnalysesUrineCat.find({ owner: id }).sort({
-      date: 1,
+      date: -1,
     })
     res.json(analyses)
   } else {
     const analyses = await analysesUrineDog
       .find({ owner: id })
-      .sort({ date: 1 })
+      .sort({ date: -1 })
     res.json(analyses)
   }
 })
@@ -39,13 +39,13 @@ router.post('/listmonitor', async (req, res) => {
   const { id, spacies } = req.body
   if (spacies === 'Кошка') {
     const analyses = await analysesGormonsCat.find({ owner: id }).sort({
-      date: 1,
+      date: -1,
     })
     res.json(analyses)
   } else {
     const analyses = await analysesGormonsDog
       .find({ owner: id })
-      .sort({ date: 1 })
+      .sort({ date: -1 })
     res.json(analyses)
   }
 })
@@ -53,7 +53,7 @@ router.post('/listmonitor', async (req, res) => {
 router.post('/', async (req, res) => {
   const { id, spacies } = req.body
   if (spacies === 'Кошка') {
-    const analyses = await AnalysesBioCat.find({ owner: id }).sort({ date: 1 })
+    const analyses = await AnalysesBioCat.find({ owner: id }).sort({ date: -1 })
     if (!analyses.length) {
       return res.json({})
     }
@@ -83,13 +83,13 @@ router.post('/', async (req, res) => {
     finalAnalyse['chart'] = chartValue
     res.json(finalAnalyse)
   } else {
-    const analyses = await AnalysesBioDog.find({ owner: id }).sort({ date: 1 })
+    const analyses = await AnalysesBioDog.find({ owner: id }).sort({ date: -1 })
 
     if (!analyses.length) {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
- 
+
     let chartValue = 0
     const normal = {
       LDH: [220, 450],
@@ -128,14 +128,13 @@ router.post('/findblood', async (req, res) => {
   } else {
     const peeDog = await AnalysesBioDog.find({ owner: id })
 
-
     res.json({ result: peeDog })
   }
 })
 
 router.post('/findpee', async (req, res) => {
   const { id, spacies } = req.body
-  // console.log(id, spacies);
+ 
   if (spacies === 'Кошка') {
     const peeCat = await AnalysesUrineCat.find({ owner: id })
     res.json({ result: peeCat })
@@ -151,7 +150,7 @@ router.post('/analysespee', async (req, res) => {
 
   if (spacies === 'Кошка') {
     const analyses = await AnalysesUrineCat.find({ owner: id }).sort({
-      date: 1,
+      date: -1,
     })
     if (!analyses.length) {
       return res.json({})
@@ -181,7 +180,7 @@ router.post('/analysespee', async (req, res) => {
     res.json(finalAnalyse)
   } else {
     const analyses = await AnalysesUrineDog.find({ owner: id }).sort({
-      date: 1,
+      date: -1,
     })
     if (!analyses.length) {
       return res.json({})
@@ -204,6 +203,12 @@ router.post('/analysespee', async (req, res) => {
       ) {
         chartValue += 20
       }
+       console.log('normal[key][0] <= resultAnalyses[key]',normal[key][0])
+      console.log('normal[key][1] >= resultAnalyses[key]',resultAnalyses[key])
+      // console.log('normal[key][1]',normal[key][1])
+      console.log('chartValue',chartValue)
+
+      console.log('chartValue',chartValue)
     }
     const finalAnalyse = { ...resultAnalyses }
     finalAnalyse['chart'] = chartValue
@@ -213,10 +218,9 @@ router.post('/analysespee', async (req, res) => {
 
 router.post('/analysesmonitor', async (req, res) => {
   const { id, spacies } = req.body
-  console.log('id', id, spacies)
   if (spacies === 'Кошка') {
     const analyses = await AnalysesGormonsCat.find({ owner: id }).sort({
-      date: 1,
+      date: -1,
     })
     if (!analyses.length) {
       return res.json({})
@@ -247,14 +251,12 @@ router.post('/analysesmonitor', async (req, res) => {
     res.json(finalAnalyse)
   } else {
     const analyses = await AnalysesGormonsDog.find({ owner: id }).sort({
-      date: 1,
+      date: -1,
     })
     if (!analyses.length) {
       return res.json({})
     }
     const resultAnalyses = analyses[0]._doc
-    console.log(resultAnalyses)
-    console.log(resultAnalyses);
     let chartValue = 0
     const normal = {
       ACT: [10, 80],

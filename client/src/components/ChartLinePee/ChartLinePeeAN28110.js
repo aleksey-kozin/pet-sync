@@ -2,23 +2,26 @@ import React from 'react'
 import { ResponsiveLine } from '@nivo/line'
 import { useSelector } from 'react-redux'
 
-const ChartLinePeeAN28110= () => {
+const ChartLinePeeAN28110 = () => {
   const listAnalyses = useSelector(
     (state) => state.analysesReducer.PeeListAnalyses
   )
-  console.log(listAnalyses);
 
   const anal = listAnalyses
   const length = anal.length
   let result = []
   for (let i = 0; i < length; i++) {
-    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].AN28110 })
+    result.push({ x: anal[i].date.substring(0, 10), y: anal[i].AN28110 })
   }
+
+  const resultData = result.sort(function (a, b) {
+    return   new Date(a.x) - new Date(b.x)    ;
+  })
 
   let data = [
     {
       id: 'hours',
-      data: result,
+      data: resultData,
     },
   ]
 

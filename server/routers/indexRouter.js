@@ -96,11 +96,12 @@ router.put('/edit/:id', async (req, res) => {
 })
 
 router.post("/addblood", (req, res) => {
-    const { spacies, owner, LDH, ALT, AST, ALB, T_Pro, T_Bil, GLU, T_Cho, ALP } =
+    const { spacies, owner, date, LDH, ALT, AST, ALB, T_Pro, T_Bil, GLU, T_Cho, ALP } =
       req.body;
   if (spacies === 'Кошка') {
     const newBlood = new AnalysesBioCat({
       owner,
+      date,
       LDH,
       ALT,
       AST,
@@ -116,6 +117,7 @@ router.post("/addblood", (req, res) => {
   } else {
     const newBlood = new AnalysesBioDog({
       owner,
+      date,
       LDH,
       ALT,
       AST,
@@ -132,11 +134,12 @@ router.post("/addblood", (req, res) => {
 });
 
 router.post("/addhormonal", (req, res) => {
-  const { spacies, owner, ACT, ALD, INS, PTH, T4, COR, GAS } = req.body;
+  const { spacies, owner, date, ACT, ALD, INS, PTH, T4, COR, GAS } = req.body;
   if (spacies === 'Кошка') {
     const newBlood = new AnalysesGormonsCat({
       spacies,
       owner,
+      date,
       ACT,
       ALD,
       INS,
@@ -151,6 +154,7 @@ router.post("/addhormonal", (req, res) => {
     const newBlood = new AnalysesGormonsDog({
       spacies,
       owner,
+      date,
       ACT,
       ALD,
       INS,
@@ -165,11 +169,13 @@ router.post("/addhormonal", (req, res) => {
 });
 
 router.post("/addpee", (req, res) => {
-  const { spacies, owner, AN16110, AN116, AN28110, AN15110, AN114 } = req.body;
+  const { spacies, owner, date, AN16110, AN116, AN28110, AN15110, AN114 } =
+    req.body;
   if (spacies === "Кошка") {
     const newBlood = new AnalysesUrineCat({
       spacies,
       owner,
+      date,
       AN16110,
       AN116,
       AN28110,
@@ -182,6 +188,7 @@ router.post("/addpee", (req, res) => {
     const newBlood = new AnalysesUrineDog({
       spacies,
       owner,
+      date,
       AN16110,
       AN116,
       AN28110,

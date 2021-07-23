@@ -4,9 +4,14 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
+@media screen and (max-width: 1090px) {
+.pet-wrapper {
+  justify-content: center;
+}
+}
 .pet-item {
   min-width: 330px;
   min-height: 400px;
@@ -58,5 +63,5 @@
 .img {
   position: absolute;
   transform: translateX(10px);
-  transform: translateY(50px);
+  /* transform: translateY(50px); */
 }

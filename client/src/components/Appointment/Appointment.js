@@ -11,6 +11,9 @@ function Appointment(props) {
           <div className="main-appointment">
           <iframe title="yclients" height="700px" width="900px" scrolling="no" frameborder="0" allowtransparency="true" id="ms_booking_iframe" src="https://n561042.yclients.com/"></iframe>
           </div>
+          <div className="appointment-mb">
+          <iframe className="yc" title="yclients" height="700px" width="390px" scrolling="no" frameborder="0" allowtransparency="true" id="ms_booking_iframe" src="https://n561042.yclients.com/"></iframe>
+          </div>
         </div>
       </div>
     </>
