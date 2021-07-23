@@ -6,12 +6,11 @@ const ChartLineMonitorACT = () => {
   const listAnalyses = useSelector(
     (state) => state.analysesReducer.monitorListAnalyses
   )
-console.log(listAnalyses);
   const anal = listAnalyses
   const length = anal.length
   let result = []
   for (let i = 0; i < length; i++) {
-    result.push({ x: anal[i].date.substring(0, 9), y: anal[i].ACT })
+    result.push({ x: anal[i].date.substring(0, 10), y: anal[i].ACT })
   }
 
   let data = [

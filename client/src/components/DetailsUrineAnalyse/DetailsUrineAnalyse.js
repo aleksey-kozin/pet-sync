@@ -1,31 +1,25 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ResponsiveRadar } from '@nivo/radar'
-// import ChartLine from '../ChartLine/ChartLineLDH'
 import {
   initAnalysesPeeListAC,
-  listAnalysesAC,
+ 
 } from '../../utils/redux/actionCreators/actionCreators'
-// import { Link } from 'react-router-dom'
+
 
 function DetailsBloodAnalyse(props) {
   const analyses = useSelector((state) => state.analysesReducer.analysesPee)
-  // const listAnalyses = useSelector(
-  //   (state) => state.analysesReducer.listAnalyses
-  // )
-  const dispatch = useDispatch()
-  // console.log('sssss',analyses);
 
-  // console.log('state', analyses)
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     fetch('http://localhost:4000/analyses/listpee')
       .then((res) => res.json())
       .then((data) => dispatch(initAnalysesPeeListAC(data)))
-    // .then((data) => console.log('data',data))
   }, [dispatch])
 
-  // console.log(analyses)
+
   let data = [
     {
       taste: 'normalAN16110',

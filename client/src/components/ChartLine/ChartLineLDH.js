@@ -62,16 +62,21 @@ const ChartLineLDH = () => {
           legendPosition: 'middle',
         }}
 
+     // pointBorderWidth={5}
+        // pointBorderColor={{
+        //   from: 'color',
+        //   modifiers: [['darker', 1.5]],
+        // }}
+        // pointColor={{ theme: 'background' }}
+        // lineWidth={4}
+        // pointSize={10}
         colors={{ scheme: 'dark2' }}
-        pointBorderWidth={5}
-        pointBorderColor={{
-          from: 'color',
-          modifiers: [['darker', 1.5]],
-        }}
-        pointColor={{ theme: 'background' }}
         enableArea={true}
-        lineWidth={4}
         pointSize={10}
+        pointColor={{ theme: 'background' }}
+        pointBorderWidth={2}
+        pointBorderColor={{ from: 'serieColor' }}
+        pointLabelYOffset={-12}
         curve="cardinal"
         useMesh={true}
         legends={[
