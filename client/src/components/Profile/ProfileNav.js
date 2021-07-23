@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 function ProfileNav(props) {
+  const userState = useSelector((state) => state.usersReducer)
+  let admin = userState.user.email === 'akost2001@gmail.com'
   return (
     <div className="profile-nav">
       <nav>
@@ -23,7 +26,27 @@ function ProfileNav(props) {
             >
               Мои записи
             </NavLink>
-          </li>
+          </li>  
+            {admin 
+            ? <><li><NavLink
+                to="/feeds"
+                className="profile-links"
+                activeClassName={'profile-links-selected'}
+              >
+                Корма
+              </NavLink></li>
+              <li><NavLink
+                to="/addfeed"
+                className="profile-links"
+                activeClassName={'profile-links-selected'}
+              >
+                Добавить корм
+              </NavLink></li></>
+              
+              
+               : null
+            }
+          {/* </li> */}
         </ul>
       </nav>
     </div>

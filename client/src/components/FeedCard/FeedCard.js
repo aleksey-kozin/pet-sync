@@ -25,6 +25,9 @@ const useStyles = makeStyles(() => ({
 
 function FeedCard({ value }) {
   const classes = useStyles()
+  // if(value){
+  // const name = value.name.toLowerCase()
+  // const newName = name.replace(name[0], name[0].toUpperCase())}
 
   return (
     <>
@@ -38,13 +41,15 @@ function FeedCard({ value }) {
           />
           <CardContent>
             <Link className={classes.text} to={`/feed/about/${value._id}`}>
+
               <Typography
                 gutterBottom
                 variant="h5"
                 component="h2"
                 style={{ fontSize: "16px",  textAlign:"center"}}
               >
-                {value.name}
+                {value.name.toLowerCase()}
+
               </Typography>
             </Link>
           </CardContent>

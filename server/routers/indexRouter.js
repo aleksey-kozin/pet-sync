@@ -34,6 +34,11 @@ router.post('/findpet', async (req, res) => {
   res.json({ petsArr: findPets })
 })
 
+router.get('/admin/findpet', async (req, res) => {
+  const findPets = await Pet.find()
+  res.json({ petsArr: findPets })
+})
+
 router.get("/feed", async (req, res) => {
   const findFeed = await Feed.find();
   res.json({ feedArr: findFeed });

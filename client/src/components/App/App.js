@@ -42,7 +42,10 @@ function App() {
             <Route path={"/tests/research/:id"} component={Hormonal} />
             <Route path={"/addfeed"} component={AddFeed} />
             <Route path={"/feed/:id"} component={Feed} />
-            <Route path={"/feeds/:id"} component={FeedS} />
+
+            <Route path={"/feeds"} component={Feed} />
+
+
           </Switch>
         </Router>
       </Provider>
