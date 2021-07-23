@@ -12,9 +12,9 @@ function Pet({ value }) {
         <div className="pet-item">
           <h2 className="pet-title">{value.name}</h2>
 
-          <p className="pet-desc">{value.breed}</p>
+          {/* <p className="pet-desc">{value.breed}</p>
 
-          <p className="pet-desc">{value.spacies}</p>
+          <p className="pet-desc">{value.spacies}</p> */}
 
           <img className="img" src={value.image} alt="" width="260px" />
         </div>
