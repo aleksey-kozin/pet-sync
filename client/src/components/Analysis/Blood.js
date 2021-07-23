@@ -130,7 +130,7 @@ function Blood(props) {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: '40px' }}
+                  style={{ marginBottom: "40px" }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
@@ -139,7 +139,8 @@ function Blood(props) {
               <h2>Анализ крови</h2>
 
               <button
-                className="analis-btn"dfvdfv
+                className="analis-btn"
+                dfvdfv
                 onClick={() => setModalActive(true)}
               >
                 Добавить анализ
@@ -147,7 +148,7 @@ function Blood(props) {
             </div>
 
             {show ? (
-              <div style={{ marginBottom: '50px' }}>
+              <div style={{ marginBottom: "50px" }}>
                 <ChartList />
               </div>
             ) : null}
@@ -250,7 +251,10 @@ function Blood(props) {
             </Modal>
 
             {show ? (
-              <button className="analis-btn" onClick={() => setDetails(!details)}>
+              <button
+                className="analis-btn"
+                onClick={() => setDetails(!details)}
+              >
                 Подробный анализ &rarr;
               </button>
             ) : null}
@@ -264,17 +268,21 @@ function Blood(props) {
               <div className="tests">
                 {normal.LDH[0] <= analyses.LDH &&
                 normal.LDH[1] >= analyses.LDH ? (
-                  <h3 style={{ color: 'green' }}>ЛДГ (лактатдегидрогеназа) </h3>
+                  <h3 style={{ color: "green" }}>ЛДГ (лактатдегидрогеназа) </h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>ЛДГ (лактатдегидрогеназа) </h3>
+                  <h3 style={{ color: "Gold" }}>ЛДГ (лактатдегидрогеназа) </h3>
                 )}
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>Собаки: 20-350 Ед/л</li>
-                  <li style={{ listStyleType: 'none' }}>Кошки: 40-350 Ед/л</li>
+                  <li style={{ listStyleType: "none" }}>
+                    Собаки: 220-450 Ед/л
+                  </li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 320-460 Ед/л</li>
                 </ul>
                 <ChartLineLDH />
-                <button className="analis-btn" onClick={() => setLdh(!ldh)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setLdh(!ldh)}>
+                  Пояснения &rarr;
+                </button>
                 {ldh ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -295,24 +303,21 @@ function Blood(props) {
               <div className="tests">
                 {normal.ALB[0] <= analyses.ALB &&
                 normal.ALB[1] >= analyses.ALB ? (
-                  <h3 style={{ color: 'green' }}>Альбумин </h3>
+                  <h3 style={{ color: "green" }}>Альбумин </h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>Альбумин </h3>
+                  <h3 style={{ color: "Gold" }}>Альбумин </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: 0-6 мес. ‒ 15-37 г/л; 6-12 мес. – 26-37 г/л; старше
-                    одного года – 25-37 г/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: 0-6 мес. ‒ 19-30 г/л; 6-12 мес. – 24-38 г/л; старше 1
-                    года – 24-39 г/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 22-39 г/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 22-32 г/л</li>
                 </ul>
                 <ChartLineALB />
-                <button className="analis-btn" onClick={() => setAlbymin(!albymin)}>
+                <button
+                  className="analis-btn"
+                  onClick={() => setAlbymin(!albymin)}
+                >
                   Пояснения &rarr;
                 </button>
                 {albymin ? (
@@ -356,24 +361,20 @@ function Blood(props) {
               <div className="tests">
                 {normal.ALP[0] <= analyses.ALP &&
                 normal.ALP[1] >= analyses.ALP ? (
-                  <h3 style={{ color: 'green' }}>Щелочная фосфатаза </h3>
+                  <h3 style={{ color: "green" }}>Щелочная фосфатаза </h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>Щелочная фосфатаза </h3>
+                  <h3 style={{ color: "Gold" }}>Щелочная фосфатаза </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: 0–6 мес. — 135–520 Ед/л; 6–12 мес. — 70–252 Ед/л;
-                    старше одного года — 10–80 Ед/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    0–6 мес. — 184–538 Ед/л; 6–12 мес. — 21–197 Ед/л; старше
-                    одного года — 10–92 Ед/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 10-100 Ед/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 12-65 Ед/л</li>
                 </ul>
                 <ChartLineALP />
-                <button className="analis-btn" onClick={() => setALP(!ALP)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setALP(!ALP)}>
+                  Пояснения &rarr;
+                </button>
                 {ALP ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -416,28 +417,24 @@ function Blood(props) {
               <div className="tests">
                 {normal.ALT[0] <= analyses.ALT &&
                 normal.ALT[1] >= analyses.ALT ? (
-                  <h3 style={{ color: 'green' }}>
-                    Аланинаминотрансфераза (АЛТ){' '}
+                  <h3 style={{ color: "green" }}>
+                    Аланинаминотрансфераза (АЛТ){" "}
                   </h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>
-                    Аланинаминотрансфераза (АЛТ){' '}
+                  <h3 style={{ color: "Gold" }}>
+                    Аланинаминотрансфераза (АЛТ){" "}
                   </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: 0 — 6 мес. — 10–32 Ед/л; 6–12 мес. — 10–45 Ед/л;
-                    старше одного года — 10–65 Ед/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: 0–6 мес. — 10–50 Ед/л; 6–12 мес. — 10–75 Ед/л; старше
-                    одного года — 10–85 Ед/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 8-57 Ед/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 8-52 Ед/л</li>
                 </ul>
                 <ChartLineALT />
-                <button className="analis-btn" onClick={() => setALT(!ALT)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setALT(!ALT)}>
+                  Пояснения &rarr;
+                </button>
                 {ALT ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -467,29 +464,24 @@ function Blood(props) {
               <div className="tests">
                 {normal.AST[0] <= analyses.AST &&
                 normal.AST[1] >= analyses.AST ? (
-                  <h3 style={{ color: 'green' }}>
-                    АСТ (аспартатаминотрансфераза){' '}
+                  <h3 style={{ color: "green" }}>
+                    АСТ (аспартатаминотрансфераза){" "}
                   </h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>
-                    АСТ (аспартатаминотрансфераза){' '}
+                  <h3 style={{ color: "Gold" }}>
+                    АСТ (аспартатаминотрансфераза){" "}
                   </h3>
                 )}
                 <h3> </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    неонаталы (первые три дня жизни, питание молозивом- 44-194
-                    Ед/л; 0-6 мес. ‒ 10-23 Ед/л; 6-12 мес. ‒ 10-20 Ед/л; старше
-                    одного года ‒ 10-50 Ед/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: 0-6 мес. ‒ 10-30 Ед/л; 6-12 мес. – 7-40 Ед/л; старше
-                    одного года – 10-56 Ед/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 9-49 Ед/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 9-39 Ед/л</li>
                 </ul>
                 <ChartLineAST />
-                <button className="analis-btn" onClick={() => setAST(!AST)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setAST(!AST)}>
+                  Пояснения &rarr;
+                </button>
                 {AST ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -526,24 +518,20 @@ function Blood(props) {
               <div className="tests">
                 {normal.GLU[0] <= analyses.GLU &&
                 normal.GLU[1] >= analyses.GLU ? (
-                  <h3 style={{ color: 'green' }}>Глюкоза</h3>
+                  <h3 style={{ color: "green" }}>Глюкоза</h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>Глюкоза </h3>
+                  <h3 style={{ color: "Gold" }}>Глюкоза </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: 0–6 мес. — 2,86–12 ммоль/л; 6–12 мес. — 4,2–6,6
-                    ммоль/л; старше одного года — 4,3–6,6 ммоль/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: 0–6 мес. — 3–12 ммоль/л; 6–12 мес. — 3,8–9,8 ммоль/л;
-                    старше одного года — 3,2–7,9 ммоль/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 3-6 ммоль/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 3-8 ммоль/л</li>
                 </ul>
                 <ChartLineGLU />
-                <button className="analis-btn" onClick={() => setGLU(!GLU)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setGLU(!GLU)}>
+                  Пояснения &rarr;
+                </button>
                 {GLU ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -584,22 +572,22 @@ function Blood(props) {
               <div className="tests">
                 {normal.T_Bil[0] <= analyses.T_Bil &&
                 normal.T_Bil[1] >= analyses.T_Bil ? (
-                  <h3 style={{ color: 'green' }}>Билирубин общий</h3>
+                  <h3 style={{ color: "green" }}>Билирубин общий</h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>Билирубин общий </h3>
+                  <h3 style={{ color: "Gold" }}>Билирубин общий </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
+                  <li style={{ listStyleType: "none" }}>
                     {`Собаки: \<10 мкмоль/л`}
                   </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    {`Кошки: \<10 мкмоль/л`}
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 2-5 мкмоль/л</li>
                 </ul>
                 <ChartLineTB />
-                <button className="analis-btn" onClick={() => setTB(!TB)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setTB(!TB)}>
+                  Пояснения &rarr;
+                </button>
                 {TB ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -660,24 +648,20 @@ function Blood(props) {
               <div className="tests">
                 {normal.T_Cho[0] <= analyses.T_Cho &&
                 normal.T_Cho[1] >= analyses.T_Cho ? (
-                  <h3 style={{ color: 'green' }}>Холестерин</h3>
+                  <h3 style={{ color: "green" }}>Холестерин</h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>Холестерин </h3>
+                  <h3 style={{ color: "Gold" }}>Холестерин </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: 0–6 мес.: 2,9–9,1 ммоль/л; 6–12 мес.: 3,51–7,2
-                    ммоль/л; старше года: 2,9 -7,50 ммоль/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: 0–6 мес.: 1,2–6 5 ммоль/л; 6–12 мес.: 3,2–5,7
-                    ммоль/л; старше года: 2,3 -5,9 ммоль/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 3-7 ммоль/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 2-4 ммоль/л</li>
                 </ul>
                 <ChartLineTCho />
-                <button className="analis-btn" onClick={() => setTCho(!TCho)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setTCho(!TCho)}>
+                  Пояснения &rarr;
+                </button>
                 {TCho ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -706,24 +690,20 @@ function Blood(props) {
               <div className="tests">
                 {normal.T_Pro[0] <= analyses.T_Pro &&
                 normal.T_Pro[1] >= analyses.T_Pro ? (
-                  <h3 style={{ color: 'green' }}>Общий белок</h3>
+                  <h3 style={{ color: "green" }}>Общий белок</h3>
                 ) : (
-                  <h3 style={{ color: 'Gold' }}>Общий белок </h3>
+                  <h3 style={{ color: "Gold" }}>Общий белок </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: 'none' }}>
-                    Собаки: 0–6 мес. ‒ 34–52 г/л; 6–12 мес. — 49–67 г/л; старше
-                    одного года — 54–77 г/л
-                  </li>
-                  <li style={{ listStyleType: 'none' }}>
-                    Кошки: 0–6 мес. — 38–65 г/л; 6–12 мес. — 33–75 г/л; старше
-                    одного года — 57–79 г/л
-                  </li>
+                  <li style={{ listStyleType: "none" }}>Собаки: 50-100 г/л</li>
+                  <li style={{ listStyleType: "none" }}>Кошки: 43-75 г/л</li>
                 </ul>
                 <ChartLineTP />
-                <button className="analis-btn" onClick={() => setTP(!TP)}>Пояснения &rarr;</button>
+                <button className="analis-btn" onClick={() => setTP(!TP)}>
+                  Пояснения &rarr;
+                </button>
                 {TP ? (
                   <ul className="list5b">
                     <h4>Повышение уровня:</h4>
@@ -759,7 +739,7 @@ function Blood(props) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Blood
