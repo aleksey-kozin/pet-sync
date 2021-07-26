@@ -18,7 +18,7 @@ app.use(cookieParser())
 app.use(
   cors({
     credentials: true,
-    origin: 'https://pet-sync.herokuapp.com/',
+    // origin: 'https://pet-sync.herokuapp.com/',
   })
 )
 
