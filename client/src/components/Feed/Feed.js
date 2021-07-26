@@ -32,10 +32,9 @@ function Feed() {
 
   useEffect(() => {
     setLoading(true)
-    fetch('http://localhost:4000/feed')
+    fetch('/feed')
       .then((res) => res.json())
       .then((result) => {
-        
         dispatch(initFeedAC(result.feedArr))
         setLoading(false)
       })
@@ -81,8 +80,8 @@ function Feed() {
         })
       : feedArray
 
-      const userState = useSelector((state) => state.usersReducer)
-      let admin = userState.user.email === 'akost2001@gmail.com'
+  const userState = useSelector((state) => state.usersReducer)
+  let admin = userState.user.email === 'akost2001@gmail.com'
 
   return (
     <>
@@ -90,30 +89,29 @@ function Feed() {
         <div className="main-wrapper1">
           <ProfileNav />
           <div className="feed">
-            {!admin 
-            ?
-            <Link to={`/mypets/${id}`}>
-              <img
-                style={{ marginBottom: "40px" }}
-                src="/left-arrow.svg"
-                alt=""
-                width="40px"
-              />
-            </Link> : <Link to={`/mypets`}>
-              <img
-                style={{ marginBottom: '40px' }}
-                src="/left-arrow.svg"
-                alt=""
-                width="40px"
-              />
-            </Link>
-
-            }
+            {!admin ? (
+              <Link to={`/mypets/${id}`}>
+                <img
+                  style={{ marginBottom: '40px' }}
+                  src="/left-arrow.svg"
+                  alt=""
+                  width="40px"
+                />
+              </Link>
+            ) : (
+              <Link to={`/mypets`}>
+                <img
+                  style={{ marginBottom: '40px' }}
+                  src="/left-arrow.svg"
+                  alt=""
+                  width="40px"
+                />
+              </Link>
+            )}
             <div style={{ marginBottom: '40px' }}>
+              <h2 style={{ marginBottom: '40px' }}>Подбор базовой диеты</h2>
 
-            <h2 style={{ marginBottom: '40px'}}>Подбор базовой диеты</h2>
-
-            {/* <button
+              {/* <button
                 className="analis-btn"
                 onClick={() => setModalActive(true)}
               >
@@ -127,10 +125,9 @@ function Feed() {
 
               </form>
               </Modal> */}
-          
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
                   <b>Животное</b>
                 </FormLabel>
                 <FormGroup>
@@ -156,7 +153,7 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
                   <b>Возраст</b>
                 </FormLabel>
                 <FormGroup>
@@ -182,7 +179,7 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
                   <b>Размер</b>
                 </FormLabel>
                 <FormGroup>
@@ -208,7 +205,7 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend" style={{ fontSize: "18px" }}>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
                   <b>Особые потребности</b>
                 </FormLabel>
                 <FormGroup>
@@ -238,14 +235,14 @@ function Feed() {
                 <Loader />
               ) : (
                 filteredUnits &&
-                  filteredUnits.map((el) => <FeedCard key={el._id} value={el} />)
+                filteredUnits.map((el) => <FeedCard key={el._id} value={el} />)
               )}
             </div>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Feed

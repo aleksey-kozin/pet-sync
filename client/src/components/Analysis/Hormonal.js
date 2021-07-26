@@ -24,7 +24,7 @@ function Hormonal() {
   const [T4, setT4] = useState(false)
   const [COR, setCOR] = useState(false)
   const [GAS, setGAS] = useState(false)
-  const [ALD, setALD] = useState(false);
+  const [ALD, setALD] = useState(false)
 
   const [modalActive, setModalActive] = useState(false)
   const [show, setShow] = useState(false)
@@ -51,7 +51,7 @@ function Hormonal() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/analysesmonitor', {
+    fetch('/analyses/analysesmonitor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ function Hormonal() {
   }, [dispatch, modalActive])
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/listmonitor', {
+    fetch('/analyses/listmonitor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ function Hormonal() {
       COR: text.current.COR.value,
       GAS: text.current.GAS.value,
     }
-    fetch('http://localhost:4000/addhormonal', {
+    fetch('/addhormonal', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newHormonal),
@@ -121,7 +121,7 @@ function Hormonal() {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: "40px" }}
+                  style={{ marginBottom: '40px' }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
@@ -137,7 +137,7 @@ function Hormonal() {
               </button>
             </div>
             {show ? (
-              <div style={{ marginBottom: "50px" }}>
+              <div style={{ marginBottom: '50px' }}>
                 <ChartListHormonal />
               </div>
             ) : null}
@@ -238,10 +238,10 @@ function Hormonal() {
                 <h3>АКТГ (адренокортикотропный гормон) </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 10-80 пг/мл</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 10-60 пг/мл</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 10-80 пг/мл</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 10-60 пг/мл</li>
                 </ul>
-                <ChartLineMonitorACT />{" "}
+                <ChartLineMonitorACT />{' '}
                 <button onClick={() => setACT(!ACT)}>Пояснения &rarr;</button>
                 {ACT ? (
                   <ul className="list5b">
@@ -260,8 +260,8 @@ function Hormonal() {
                 <h3>Альдостерон </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 2–96 пг/мл</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 7–105 пг/мл</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 2–96 пг/мл</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 7–105 пг/мл</li>
                 </ul>
                 <ChartLineMonitorALD />
                 <button onClick={() => setALD(!ALD)}>Пояснения &rarr;</button>
@@ -292,10 +292,10 @@ function Hormonal() {
                 <h3>Инсулин </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: 5-20 мкЕд/мл
                   </li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 5-20 мкЕд/мл</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 5-20 мкЕд/мл</li>
                 </ul>
                 <ChartLineMonitorINS />
                 <button onClick={() => setINS(!INS)}>Пояснения &rarr;</button>
@@ -330,10 +330,10 @@ function Hormonal() {
                 <h3>Паратиреоидный гормон (ПТГ) </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: 19–123 пмоль/л
                   </li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 1–38 пмоль/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 1–38 пмоль/л</li>
                 </ul>
                 <ChartLineMonitorPTH />
                 <button onClick={() => setPTH(!PTH)}>Пояснения &rarr;</button>
@@ -384,10 +384,10 @@ function Hormonal() {
                 <h3>Т4 общий (тироксин) </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: 15–67 нмоль/л
                   </li>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Кошки: 12–55 нмоль/л
                   </li>
                 </ul>
@@ -432,10 +432,10 @@ function Hormonal() {
                 <h3>Кортизол </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: 28-170,0 нмоль/л
                   </li>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Кошки: 28-140,0 нмоль/л
                   </li>
                 </ul>
@@ -467,10 +467,10 @@ function Hormonal() {
                 <h3>Гастрин </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: 0-100 мкЕд/мл
                   </li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 0-18 мкЕд/мл</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 0-18 мкЕд/мл</li>
                 </ul>
                 <ChartLineMonitorGAS />
                 <button onClick={() => setGAS(!GAS)}>Пояснения &rarr;</button>
@@ -508,7 +508,7 @@ function Hormonal() {
       </div>
       {/* </div> */}
     </>
-  );
+  )
 }
 
 export default Hormonal

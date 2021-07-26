@@ -19,7 +19,7 @@ function ChartList(props) {
   console.log('parametr', parametr)
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses')
+    fetch('/analyses')
       .then((res) => res.json())
       .then((data) => dispatch(initAnalysesAC(data)))
   }, [dispatch])

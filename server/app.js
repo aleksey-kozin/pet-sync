@@ -18,13 +18,17 @@ app.use(cookieParser())
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: 'https://pet-sync.herokuapp.com/',
   })
 )
 
 app.use('/api', routerAuth)
 app.use('/', indexRouter)
 app.use('/analyses', analysesRouter)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'))
+})
 
 app.use(errorMiddleware)
 

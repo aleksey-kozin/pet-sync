@@ -57,7 +57,7 @@ function Blood(props) {
   }
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses', {
+    fetch('/analyses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ function Blood(props) {
   }, [dispatch, modalActive])
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/list', {
+    fetch('/analyses/list', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ function Blood(props) {
       ALP: text.current.ALP.value,
     }
 
-    fetch('http://localhost:4000/addblood', {
+    fetch('/addblood', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newBlood),
@@ -130,7 +130,7 @@ function Blood(props) {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: "40px" }}
+                  style={{ marginBottom: '40px' }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
@@ -148,7 +148,7 @@ function Blood(props) {
             </div>
 
             {show ? (
-              <div style={{ marginBottom: "50px" }}>
+              <div style={{ marginBottom: '50px' }}>
                 <ChartList />
               </div>
             ) : null}
@@ -268,16 +268,16 @@ function Blood(props) {
               <div className="tests">
                 {normal.LDH[0] <= analyses.LDH &&
                 normal.LDH[1] >= analyses.LDH ? (
-                  <h3 style={{ color: "green" }}>ЛДГ (лактатдегидрогеназа) </h3>
+                  <h3 style={{ color: 'green' }}>ЛДГ (лактатдегидрогеназа) </h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>ЛДГ (лактатдегидрогеназа) </h3>
+                  <h3 style={{ color: 'Gold' }}>ЛДГ (лактатдегидрогеназа) </h3>
                 )}
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: 220-450 Ед/л
                   </li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 320-460 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 320-460 Ед/л</li>
                 </ul>
                 <ChartLineLDH />
                 <button className="analis-btn" onClick={() => setLdh(!ldh)}>
@@ -303,15 +303,15 @@ function Blood(props) {
               <div className="tests">
                 {normal.ALB[0] <= analyses.ALB &&
                 normal.ALB[1] >= analyses.ALB ? (
-                  <h3 style={{ color: "green" }}>Альбумин </h3>
+                  <h3 style={{ color: 'green' }}>Альбумин </h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>Альбумин </h3>
+                  <h3 style={{ color: 'Gold' }}>Альбумин </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 22-39 г/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 22-32 г/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 22-39 г/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 22-32 г/л</li>
                 </ul>
                 <ChartLineALB />
                 <button
@@ -361,15 +361,15 @@ function Blood(props) {
               <div className="tests">
                 {normal.ALP[0] <= analyses.ALP &&
                 normal.ALP[1] >= analyses.ALP ? (
-                  <h3 style={{ color: "green" }}>Щелочная фосфатаза </h3>
+                  <h3 style={{ color: 'green' }}>Щелочная фосфатаза </h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>Щелочная фосфатаза </h3>
+                  <h3 style={{ color: 'Gold' }}>Щелочная фосфатаза </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 10-100 Ед/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 12-65 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 10-100 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 12-65 Ед/л</li>
                 </ul>
                 <ChartLineALP />
                 <button className="analis-btn" onClick={() => setALP(!ALP)}>
@@ -417,19 +417,19 @@ function Blood(props) {
               <div className="tests">
                 {normal.ALT[0] <= analyses.ALT &&
                 normal.ALT[1] >= analyses.ALT ? (
-                  <h3 style={{ color: "green" }}>
-                    Аланинаминотрансфераза (АЛТ){" "}
+                  <h3 style={{ color: 'green' }}>
+                    Аланинаминотрансфераза (АЛТ){' '}
                   </h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>
-                    Аланинаминотрансфераза (АЛТ){" "}
+                  <h3 style={{ color: 'Gold' }}>
+                    Аланинаминотрансфераза (АЛТ){' '}
                   </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 8-57 Ед/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 8-52 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 8-57 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 8-52 Ед/л</li>
                 </ul>
                 <ChartLineALT />
                 <button className="analis-btn" onClick={() => setALT(!ALT)}>
@@ -464,19 +464,19 @@ function Blood(props) {
               <div className="tests">
                 {normal.AST[0] <= analyses.AST &&
                 normal.AST[1] >= analyses.AST ? (
-                  <h3 style={{ color: "green" }}>
-                    АСТ (аспартатаминотрансфераза){" "}
+                  <h3 style={{ color: 'green' }}>
+                    АСТ (аспартатаминотрансфераза){' '}
                   </h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>
-                    АСТ (аспартатаминотрансфераза){" "}
+                  <h3 style={{ color: 'Gold' }}>
+                    АСТ (аспартатаминотрансфераза){' '}
                   </h3>
                 )}
                 <h3> </h3>
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 9-49 Ед/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 9-39 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 9-49 Ед/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 9-39 Ед/л</li>
                 </ul>
                 <ChartLineAST />
                 <button className="analis-btn" onClick={() => setAST(!AST)}>
@@ -518,15 +518,15 @@ function Blood(props) {
               <div className="tests">
                 {normal.GLU[0] <= analyses.GLU &&
                 normal.GLU[1] >= analyses.GLU ? (
-                  <h3 style={{ color: "green" }}>Глюкоза</h3>
+                  <h3 style={{ color: 'green' }}>Глюкоза</h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>Глюкоза </h3>
+                  <h3 style={{ color: 'Gold' }}>Глюкоза </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 3-6 ммоль/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 3-8 ммоль/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 3-6 ммоль/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 3-8 ммоль/л</li>
                 </ul>
                 <ChartLineGLU />
                 <button className="analis-btn" onClick={() => setGLU(!GLU)}>
@@ -572,17 +572,17 @@ function Blood(props) {
               <div className="tests">
                 {normal.T_Bil[0] <= analyses.T_Bil &&
                 normal.T_Bil[1] >= analyses.T_Bil ? (
-                  <h3 style={{ color: "green" }}>Билирубин общий</h3>
+                  <h3 style={{ color: 'green' }}>Билирубин общий</h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>Билирубин общий </h3>
+                  <h3 style={{ color: 'Gold' }}>Билирубин общий </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     {`Собаки: \<10 мкмоль/л`}
                   </li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 2-5 мкмоль/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 2-5 мкмоль/л</li>
                 </ul>
                 <ChartLineTB />
                 <button className="analis-btn" onClick={() => setTB(!TB)}>
@@ -648,15 +648,15 @@ function Blood(props) {
               <div className="tests">
                 {normal.T_Cho[0] <= analyses.T_Cho &&
                 normal.T_Cho[1] >= analyses.T_Cho ? (
-                  <h3 style={{ color: "green" }}>Холестерин</h3>
+                  <h3 style={{ color: 'green' }}>Холестерин</h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>Холестерин </h3>
+                  <h3 style={{ color: 'Gold' }}>Холестерин </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 3-7 ммоль/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 2-4 ммоль/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 3-7 ммоль/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 2-4 ммоль/л</li>
                 </ul>
                 <ChartLineTCho />
                 <button className="analis-btn" onClick={() => setTCho(!TCho)}>
@@ -690,15 +690,15 @@ function Blood(props) {
               <div className="tests">
                 {normal.T_Pro[0] <= analyses.T_Pro &&
                 normal.T_Pro[1] >= analyses.T_Pro ? (
-                  <h3 style={{ color: "green" }}>Общий белок</h3>
+                  <h3 style={{ color: 'green' }}>Общий белок</h3>
                 ) : (
-                  <h3 style={{ color: "Gold" }}>Общий белок </h3>
+                  <h3 style={{ color: 'Gold' }}>Общий белок </h3>
                 )}
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 50-100 г/л</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 43-75 г/л</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 50-100 г/л</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 43-75 г/л</li>
                 </ul>
                 <ChartLineTP />
                 <button className="analis-btn" onClick={() => setTP(!TP)}>
@@ -739,7 +739,7 @@ function Blood(props) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Blood

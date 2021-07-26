@@ -22,7 +22,7 @@ function PetPersonPage(props) {
   const dispatch = useDispatch()
 
   const pet = petState.find((el) => el._id === id)
-  
+
   const [petImg, setPetImg] = useState(pet.image !== '/kotenok.jpeg')
 
   const [loading, setLoading] = useState(false)
@@ -31,14 +31,12 @@ function PetPersonPage(props) {
 
   const text = useRef()
 
-
   const handleDelete = () => {
-    fetch(`http://localhost:4000/delete/${id}`, {
+    fetch(`/delete/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
-      .then((result) => {
-      })
+      .then((result) => {})
       .then(() => history.push('/mypets'))
   }
 
@@ -51,8 +49,8 @@ function PetPersonPage(props) {
     const weight = text.current.weight.value
     const birthdate = text.current.birthdate.value
     dispatch(editPetAC({ name, spacies, breed, sex, weight, birthdate, id }))
-    
-    fetch(`http://localhost:4000/put/${id}`, {
+
+    fetch(`/put/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, spacies, breed, sex, weight, birthdate }),
@@ -91,7 +89,7 @@ function PetPersonPage(props) {
       const result = await res.json()
       let token = result.downloadTokens
       const url = `https://firebasestorage.googleapis.com/v0/b/pet-sync-e6f45.appspot.com/o/photos%2F${file.name}?alt=media&token=${token}`
-      const photo = await fetch(`http://localhost:4000/put/photo/${id}`, {
+      const photo = await fetch(`/put/photo/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: url }),
@@ -155,7 +153,10 @@ function PetPersonPage(props) {
                 <p className="info-item">Порода: {pet.breed && pet.breed}</p>
                 <p className="info-item">Пол: {pet.sex && pet.sex} </p>
                 <p className="info-item">Вес: {pet.weight && pet.weight}</p>
-                <p className="info-item">Дата рождения: {pet.birthdate && pet.birthdate.substring(0,10)}</p>
+                <p className="info-item">
+                  Дата рождения:{' '}
+                  {pet.birthdate && pet.birthdate.substring(0, 10)}
+                </p>
               </div>
               <div className="edit">
                 <img
@@ -176,10 +177,17 @@ function PetPersonPage(props) {
                 />
               </div>
               <div className="edit-mb">
-              <button onClick={() => setModalActive(true)} className="form-buttom-mb">Изменить информацию</button>
+                <button
+                  onClick={() => setModalActive(true)}
+                  className="form-buttom-mb"
+                >
+                  Изменить информацию
+                </button>
               </div>
               <div className="del-mb">
-              <button onClick={handleDelete} className="form-buttom-mb">Удалить питомца</button>
+                <button onClick={handleDelete} className="form-buttom-mb">
+                  Удалить питомца
+                </button>
               </div>
             </div>
           </div>
@@ -249,22 +257,26 @@ function PetPersonPage(props) {
           <div className="diet">
             <Link to={`/feed/${pet._id}`}>
               <div className="pet-diet-base">
-                <h2 style={{marginBottom: '10px'}}>Базовая диета для {pet.name ? pet.name : "животного"}</h2>
+                <h2 style={{ marginBottom: '10px' }}>
+                  Базовая диета для {pet.name ? pet.name : 'животного'}
+                </h2>
                 <p>Подбор корма для правильного рациона</p>
               </div>
             </Link>
             <Link to={`/feeds/${pet._id}`}>
-            <div className="pet-diet-exact">
-              <h2 style={{marginBottom: '10px'}}>Точная диета для {pet.name ? pet.name : "животного"}</h2>
-              <p>Диета вашего питомца после общения с врачем</p>
-            </div>
+              <div className="pet-diet-exact">
+                <h2 style={{ marginBottom: '10px' }}>
+                  Точная диета для {pet.name ? pet.name : 'животного'}
+                </h2>
+                <p>Диета вашего питомца после общения с врачем</p>
+              </div>
             </Link>
           </div>
 
           <div className="pet-test">
             <Link
               to={`/tests/blood/${pet._id}`}
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: 'none', color: 'black' }}
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ крови</h2>
@@ -275,7 +287,7 @@ function PetPersonPage(props) {
             </Link>
             <Link
               to={`/tests/pee/${pet._id}`}
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: 'none', color: 'black' }}
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ мочи</h2>
@@ -286,7 +298,7 @@ function PetPersonPage(props) {
             </Link>
             <Link
               to={`/tests/research/${pet._id}`}
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: 'none', color: 'black' }}
             >
               <div className="test-item">
                 <h2 className="test-title">Анализ на гормоны</h2>
@@ -305,7 +317,7 @@ function PetPersonPage(props) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default PetPersonPage

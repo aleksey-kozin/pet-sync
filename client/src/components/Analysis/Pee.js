@@ -20,7 +20,7 @@ function Pee() {
   const [AN15110, setAN15110] = useState(false)
   const [AN116, setAN116] = useState(false)
   const [AN114, setAN114] = useState(false)
-  const [AN16110, setAN16110] = useState(false);
+  const [AN16110, setAN16110] = useState(false)
 
   const [modalActive, setModalActive] = useState(false)
 
@@ -50,7 +50,7 @@ function Pee() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/analysespee', {
+    fetch('/analyses/analysespee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ function Pee() {
   }, [dispatch, modalActive])
 
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/listpee', {
+    fetch('/analyses/listpee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function Pee() {
       AN15110: text.current.AN15110.value,
       AN114: text.current.AN114.value,
     }
-    fetch('http://localhost:4000/addpee', {
+    fetch('/addpee', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPee),
@@ -118,7 +118,7 @@ function Pee() {
             <div className="tests-info">
               <Link to={`/mypets/${id}`}>
                 <img
-                  style={{ marginBottom: "40px" }}
+                  style={{ marginBottom: '40px' }}
                   src="/left-arrow.svg"
                   alt=""
                   width="40px"
@@ -134,7 +134,7 @@ function Pee() {
             </div>
 
             {show ? (
-              <div style={{ marginBottom: "50px" }}>
+              <div style={{ marginBottom: '50px' }}>
                 <ChartListPee />
               </div>
             ) : null}
@@ -229,14 +229,13 @@ function Pee() {
                 )}
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Собаки: в норме до 0‐0,5
                   </li>
-                  <li style={{ listStyleType: "none" }}>
+                  <li style={{ listStyleType: 'none' }}>
                     Кошки: в норме до 0-0,16
                   </li>
                 </ul>
-
                 <ChartLinePeeAN16110 />{' '}
                 <button
                   className="analis-btn"
@@ -244,8 +243,6 @@ function Pee() {
                 >
                   Пояснения &rarr;
                 </button>
-
-
                 {AN16110 ? (
                   <ul className="list5b">
                     <h4>
@@ -278,7 +275,6 @@ function Pee() {
                     </li>
                   </ul>
                 ) : null}
-
               </div>
               <div className="tests">
                 {normal.AN116[0] <= analyses.AN116 &&
@@ -294,8 +290,8 @@ function Pee() {
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>{`Собаки: \< 0,5`}</li>
-                  <li style={{ listStyleType: "none" }}>{`Кошки: \< 0,4`}</li>
+                  <li style={{ listStyleType: 'none' }}>{`Собаки: \< 0,5`}</li>
+                  <li style={{ listStyleType: 'none' }}>{`Кошки: \< 0,4`}</li>
                 </ul>
                 <ChartLinePeeAN28110 />
                 <button
@@ -338,8 +334,8 @@ function Pee() {
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 0,21-0,57</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 0,03-0,57</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 0,21-0,57</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 0,03-0,57</li>
                 </ul>
                 <ChartLinePeeAN15110 />
                 <button
@@ -376,8 +372,8 @@ function Pee() {
                 )}
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 1,01-1,04</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 1,02-1,05</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 1,01-1,04</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 1,02-1,05</li>
                 </ul>
                 <ChartLinePeeAN116 />
                 <button className="analis-btn" onClick={() => setAN116(!AN116)}>
@@ -408,8 +404,8 @@ function Pee() {
 
                 <ul>
                   <p>Референсные значения:</p>
-                  <li style={{ listStyleType: "none" }}>Собаки: 0-20</li>
-                  <li style={{ listStyleType: "none" }}>Кошки: 5-20</li>
+                  <li style={{ listStyleType: 'none' }}>Собаки: 0-20</li>
+                  <li style={{ listStyleType: 'none' }}>Кошки: 5-20</li>
                 </ul>
                 <ChartLinePeeAN114 />
                 <button className="analis-btn" onClick={() => setAN114(!AN114)}>
@@ -438,7 +434,7 @@ function Pee() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Pee

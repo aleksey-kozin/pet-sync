@@ -1,24 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ResponsiveRadar } from '@nivo/radar'
-import {
-  initAnalysesPeeListAC,
- 
-} from '../../utils/redux/actionCreators/actionCreators'
-
+import { initAnalysesPeeListAC } from '../../utils/redux/actionCreators/actionCreators'
 
 function DetailsBloodAnalyse(props) {
   const analyses = useSelector((state) => state.analysesReducer.analysesPee)
 
   const dispatch = useDispatch()
 
-
   useEffect(() => {
-    fetch('http://localhost:4000/analyses/listpee')
+    fetch('/analyses/listpee')
       .then((res) => res.json())
       .then((data) => dispatch(initAnalysesPeeListAC(data)))
   }, [dispatch])
-
 
   let data = [
     {

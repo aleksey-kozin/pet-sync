@@ -7,10 +7,8 @@ import './FeedDetail.css'
 import '../AddFeed/AddFeed.css'
 
 function FeedDitail({ value }) {
-
   const userState = useSelector((state) => state.usersReducer)
   let admin = userState.user.email === 'akost2001@gmail.com'
-
 
   const feedArray = useSelector((state) => state.feedReducer.feed)
   const dispatch = useDispatch()
@@ -34,7 +32,7 @@ function FeedDitail({ value }) {
       name: text.current.name.value,
     }
     dispatch(editFeedAC(editFeed))
-    fetch(`http://localhost:4000/edit/${id}`, {
+    fetch(`/edit/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editFeed),
@@ -48,7 +46,7 @@ function FeedDitail({ value }) {
 
   const delFeed = (ev) => {
     ev.preventDefault()
-    fetch(`http://localhost:4000/delfeed/${id}`, {
+    fetch(`/delfeed/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -64,78 +62,101 @@ function FeedDitail({ value }) {
 
   return (
     <div className="container">
-      <ProfileNav/>
+      <ProfileNav />
       <Link to={`/feeds`}>
-              <img
-                style={{marginTop: '40px'}}
-                src="/left-arrow.svg"
-                alt=""
-                width="40px"
-              />
+        <img
+          style={{ marginTop: '40px' }}
+          src="/left-arrow.svg"
+          alt=""
+          width="40px"
+        />
       </Link>
       {state === false ? (
         <div className="">
-        <form ref={text}>
-          <div className="one-feed-card">
-            <label>
-            <img src={value.img} alt="" />
+          <form ref={text}>
+            <div className="one-feed-card">
+              <label>
+                <img src={value.img} alt="" />
 
-              <h5>
+                <h5>
+                  {' '}
+                  Брэнд:{' '}
+                  <input
+                    className="form-input"
+                    name="brand"
+                    defaultValue={value.brand}
+                  />{' '}
+                </h5>
+              </label>
+              <label>
                 {' '}
-                Брэнд: <input className="form-input" name="brand" defaultValue={value.brand} />{' '}
-              </h5>
-            </label>
-            <label>
-              {' '}
-              <p>
-                Наименование: <input className="form-input" name="name" defaultValue={value.name.toLowerCase()} />
-              </p>
-            </label>
-            <label>
-              {' '}
-              <p>
-                Для кого: <input className="form-input" name="type" defaultValue={value.type} />
-              </p>
-            </label>
-            <label>
-              <p>
-                Возраст: <input className="form-input" name="age" defaultValue={value.age} />
-              </p>
-            </label>
-            <label>
-              <p>
-                Размер: <input className="form-input" name="size" defaultValue={value.size} />
-              </p>
-            </label>
-            <label>
-              <p>
-                Особые потребности:{' '}
-                <input
-                  name="veterinaryDiet"
-                  defaultValue={value.veterinaryDiet}
-                />
-              </p>
-            </label>
-          <button onClick={editFeed} type="button">
-            Сохранить
-          </button>
-          <button
-            onClick={() => {
-              setState(true)
-            }}
-            type="button"
-          >
-            Отмена
-          </button>
-          </div>
-          
-
-        </form>
+                <p>
+                  Наименование:{' '}
+                  <input
+                    className="form-input"
+                    name="name"
+                    defaultValue={value.name.toLowerCase()}
+                  />
+                </p>
+              </label>
+              <label>
+                {' '}
+                <p>
+                  Для кого:{' '}
+                  <input
+                    className="form-input"
+                    name="type"
+                    defaultValue={value.type}
+                  />
+                </p>
+              </label>
+              <label>
+                <p>
+                  Возраст:{' '}
+                  <input
+                    className="form-input"
+                    name="age"
+                    defaultValue={value.age}
+                  />
+                </p>
+              </label>
+              <label>
+                <p>
+                  Размер:{' '}
+                  <input
+                    className="form-input"
+                    name="size"
+                    defaultValue={value.size}
+                  />
+                </p>
+              </label>
+              <label>
+                <p>
+                  Особые потребности:{' '}
+                  <input
+                    name="veterinaryDiet"
+                    defaultValue={value.veterinaryDiet}
+                  />
+                </p>
+              </label>
+              <button onClick={editFeed} type="button">
+                Сохранить
+              </button>
+              <button
+                onClick={() => {
+                  setState(true)
+                }}
+                type="button"
+              >
+                Отмена
+              </button>
+            </div>
+          </form>
         </div>
       ) : (
         <div className="one-feed-card">
           <img src={value.img} alt="" />
-          <div >
+          <div>
             <h5>Брэнд: {value.brand}</h5>
             <p>Наименование: {value.name.toLowerCase()}</p>
             <p>Для кого: {value.type}</p>
@@ -143,20 +164,21 @@ function FeedDitail({ value }) {
             <p>Размер: {value.size}</p>
             <p>Особые потребности: {value.veterinaryDiet}</p>
           </div>
-          {admin
-            ? <><button
-            onClick={() => {
-              setState(false)
-            }}
-            type="button"
-          >
-            Редактировать
-          </button>
-          <button onClick={delFeed} type="button">
-            Удалить
-          </button></> : null
-          }
-         
+          {admin ? (
+            <>
+              <button
+                onClick={() => {
+                  setState(false)
+                }}
+                type="button"
+              >
+                Редактировать
+              </button>
+              <button onClick={delFeed} type="button">
+                Удалить
+              </button>
+            </>
+          ) : null}
         </div>
       )}
     </div>
