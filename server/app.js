@@ -18,10 +18,11 @@ app.use(cookieParser())
 app.use(
   cors({
     credentials: true,
-    // origin: 'https://pet-sync.herokuapp.com/',
+    origin: 'https://pet-sync.herokuapp.com/',
   })
 )
 
+app.use(express.static(path.resolve('../client/build')))
 app.use('/api', routerAuth)
 app.use('/', indexRouter)
 app.use('/analyses', analysesRouter)
