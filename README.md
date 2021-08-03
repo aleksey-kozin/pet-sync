@@ -12,4 +12,4 @@ Backend:
 
 NodeJS, Express, MongoDB, Mongoose, Firebase
 
-Ссылка на сайт: https://petsync.ru/
+Ссылка на сайт: https://pet-sync.herokuapp.com/
