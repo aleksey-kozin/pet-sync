@@ -1,7 +1,5 @@
 const express = require('express')
 const path = require('path')
-const connect = require('./db/connect')
-const dotenv = require('dotenv')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const errorMiddleware = require('./middlewares/error.middleware.js')
@@ -13,18 +11,23 @@ const analysesRouter = require('./routers/analysesRouter.js')
 const app = express()
 
 app.use(express.json())
+app.use(express.static(path.resolve('../client/build')))
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: 'https://pet-sync.herokuapp.com/',
   })
 )
 
 app.use('/api', routerAuth)
 app.use('/', indexRouter)
 app.use('/analyses', analysesRouter)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'))
+})
 
 app.use(errorMiddleware)
 

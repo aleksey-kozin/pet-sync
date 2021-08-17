@@ -1,0 +1,57 @@
+.one-feed-card{
+  width: 560px;
+  min-height: 900px;
+  margin: auto;
+  background: white;
+  margin-top: 50px;
+  /* text-align: left; */
+  padding-top: 50px;
+  border-radius: 25px;
+  box-shadow: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  padding-left: 30px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  margin-bottom: 200px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: box-shadow 0.15s linear;
+}
+.one-feed-card button{
+  display: block;
+  width: 500px;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: white;
+  background: black;
+  border-radius: 5px;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.one-feed-card h5{
+  margin-top: 20px;
+  text-align: left; 
+}
+
+.one-feed-card img{
+  margin-left: 70px;
+}
+.one-feed-card p{
+  margin-top: 10px;
+  text-align: left; 
+}
+.one-feed-card input{
+  margin-top: 10px;
+  text-align: left; 
+  border: none;
+  background: #f0f0f0;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}

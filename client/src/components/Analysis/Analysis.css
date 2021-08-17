@@ -8,3 +8,118 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.test-info {
+}
+
+.list5b {
+  padding: 0;
+  list-style: none;
+}
+.list5b li {
+  position: relative;
+ 
+  padding: 10px 30px;
+  background: #fff;
+  border: 2px solid #c0c0c0;
+  border-radius: 25px;
+  color: #506a6b;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 5px;
+  text-align: center;
+  background-size: 100% 100%;
+  z-index: 1;
+}
+.list5b li:hover {
+  border: 2px solid #adcee9;
+}
+.list5b li:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  border-radius: 25px;
+  background: linear-gradient(to left, #e2f0fa 0%, #fff, #e2f0fa);
+  opacity: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: -1;
+}
+.list5b li:hover:before {
+  width: 100%;
+  opacity: 1;
+}
+
+.analis-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 45px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 25px 0 25px 0;
+  padding: 0 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+}
+
+.forms-wrapper {
+  max-width: 450px;
+}
+
+.form1 {
+  min-width: 450px;
+  margin: 20px;
+  color: #000;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.form-title1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-item1 {
+  margin-bottom: 10px;
+}
+
+.form-input1 {
+  height: 32px;
+  padding: 0 15px;
+  border: 0.5px solid grey;
+  border-radius: 7px;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-buttom1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 45px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 15px 0 0 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+}

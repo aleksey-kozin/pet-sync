@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { initFeedAC } from '../../utils/redux/actionCreators/actionCreators'
 import './Feed.css'
 import ProfileNav from '../Profile/ProfileNav'
+import Loader from '../Loader/Loader'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +26,17 @@ function Feed() {
   const { id } = useParams()
   const feedArray = useSelector((state) => state.feedReducer.feed)
   const dispatch = useDispatch()
+
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
-    fetch('http://localhost:4000/feed')
+    setLoading(true)
+    fetch('/feed')
       .then((res) => res.json())
-      .then((result) => dispatch(initFeedAC(result.feedArr)))
+      .then((result) => {
+        dispatch(initFeedAC(result.feedArr))
+        setLoading(false)
+      })
   }, [dispatch])
   const classes = useStyles()
 
@@ -54,6 +62,7 @@ function Feed() {
   const [size, setSize] = useState([])
   const [veterinaryDiet, setVeterinaryDiet] = useState([])
 
+
   const filteredUnits =
     type.length || age.length || size.length || veterinaryDiet.length
       ? feedArray.filter((feed) => {
@@ -67,23 +76,41 @@ function Feed() {
         })
       : feedArray
 
+  const userState = useSelector((state) => state.usersReducer)
+  let admin = userState.user.email === 'akost2001@gmail.com'
+
   return (
     <>
       <div className="container">
         <div className="main-wrapper1">
           <ProfileNav />
           <div className="feed">
-            <Link to={`/mypets/${id}`}>
-              <img
-                style={{ marginBottom: '40px' }}
-                src="/left-arrow.svg"
-                alt=""
-                width="40px"
-              />
-            </Link>
+            {!admin ? (
+              <Link to={`/mypets/${id}`}>
+                <img
+                  style={{ marginBottom: '40px' }}
+                  src="/left-arrow.svg"
+                  alt=""
+                  width="40px"
+                />
+              </Link>
+            ) : (
+              <Link to={`/mypets`}>
+                <img
+                  style={{ marginBottom: '40px' }}
+                  src="/left-arrow.svg"
+                  alt=""
+                  width="40px"
+                />
+              </Link>
+            )}
             <div style={{ marginBottom: '40px' }}>
+              <h2 style={{ marginBottom: '40px' }}>Подбор базовой диеты</h2>
+
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Животное</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
+                  <b>Животное</b>
+                </FormLabel>
                 <FormGroup>
                   {typePets.map((animal, i) => (
                     <FormControlLabel
@@ -107,7 +134,9 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Возраст</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
+                  <b>Возраст</b>
+                </FormLabel>
                 <FormGroup>
                   {agePets.map((age, i) => (
                     <FormControlLabel
@@ -131,7 +160,9 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Размер</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
+                  <b>Размер</b>
+                </FormLabel>
                 <FormGroup>
                   {sizePets.map((size, i) => (
                     <FormControlLabel
@@ -155,7 +186,9 @@ function Feed() {
               </FormControl>
 
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Особые потребности</FormLabel>
+                <FormLabel component="legend" style={{ fontSize: '18px' }}>
+                  <b>Особые потребности</b>
+                </FormLabel>
                 <FormGroup>
                   {veterinaryDietPets.map((diet, i) => (
                     <FormControlLabel
@@ -179,8 +212,12 @@ function Feed() {
               </FormControl>
             </div>
             <div className="feed-wrapper">
-              {filteredUnits &&
-                filteredUnits.map((el) => <FeedCard key={el._id} value={el} />)}
+              {loading ? (
+                <Loader />
+              ) : (
+                filteredUnits &&
+                filteredUnits.map((el) => <FeedCard key={el._id} value={el} />)
+              )}
             </div>
           </div>
         </div>

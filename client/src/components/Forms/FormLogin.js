@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './FormStyle.css'
-import { FcGoogle } from 'react-icons/fc'
 import { useDispatch } from 'react-redux'
-import {
-  checkUsersAC,
-  initUsersAC,
-} from '../../utils/redux/actionCreators/actionCreators'
+import { checkUsersAC, initUsersAC} from '../../utils/redux/actionCreators/actionCreators'
 import AuthService from '../../services/AuthServices'
+import cogoToast from 'cogo-toast';
 
 function FormSignUp() {
   const dispatch = useDispatch()
@@ -34,9 +31,10 @@ function FormSignUp() {
       dispatch(initUsersAC(response.data.user))
       history.push('/mypets')
     } catch (error) {
-      console.log(error.response?.data?.message)
-    }
+      cogoToast.warn(error.response?.data?.message, { position: 'bottom-center'});
+       }
   }
+
   return (
     <>
       
@@ -61,12 +59,6 @@ function FormSignUp() {
               />
             </div>
             <button className="form-buttom">Войти</button>
-            <div className="form-links">
-              <p>Войти через</p>
-              <div className="google-link">
-                <FcGoogle />
-              </div>
-            </div>
             <hr className="hr-line" />
             <div className="form-login">
               <p>Еще нет аккаунта?</p>
@@ -78,6 +70,9 @@ function FormSignUp() {
             </div>
           </form>
         </div>
+        <div className="bg">
+        <img className="bgimg" src="/dogscatsbg.png" alt="" />
+      </div>
       </div>
     </>
   )

@@ -5,7 +5,7 @@ const AnalysesGormonsCat = require("../db/models/analysesGormonsCat");
 const Feed = require('../db/models/feed.model')
 const Pet = require('../db/models/Pet');
 const AnalysesUrineCat = require('../db/models/analysesUrineCat');
-const AnalysesUrineDog = require('../db/models/analysesUrineDog copy');
+const AnalysesUrineDog = require('../db/models/analysesUrineDog');
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
@@ -31,6 +31,11 @@ router.post('/addPet', async (req, res) => {
 router.post('/findpet', async (req, res) => {
   const { id } = req.body
   const findPets = await Pet.find({ owner: id })
+  res.json({ petsArr: findPets })
+})
+
+router.get('/admin/findpet', async (req, res) => {
+  const findPets = await Pet.find()
   res.json({ petsArr: findPets })
 })
 
@@ -91,11 +96,12 @@ router.put('/edit/:id', async (req, res) => {
 })
 
 router.post("/addblood", (req, res) => {
-    const { spacies, owner, LDH, ALT, AST, ALB, T_Pro, T_Bil, GLU, T_Cho, ALP } =
+    const { spacies, owner, date, LDH, ALT, AST, ALB, T_Pro, T_Bil, GLU, T_Cho, ALP } =
       req.body;
   if (spacies === 'Кошка') {
     const newBlood = new AnalysesBioCat({
       owner,
+      date,
       LDH,
       ALT,
       AST,
@@ -111,6 +117,7 @@ router.post("/addblood", (req, res) => {
   } else {
     const newBlood = new AnalysesBioDog({
       owner,
+      date,
       LDH,
       ALT,
       AST,
@@ -127,11 +134,12 @@ router.post("/addblood", (req, res) => {
 });
 
 router.post("/addhormonal", (req, res) => {
-  const { spacies, owner, ACT, ALD, INS, PTH, T4, COR, GAS } = req.body;
+  const { spacies, owner, date, ACT, ALD, INS, PTH, T4, COR, GAS } = req.body;
   if (spacies === 'Кошка') {
     const newBlood = new AnalysesGormonsCat({
       spacies,
       owner,
+      date,
       ACT,
       ALD,
       INS,
@@ -146,6 +154,7 @@ router.post("/addhormonal", (req, res) => {
     const newBlood = new AnalysesGormonsDog({
       spacies,
       owner,
+      date,
       ACT,
       ALD,
       INS,
@@ -160,11 +169,13 @@ router.post("/addhormonal", (req, res) => {
 });
 
 router.post("/addpee", (req, res) => {
-  const { spacies, owner, AN16110, AN116, AN28110, AN15110, AN114 } = req.body;
+  const { spacies, owner, date, AN16110, AN116, AN28110, AN15110, AN114 } =
+    req.body;
   if (spacies === "Кошка") {
     const newBlood = new AnalysesUrineCat({
       spacies,
       owner,
+      date,
       AN16110,
       AN116,
       AN28110,
@@ -177,6 +188,7 @@ router.post("/addpee", (req, res) => {
     const newBlood = new AnalysesUrineDog({
       spacies,
       owner,
+      date,
       AN16110,
       AN116,
       AN28110,

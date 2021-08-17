@@ -17,17 +17,26 @@ function MyPets() {
 
   //fetch в БД, получаем животных
   useEffect(() => {
-    fetch('http://localhost:4000/findpet', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: userState.user.id }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        dispatch(initPetAC(result.petsArr))
+    if (userState.user.email === 'akost2001@gmail.com') {
+      // alert(123)
+      fetch('/admin/findpet')
+        .then((res) => res.json())
+        .then((result) => {
+          dispatch(initPetAC(result.petsArr))
+        })
+    } else {
+      fetch('/findpet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: userState.user.id }),
       })
+        .then((res) => res.json())
+        .then((result) => {
+          dispatch(initPetAC(result.petsArr))
+        })
+    }
   }, [userState, modalActive, dispatch])
 
   const text = useRef()
@@ -47,7 +56,7 @@ function MyPets() {
     }
 
     //fetch к бд
-    fetch('http://localhost:4000/addPet', {
+    fetch('/addPet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPet),

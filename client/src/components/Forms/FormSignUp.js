@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './FormStyle.css'
-import { FcGoogle } from 'react-icons/fc'
 import { useDispatch } from 'react-redux'
 import AuthService from '../../services/AuthServices'
 import { initUsersAC } from '../../utils/redux/actionCreators/actionCreators'
+import cogoToast from 'cogo-toast'
 
 function FormSignUp() {
   const dispatch = useDispatch()
@@ -17,10 +17,16 @@ function FormSignUp() {
       const response = await AuthService.registration(email, password)
       localStorage.setItem('token', response.data.accessToken)
       dispatch(initUsersAC(response.data.user))
+      cogoToast.info('Вам на почту пришла ссылка на активацию', {
+        position: 'bottom-center',
+      })
     } catch (error) {
-      console.log(error.response?.data?.message)
+      cogoToast.warn(error.response?.data?.message, {
+        position: 'bottom-center',
+      })
     }
   }
+
   return (
     <>
       <div className="wrapper">
@@ -44,13 +50,7 @@ function FormSignUp() {
               />
             </div>
             <button className="form-buttom">Зарегистрироваться</button>
-            <div className="form-links">
-              <p>Регистрация через</p>
-              <div className="google-link">
-                <FcGoogle />
-              </div>
-            </div>
-            <hr className="hr-line" />
+            <hr class="hr-line" />
             <div className="form-login">
               <p>Уже есть аккаунт?</p>
               <Link to="/login">
@@ -60,6 +60,9 @@ function FormSignUp() {
               </Link>
             </div>
           </form>
+        </div>
+        <div className="bg">
+          <img className="bgimg" src="/dogscatsbg.png" alt="" />
         </div>
       </div>
     </>

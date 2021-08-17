@@ -1,13 +1,14 @@
 .wrapper {
-  height: 90vh;
+  height: 100vh;
+  margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .form {
   min-width: 450px;
-  margin: 20px;
   color: #000;
   padding: 25px;
   background-color: #fff;

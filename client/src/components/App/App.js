@@ -17,6 +17,7 @@ import Blood from '../Analysis/Blood'
 import Pee from '../Analysis/Pee'
 import Hormonal from '../Analysis/Hormonal'
 import AddPet from '../Modal/Modal'
+import FeedS from '../Feed/FeedS'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path={"/tests/pee/:id"} component={Pee} />
             <Route path={"/tests/research/:id"} component={Hormonal} />
             <Route path={"/addfeed"} component={AddFeed} />
+            <Route path={"/feeds/:id"} component={FeedS} />
             <Route path={"/feed/:id"} component={Feed} />
           </Switch>
         </Router>

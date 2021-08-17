@@ -10,12 +10,12 @@
   padding: 0 20px;
 }
 
-.offer-title {
-}
+
 
 .img-offer {
   position: relative;
   transform: translate(70px, 10px);
+  width: 410px;
 }
 
 .main-wrapper1 {
@@ -41,7 +41,7 @@
 
 .main-item1 {
   max-width: 450px;
-  max-height: 400px;
+  max-height: 150px;
   background-color: #fff;
   border-radius: 25px;
   padding: 30px;
@@ -63,13 +63,29 @@
 } */
 
 .main-title1 {
-  font-size: 26px;
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.main-title {
+  font-size: 24px;
   font-weight: 500;
   margin-bottom: 20px;
 }
 
 .main-desc1 {
   margin-bottom: 20px;
+}
+
+.bg {
+  height: 100px;
+  /* margin-top: 50px; */
+  /* background-image: url('./dogscatsbg.png') 100% 100% no-repeat; */
+}
+
+.bgimg {
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -82,4 +98,33 @@
     min-width: 100%;
     margin: 15px;
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  .offer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .img-offer {
+    transform: translate(0, 0);
+    width: 250px;
+  }
+
+  .offer-title {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .subtitle {
+    margin-bottom: 20px;
+  }
+
+  .bg {
+    display: none;
+  }
+
 }
