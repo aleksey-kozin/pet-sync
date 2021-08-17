@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import {
   initAnalysesAC,
-  initAnalysesIdAC,
   listAnalysesAC,
 } from '../../utils/redux/actionCreators/actionCreators'
 import ChartLineALB from '../ChartLine/ChartLineALB'
@@ -73,7 +72,7 @@ function Blood(props) {
         return data
       })
       .then((data) => (Object.keys(data).length !== 0 ? setShow(true) : null))
-  }, [dispatch, modalActive])
+  }, [dispatch, modalActive, index, petState])
 
   useEffect(() => {
     fetch('/analyses/list', {
@@ -88,7 +87,7 @@ function Blood(props) {
     })
       .then((res) => res.json())
       .then((data) => dispatch(listAnalysesAC(data)))
-  }, [dispatch, details])
+  }, [dispatch, details, index, petState])
 
   const text = useRef()
 
@@ -580,7 +579,7 @@ function Blood(props) {
                 <ul>
                   <p>Референсные значения:</p>
                   <li style={{ listStyleType: 'none' }}>
-                    {`Собаки: \<10 мкмоль/л`}
+                    {`Собаки: <10 мкмоль/л`}
                   </li>
                   <li style={{ listStyleType: 'none' }}>Кошки: 2-5 мкмоль/л</li>
                 </ul>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import FeedCard from '../FeedCard/FeedCard'
@@ -12,7 +12,6 @@ import { initFeedAC } from '../../utils/redux/actionCreators/actionCreators'
 import './Feed.css'
 import ProfileNav from '../Profile/ProfileNav'
 import Loader from '../Loader/Loader'
-import Modal from '../Modal/Modal'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,9 +62,6 @@ function Feed() {
   const [size, setSize] = useState([])
   const [veterinaryDiet, setVeterinaryDiet] = useState([])
 
-  const [modalActive, setModalActive] = useState(false)
-
-  const text = useRef()
 
   const filteredUnits =
     type.length || age.length || size.length || veterinaryDiet.length
@@ -110,21 +106,6 @@ function Feed() {
             )}
             <div style={{ marginBottom: '40px' }}>
               <h2 style={{ marginBottom: '40px' }}>Подбор базовой диеты</h2>
-
-              {/* <button
-                className="analis-btn"
-                onClick={() => setModalActive(true)}
-              >
-                Добавить анализ
-              </button>
-
-              <Modal active={modalActive} setActive={setModalActive}>
-
-              <form className="form-body" ref={text}>
-
-
-              </form>
-              </Modal> */}
 
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend" style={{ fontSize: '18px' }}>

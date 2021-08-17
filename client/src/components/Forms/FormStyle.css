@@ -1,5 +1,5 @@
 .wrapper {
-  height: 90vh;
+  height: 100vh;
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -9,7 +9,6 @@
 
 .form {
   min-width: 450px;
-  
   color: #000;
   padding: 25px;
   background-color: #fff;
